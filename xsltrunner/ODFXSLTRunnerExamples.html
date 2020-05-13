@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>ODF Toolkit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../custom.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a href="../index.html" class="navbar-brand">ODF Toolkit</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12 col-sm-3">
+          <h1>General</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../index.html">About</a></li> 
+            <li class="list-group-item"><a href="../downloads.html">Downloads</a></li> 
+          </ul> 
+          <h1>Components</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../odfdom/index.html">ODFDOM</a></li> 
+            <li class="list-group-item"><a href="../simple/index.html">Simple API (deprecated)</a></li> 
+            <li class="list-group-item"><a href="../conformance/ODFValidator.html">ODF Validator</a></li> 
+            <li class="list-group-item"><a href="../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+          </ul> 
+          <h1>Community</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../get-involved.html">Get Involved</a></li> 
+            <li class="list-group-item"><a href="../mailing-lists.html">Mailing Lists</a></li> 
+            <li class="list-group-item"><a href="../people.html">People</a></li> 
+            <li class="list-group-item"><a href="../developer-faqs.html">FAQs</a></li> 
+          </ul> 
+          <h1>Development</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../source.html">Source Code</a></li> 
+            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+            <li class="list-group-item"><a href="../javadoc.html">JavaDoc</a></li> 
+            <li class="list-group-item"><a href="../website-development.html">Website Development</a></li> 
+            <li class="list-group-item"><a href="../release-guide.html">Release Guide</a></li> 
+          </ul> 
+          <h1>TDF</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+          </ul> 
+        </div>
+        <div class="col col-xs-12 col-sm-9">
+          <h1>ODF XSLT Runner and ODF XSLT Runner Task Examples</h1> 
+          <h2>XHTML</h2> 
+          <p>The XHTML transformation contained in [LibreOffice] <a href="https://www.libreoffice.org">1</a> can be used to transform ODF documents into XHTML. Using <strong>ODFXSLTRunner</strong> it is not even required to extract the ODF package.</p> 
+          <p>The XHTML style sheet runs only with the <a href="http://saxon.sourceforge.net/">SAXON XSLT Processor</a>. Using version 9.1 is recommended.</p> 
+          <p>The following command converts an ODF text document <strong>&lt;ODT&gt;</strong> into an XHTML document <strong>&lt;XHTML&gt;</strong>:</p> 
+          <pre><code>java -cp odfxsltrunner.jar:&lt;saxon.jar&gt; org.odftoolkit.odfxsltrunner.Main
+   -f net.sf.saxon.TransformerFactoryImpl  -x Pictures/
+  &lt;ooo-xslt&gt;/export/xhtml/opendoc2xhtml.xsl &lt;ODT&gt; -o &lt;XHTML&gt;
+</code></pre> 
+          <p><em>&lt;saxon.jar&gt;</em> is the jar of the <a href="http://saxon.sourceforge.net/">SAXON</a> XSLT Processor. <em>&lt;ooo-xslt&gt;</em> is the location of the LibreOffice XSLT stylesheets within an LibreOffice installation. In a typical LibreOffice installation, this is <code>
+              <basedir>
+                /share/xslt
+              </basedir></code> on (Linux and Windows).</p> 
+          <p><em><strong>Note:</strong></em> A few changes were necessary to use LibreOffice's XHTML transformation with <strong>ODFXSLTRunner</strong>. These are available as patch in the OpenOffice.org issue <a href="http://qa.openoffice.org/issues/show_bug.cgi?id=115881">i115881</a>.</p> 
+          <h2>XHTML with referenced images only</h2> 
+          <p>The XHTML transformation in the above example extracts all images from the ODF document, regardless whether these are referenced in the XHTML document. To extract only the images that are referenced a list of referenced images may be created by the <strong>create-html-img-list.xsl</strong> style sheet that is contained in the <strong>sample-xslt</strong> folder of <strong>ODFXSLTRunner</strong>. It is applied to the XHTML file, and the target is a text file that contains the references images. Although the input file is an XHTML rather than a ODF file, <strong>ODFXSLTRunner</strong> may be used to apply the style sheet.</p> 
+          <pre><code>java -jar odfxsltrunner.jar create-html-img-list.xsl -i &lt;XHTML&gt; -o &lt;img-list&gt;
+ unzip &lt;ODT&gt; `&lt;img-list&gt;`
+</code></pre> 
+          <h2>Replace embedded objects with bitmap images</h2> 
+          <p>Unlike LibreOffice's HTML filter, the XSLT-based XHTML filter does not convert embedded objects into bitmap images. It is however possible to replace the embedded objects of ODF document with the images that the HTML filter has exported by applying the <strong>replace-object.xsl</strong> style sheet that is contained in the <strong>sample-xslt</strong> folder of <strong>ODFXSLTRunner</strong> to the ODF document.</p> 
+          <p>The following steps are required:</p> 
+          <ul> 
+            <li>Load the ODT document into LibreOffice and save it with the HTML filter. The file may have an arbitrary name. <strong>&lt;ooo-html-file&gt;</strong> is used as a placeholder here.</li> 
+            <li>Convert the HTML file into an XHTML file. You may use <strong>xmllint</strong> for this purpose, which is part of <a href="http://xmlsoft.org/">libxml2</a>, or any other tools that converts HTML into XHTML. The command line for <strong>xmllint</strong> is: xmllint --html --xmlout --dropdtd -o &lt;ooo-xhtml-file&gt; &lt;ooo-html-file&gt;</li> 
+            <li>Apply the <strong>replace-object.xsl</strong> style sheet to the ODF document. The style sheet requires the name of the XHTML file converted in the previous step as '''hrml-ref''' parameter. java -jar odfxsltrunner.jar replace-objects.xsl &lt;input odf&gt; &lt;output odf&gt; ref-html=&lt;ooo-xhtml-file&gt;</li> 
+            <li>Zip the images that LibreOffice has saved next to the HTML document into the output ODF file. The new ODF file now can be transformed to XHTML with LibreOffice's XHTML transformation.</li> 
+          </ul> 
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <ul>
+          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
+          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

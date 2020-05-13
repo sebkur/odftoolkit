@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <title>ODF Toolkit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../custom.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a href="../index.html" class="navbar-brand">ODF Toolkit</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12 col-sm-3">
+          <h1>General</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../index.html">About</a></li> 
+            <li class="list-group-item"><a href="../downloads.html">Downloads</a></li> 
+          </ul> 
+          <h1>Components</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../odfdom/index.html">ODFDOM</a></li> 
+            <li class="list-group-item"><a href="../simple/index.html">Simple API (deprecated)</a></li> 
+            <li class="list-group-item"><a href="../conformance/ODFValidator.html">ODF Validator</a></li> 
+            <li class="list-group-item"><a href="../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+          </ul> 
+          <h1>Community</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../get-involved.html">Get Involved</a></li> 
+            <li class="list-group-item"><a href="../mailing-lists.html">Mailing Lists</a></li> 
+            <li class="list-group-item"><a href="../people.html">People</a></li> 
+            <li class="list-group-item"><a href="../developer-faqs.html">FAQs</a></li> 
+          </ul> 
+          <h1>Development</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../source.html">Source Code</a></li> 
+            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+            <li class="list-group-item"><a href="../javadoc.html">JavaDoc</a></li> 
+            <li class="list-group-item"><a href="../website-development.html">Website Development</a></li> 
+            <li class="list-group-item"><a href="../release-guide.html">Release Guide</a></li> 
+          </ul> 
+          <h1>TDF</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+          </ul> 
+        </div>
+        <div class="col col-xs-12 col-sm-9">
+          <h2><strong>Getting Start Guide</strong></h2> 
+          <p>This start guide shows how to use the Simple ODF API to create a text document with image, paragraph, list and table in OpenDocument format (ODF). In about 40 lines of code, you will be able to produce an OpenDocument Format text document named HelloWorld.odt that looks like this:</p> 
+          <p><img src="helloworld.png" alt="demo file"></p> 
+          <p><strong>Prerequisites</strong></p> 
+          <p>Simple ODF is written in Java, so you will need to have Java 1.6 or above installed on your system. Make sure you download the SDK (software development kit), not just the runtime version of Java.</p> 
+          <p>In this tutorial, you can build and run the application from the command line or IDE, such as Eclipse or Netbeans. Anyway, all required jars, are stored within the "lib" directory of the demo bundle and needed to be added to the classpath. A JAR with all dependencies had been included as download within <a href="helloworld.zip">the resource file</a> of this demo.</p> 
+          <p>NOTE: The latest version of this all-inclusive-JAR can be received after building the Simple ODF project. This will be JAR within the 'target' directory embracing all required JARs.</p> 
+          <p><strong>Code</strong></p> 
+          <p>We write all of the code needed to create the document in the HelloWorld class. For simplicity, the code is wrapped in main method directly, package declaration is omitted and hard code is also included in this program.</p> 
+          <pre><code>import java.net.URI;
+
+import org.odftoolkit.simple.TextDocument;
+import org.odftoolkit.simple.table.Cell;
+import org.odftoolkit.simple.table.Table;
+import org.odftoolkit.simple.text.list.List;
+
+public class HelloWorld {
+	public static void main(String[] args) {
+		TextDocument outputOdt;
+		try {
+			outputOdt = TextDocument.newTextDocument();
+
+			// add image
+			outputOdt.newImage(new URI("odf-logo.png"));
+
+			// add paragraph
+			outputOdt.addParagraph("Hello World, Hello Simple ODF!");
+
+			// add list
+			outputOdt.addParagraph("The following is a list.");
+			List list = outputOdt.addList();
+			String[] items = {"item1", "item2", "item3"};
+			list.addItems(items);
+
+			// add table
+			Table table = outputOdt.addTable(2, 2);
+			Cell cell = table.getCellByPosition(0, 0);
+			cell.setStringValue("Hello World!");
+
+			outputOdt.save("HelloWorld.odt");
+		} catch (Exception e) {
+			System.err.println("ERROR: unable to create output file.");
+		}
+	}
+}
+</code></pre> 
+          <p>The TextDocument class has these convenient methods:</p> 
+          <pre><code>    // Creates a new text document that contains an empty paragraph.
+	TextDocument.newTextDocument();
+	// Puts the image at the given location at the end of the document.
+	TextDocument.newImage(URI location)
+	// Creates a new paragraph with the given content and appends it to the end of the document.
+    TextDocument.addParagraph(String content)
+	// Creates a new, empty list and appends it to the end of the document you're building. You can add items for this list.
+	TextDocument.addList()
+	// Creates a new table with columnCount columns and rowCount rows. You can get the cell at given position and set its content.
+	TextDocument.addTable(int columnCount, int rowCount);
+	// Saves the document at the given path.
+	TextDocument.save(String path)
+</code></pre> 
+          <p><strong>Building and Running</strong></p> 
+          <p>If you use an IDE, you can just run this class as a Java Application. If you use command line, you may compile the code and run it with the following commands:</p> 
+          <pre><code>javac -cp lib/simple-odf-0.8.2-incubating-jar-with-dependencies.jar HelloWorld.java
+
+	LINUX using ':' as classpath separator:
+	java -cp .:lib/simple-odf-0.8.2-incubating-jar-with-dependencies.jar HelloWorld
+
+	WINDOWS using ';' as classpath separator:
+	java -cp .;lib/simple-odf-0.8.2-incubating-jar-with-dependencies.jar HelloWorld
+</code></pre> 
+          <p><strong>Getting the Files</strong></p> 
+          <p>You can download the code and resources of this demo from <a href="helloworld.zip">here</a>.</p> 
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <ul>
+          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
+          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

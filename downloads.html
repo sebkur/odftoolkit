@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <title>ODF Toolkit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a href="index.html" class="navbar-brand">ODF Toolkit</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12 col-sm-3">
+          <h1>General</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="index.html">About</a></li> 
+            <li class="list-group-item"><a href="downloads.html">Downloads</a></li> 
+          </ul> 
+          <h1>Components</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="odfdom/index.html">ODFDOM</a></li> 
+            <li class="list-group-item"><a href="simple/index.html">Simple API (deprecated)</a></li> 
+            <li class="list-group-item"><a href="conformance/ODFValidator.html">ODF Validator</a></li> 
+            <li class="list-group-item"><a href="xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+          </ul> 
+          <h1>Community</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="get-involved.html">Get Involved</a></li> 
+            <li class="list-group-item"><a href="mailing-lists.html">Mailing Lists</a></li> 
+            <li class="list-group-item"><a href="people.html">People</a></li> 
+            <li class="list-group-item"><a href="developer-faqs.html">FAQs</a></li> 
+          </ul> 
+          <h1>Development</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="source.html">Source Code</a></li> 
+            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+            <li class="list-group-item"><a href="javadoc.html">JavaDoc</a></li> 
+            <li class="list-group-item"><a href="website-development.html">Website Development</a></li> 
+            <li class="list-group-item"><a href="release-guide.html">Release Guide</a></li> 
+          </ul> 
+          <h1>TDF</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+          </ul> 
+        </div>
+        <div class="col col-xs-12 col-sm-9">
+          <h1>Downloads</h1> 
+          <h2>Current Version</h2> 
+          <p>The current version is the 1.0.0 release. The future development is based on 1.0.0.<br> The releases of 0.9.0 and 1.0.0 were both on the January 27th, 2020.</p> 
+          <h2>Latest Releases</h2> 
+          <ol> 
+            <li>The release 1.0.0 is using &gt;=JDK 9 implementing <a href="http://docs.oasis-open.org/office/v1.2/os/">ODF 1.2</a>.<br> It is <a href="">providing the new collaboration feature</a> and adding more than half a dozen years of development by merging the ODFDOM fork of <a href="https://www.open-xchange.com/portfolio/ox-documents/">Open-XChange's browser office OX Documents</a>.</li> 
+            <li>The release 0.9.0 is using JDK 8 implementing <a href="http://docs.oasis-open.org/office/v1.2/os/">ODF 1.2</a>.<br> It is for the final time including the Simple API - a fork once made by IBM but no longer maintained, containing too much copy/pasted functionality. Its purpose was to be the first release of the TDF being close to the latest Apache sources as possible.</li> 
+          </ol> 
+          <p>For more details see the <a href="https://tdf.github.io/odftoolkit/docs/odfdom/ReleaseNotes.html">release notes</a>.<br> A full list of changes is available in the <a href="https://raw.githubusercontent.com/tdf/odftoolkit/master/CHANGES.txt">change log</a>. People interested should also follow the <a href="mailing-lists.html">mail list</a> to track progress.</p> 
+          <h2>Latest Project Releases for Maven</h2> 
+          <h3>Project Releases for Maven on ODF 1.2</h3> 
+          <ul> 
+            <li>ODFDOM: <a href="https://repo1.maven.org/maven2/org/odftoolkit/odfdom-java/1.0.0/">1.0.0</a> or <a href="https://repo1.maven.org/maven2/org/odftoolkit/odfdom-java/0.9.0/">0.9.0</a></li> 
+            <li>ODF Validator: <a href="https://repo1.maven.org/maven2/org/odftoolkit/odfvalidator/1.0.0/">1.0.0</a> or <a href="https://repo1.maven.org/maven2/org/odftoolkit/odfvalidator/0.9.0/">0.9.0</a></li> 
+            <li>XSLT Runner: <a href="https://repo1.maven.org/maven2/org/odftoolkit/xslt-runner/1.0.0/">1.0.0</a> or <a href="https://repo1.maven.org/maven2/org/odftoolkit/xslt-runner/0.9.0/">0.9.0</a></li> 
+            <li>Simple API (deprecated): <a href="https://repo1.maven.org/maven2/org/odftoolkit/simple-odf/0.9.0/">0.9.0</a></li> 
+          </ul> 
+          <h2>Latest ODF Toolkit Release Bundles</h2> 
+          <h3>ODF Toolkit 1.0.0 Release Bundle</h3> 
+          <ul> 
+            <li>Sources: <a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-1.0.0/odftoolkit-1.0.0-src.zip">odftoolkit-1.0.0-src.zip</a> [<a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-1.0.0/odftoolkit-1.0.0-src.zip.sha">sha</a>]</li> 
+            <li>Binaries: <a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-1.0.0/odftoolkit-1.0.0-bin.zip">odftoolkit-1.0.0-bin.zip</a> [<a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-1.0.0/odftoolkit-0.9-0-bin.zip.sha">sha</a>]</li> 
+            <li>Documentation: <a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-1.0.0/odftoolkit-1.0.0-doc.zip">odftoolkit-1.0.0-doc.zip</a> [<a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-1.0.0/odftoolkit-1.0.0-doc.zip.sha">sha</a>]</li> 
+          </ul> 
+          <h3>ODF Toolkit 0.9.0 Release Bundle</h3> 
+          <ul> 
+            <li>Sources: <a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-0.9.0/odftoolkit-0.9.0-src.zip">odftoolkit-0.9.0-src.zip</a> [<a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-0.9.0/odftoolkit-0.9.0-src.zip.sha">sha</a>]</li> 
+            <li>Binaries: <a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-0.9.0/odftoolkit-0.9.0-bin.zip">odftoolkit-0.9.0-bin.zip</a> [<a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-0.9.0/odftoolkit-0.9-0-bin.zip.sha">sha</a>]</li> 
+            <li>Documentation: <a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-0.9.0/odftoolkit-0.9.0-doc.zip">odftoolkit-0.9.0-doc.zip</a> [<a href="https://github.com/tdf/odftoolkit/releases/download/odftoolkit-0.9.0/odftoolkit-0.9.0-doc.zip.sha">sha</a>]</li> 
+          </ul> 
+          <h2>Former ODF Toolkit Releases at Apache</h2> 
+          <p>Former Apache releases can be found in the <a href="http://archive.apache.org/dist/incubator/odftoolkit">Apache Archive</a>.</p> 
+          <h2>Prior Apache Releases</h2> 
+          <p>Apache ODF Toolkit became an incubator project in August 2011. Prior to that date the ODF Toolkit was a set of projects of ODF Toolkit Union. Now, all of the legacy ODF Toolkit Union releases are archived at <a href="http://code.google.com/a/apache-extras.org/p/odftoolkit-extra/">apache-extras.org</a>.</p> 
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <ul>
+          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
+          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

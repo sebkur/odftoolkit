@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title>ODF Toolkit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a href="" class="navbar-brand">ODF Toolkit</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12 col-sm-3">
+          <h1>General</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="index.html">About</a></li> 
+            <li class="list-group-item"><a href="downloads.html">Downloads</a></li> 
+          </ul> 
+          <h1>Components</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="odfdom/index.html">ODFDOM</a></li> 
+            <li class="list-group-item"><a href="simple/index.html">Simple API (deprecated)</a></li> 
+            <li class="list-group-item"><a href="conformance/ODFValidator.html">ODF Validator</a></li> 
+            <li class="list-group-item"><a href="xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+          </ul> 
+          <h1>Community</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="get-involved.html">Get Involved</a></li> 
+            <li class="list-group-item"><a href="mailing-lists.html">Mailing Lists</a></li> 
+            <li class="list-group-item"><a href="people.html">People</a></li> 
+            <li class="list-group-item"><a href="developer-faqs.html">FAQs</a></li> 
+          </ul> 
+          <h1>Development</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="source.html">Source Code</a></li> 
+            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+            <li class="list-group-item"><a href="javadoc.html">JavaDoc</a></li> 
+            <li class="list-group-item"><a href="website-development.html">Website Development</a></li> 
+            <li class="list-group-item"><a href="release-guide.html">Release Guide</a></li> 
+          </ul> 
+          <h1>TDF</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+          </ul> 
+        </div>
+        <div class="col col-xs-12 col-sm-9">
+          <h1>The Document Foundation - ODF Toolkit</h1> 
+          <h2>Mission Statement</h2> 
+          <p>The ODF Toolkit is a set of Java modules that allow programmatic creation, scanning and manipulation of <a href="http://opendocument.xml.org/">Open Document Format</a>, which <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">is being developed under OASIS</a> (ISO/IEC 26300 == ODF) documents. Unlike other approaches which rely on runtime manipulation of heavy-weight editors via an automation interface, the ODF Toolkit is lightweight and ideal for server use.</p> 
+          <h2>Components of the ODF Toolkit (Java)</h2> 
+          <ol> 
+            <li> <p><strong>Software access to ODF</strong> is archievable by <a href="odfdom/index.html">ODFDOM</a>. With 1.0.0 the <a href="2DO.html">basics of collaboration functionality</a> were added.</p> </li> 
+            <li> <p><strong>ODF Conformance</strong> can be tested via the <a href="conformance/OdfValidator.html">ODF Validator</a>. Offered as command-line tool (executable JAR) or Web server component (WAR).</p> </li> 
+            <li> <p><strong>XSL Transformation</strong> loading the ODF XML from the zipped ODF can take the zipped ODF as source using the <a href="xsltrunner/ODFXSLTRunner.html">ODF XSLT Runner</a>.<br> This functionality is also available from <a href="https://ant.apache.org/">ANT</a> using our <a href="xsltrunner/ODFXSLTRunnerTask.html">ANT task</a></p> </li> 
+            <li> <p><strong>Creating Software Artefacts from the ODF grammar</strong> is possible via the <a href="2DO.html">generator project</a></p> </li> 
+          </ol> 
+          <h2>2020-01-29 - ODF Toolkit releases of 0.9.0 and 1.0.0</h2> 
+          <p>See the <a href="downloads.html">downloads page</a> for more details on the releases.</p> 
+          <h2>2018-12-18 - ODF Toolkit becomes a project of The Document Foundation (TDF)</h2> 
+          <p>The ODF Toolkit team is pleased to announce the reuniation with LibreOffice.</p> 
+          <p>People interested should also follow the <a href="mailing-lists.html">mail list</a> to track progress.</p> 
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <ul>
+          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
+          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

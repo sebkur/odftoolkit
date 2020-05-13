@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>ODF Toolkit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../custom.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a href="../index.html" class="navbar-brand">ODF Toolkit</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12 col-sm-3">
+          <h1>General</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../index.html">About</a></li> 
+            <li class="list-group-item"><a href="../downloads.html">Downloads</a></li> 
+          </ul> 
+          <h1>Components</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../odfdom/index.html">ODFDOM</a></li> 
+            <li class="list-group-item"><a href="../simple/index.html">Simple API (deprecated)</a></li> 
+            <li class="list-group-item"><a href="../conformance/ODFValidator.html">ODF Validator</a></li> 
+            <li class="list-group-item"><a href="../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+          </ul> 
+          <h1>Community</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../get-involved.html">Get Involved</a></li> 
+            <li class="list-group-item"><a href="../mailing-lists.html">Mailing Lists</a></li> 
+            <li class="list-group-item"><a href="../people.html">People</a></li> 
+            <li class="list-group-item"><a href="../developer-faqs.html">FAQs</a></li> 
+          </ul> 
+          <h1>Development</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="../source.html">Source Code</a></li> 
+            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+            <li class="list-group-item"><a href="../javadoc.html">JavaDoc</a></li> 
+            <li class="list-group-item"><a href="../website-development.html">Website Development</a></li> 
+            <li class="list-group-item"><a href="../release-guide.html">Release Guide</a></li> 
+          </ul> 
+          <h1>TDF</h1> 
+          <ul class="list-group"> 
+            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+          </ul> 
+        </div>
+        <div class="col col-xs-12 col-sm-9">
+          <p>Title: ODF Version Processing in ODFDOM Hello everyone in this community! I'm working on ODFDOM now. This is my first to write wiki. In the future, I'll have more issues about requirements, designs and implementation details to discuss with you. Now I have a topic about ODF versions.</p> 
+          <ul> 
+            <li>ODFDOM now only supports ODF 1.1, and surely we'll support ODF 1.2, also one of our team members is doing that now. But do we plan to support ODF 1.0? My opinion is that although ODF 1.0 is used in not many cases before, ODF 1.0(2nd) is ISO standard ISO26300, so ODFDOM should consider the back compatible with ODF1.0, and can load/create ODF1.0 documents. Of course, if we plan to do that, it should be done as early as possible. Welcome your opinion.</li> 
+            <li>ODFDOM should support all versions of ODF because in the practice, many ODF documents with different versions are mixed together, ODFDOM need to process them automatically for whatever ODF version. So a single code base should support all ODF versions instead of different code streams for different ODF versions.</li> 
+            <li>ODFDOM dom layer code have to support all elements and attributes defined in all ODF versions, that means it is a union set of all ODF versions.</li> 
+            <li>Generate different source code using different ODF schema, may modify the code generator source code</li> 
+            <li>Create a new code base that contain all ODF versions source files using some auto merge tools</li> 
+            <li>Identify the difference places in the source code for different ODF versions. Minor places are in dom layer, most places are in doc layer.</li> 
+            <li>Compare different ODF schemas, first do some automatic processing based on the assumption that ODF schema is back compatible completely. Then do some special processing for those elements or attributes that are not back compatible.</li> 
+          </ul> 
+          <p>Welcome your suggestions.</p> 
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <ul>
+          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
+          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
