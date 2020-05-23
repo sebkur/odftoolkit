@@ -26,6 +26,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.slf4j.impl.StaticLoggerBinder;
 import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
@@ -38,6 +39,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,7 +60,56 @@ public class PuzzlePieceTest {
 	private static final int ODF12_ELEMENT_DUPLICATES = 7;
 	private static final int ODF12_ATTRIBUTE_DUPLICATES = 134;
 
+    @Test
+    public void testStuff() throws Exception {
+        System.out.println("Loading schema...");
+        Expression root = OdfHelper.loadSchemaODF12();
 
+        String EXAMPLE_PARENT = "table:table";
+        String EXAMPLE_CHILD = "table:table-row";
+
+        System.out.println("Extracting puzzle pieces...");
+        PuzzlePieceSet elements = new PuzzlePieceSet();
+        PuzzlePieceSet attributes = new PuzzlePieceSet();
+        PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
+        Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
+
+        System.out.println("Print all paths from parent element (e.g. \"text:p\") to direct child element (e.g. \"text:span\")");
+
+        SortedSet<PuzzlePiece> pieces = nameToDefinition.get(EXAMPLE_PARENT);
+
+        if (pieces == null) {
+            System.out.println("No parent element found by the given name: " + EXAMPLE_PARENT);
+        }
+
+        PuzzlePiece parent = pieces.first();
+
+        pieces = nameToDefinition.get(EXAMPLE_CHILD);
+
+        if (pieces == null) {
+            System.out.println("No child element found by the given name: " + EXAMPLE_CHILD);
+        }
+
+        PuzzlePiece child = pieces.first();
+
+        if (pieces.size() > 1) {
+            System.out.println("There were more than one element by this name. Dropped all instances but one.");
+        }
+
+        System.out.println();
+        System.out.println("PATHS from " + parent.getQName() + " to " + child.getQName() + ": ");
+        System.out.println("---------------------------------------------------------");
+
+        List<String> paths = new PathPrinter(parent).printChildPaths(child);
+
+        if (paths == null) {
+            System.out.println("No Path found.");
+        } else {
+            for (String s : paths) {
+                System.out.println(s);
+            }
+        }
+    }
 
 	/**
 	 * Test: Use the MSV
