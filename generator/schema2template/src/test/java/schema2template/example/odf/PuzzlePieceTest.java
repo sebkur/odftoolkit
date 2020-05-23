@@ -22,21 +22,26 @@
 package schema2template.example.odf;
 
 import com.sun.msv.grammar.Expression;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import static schema2template.example.odf.OdfHelper.*;
 import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static schema2template.example.odf.OdfHelper.*;
 
 public class PuzzlePieceTest {
 
@@ -116,17 +121,10 @@ public class PuzzlePieceTest {
      * @param filePath  path of the file to be opened.
      */
     private String readFileAsString(String filePath) throws java.io.IOException {
-        StringBuilder fileData = new StringBuilder(2000);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
-        char[] buf = new char[1024];
-        int numRead = 0;
-        while ((numRead = reader.read(buf)) != -1) {
-            String readData = String.valueOf(buf, 0, numRead);
-            fileData.append(readData);
-            buf = new char[1024];
+        Path path = Paths.get(filePath);
+        try(InputStream input = Files.newInputStream(path)) {
+            return IOUtils.toString(input, StandardCharsets.UTF_8);
         }
-        reader.close();
-        return fileData.toString();
     }
 
 	/**
