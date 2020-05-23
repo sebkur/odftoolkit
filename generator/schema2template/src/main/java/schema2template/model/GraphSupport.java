@@ -28,6 +28,9 @@ import com.sun.msv.grammar.ReferenceExp;
 import com.sun.msv.grammar.SequenceExp;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,10 +71,13 @@ class GraphSupport {
         }
         try {
             String directoryName = schemaFileName.replace(".", "_");
-            File f = new File("target" + File.separator + "graphML" + File.separator + directoryName);
-            f.mkdirs();
-            // g.io(IoCore.gryo()).writeGraph("target" + File.separator + "graphML" + File.separator + directoryName + File.separator + fileName + ".kryo");
-            g.io(IoCore.graphml()).writeGraph("target" + File.separator + "graphML" + File.separator + directoryName + File.separator + fileName + ".graphml");
+            Path dir = Paths.get("target/graphML/" + directoryName);
+            Files.createDirectories(dir);
+
+            // Path file = dir.resolve(fileName + ".kryo");
+            // g.io(IoCore.gryo()).writeGraph(file.toString());
+            Path file = dir.resolve(fileName + ".graphml");
+            g.io(IoCore.graphml()).writeGraph(file.toString());
 
         } catch (IOException ex) {
             Logger.getLogger(GraphSupport.class.getName()).log(Level.SEVERE, null, ex);
