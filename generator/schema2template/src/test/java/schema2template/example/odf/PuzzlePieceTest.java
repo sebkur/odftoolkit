@@ -83,7 +83,10 @@ public class PuzzlePieceTest {
 			System.out.println(String.format("Def: '%s'", definition));
 			Path file = dir.resolve(definition + ".html");
 			System.out.println(String.format("Creating file: '%s'", file));
-			WebsiteGenerator websiteGenerator = new WebsiteGenerator(definition);
+
+			SortedSet<PuzzlePiece> pieces = nameToDefinition.get(definition);
+
+			WebsiteGenerator websiteGenerator = new WebsiteGenerator(definition, pieces);
 			WebsiteUtil.generate(dir, websiteGenerator);
 		}
 	}
