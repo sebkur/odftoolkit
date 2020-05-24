@@ -24,16 +24,13 @@ package schema2template.model;
 import com.sun.msv.grammar.Expression;
 import com.sun.msv.reader.trex.ng.RELAXNGReader;
 import com.sun.msv.reader.xmlschema.XMLSchemaReader;
-import java.io.File;
-import java.nio.file.Path;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.StringTokenizer;
-import java.util.TreeSet;
+import org.xml.sax.InputSource;
+
 import javax.xml.parsers.SAXParserFactory;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.util.*;
 
 /**
  * The most important model, the first access to the XML Schema information.
@@ -56,7 +53,7 @@ public class XMLModel {
      *
      * @param root MSV root Expression
      */
-    public XMLModel(Path schemaFile) {
+    public XMLModel(Path schemaFile) throws IOException {
         mRootExpression = loadSchema(schemaFile);
         mLastSchemaFileName = schemaFile.toAbsolutePath().getFileName().toString();
 
@@ -104,24 +101,28 @@ public class XMLModel {
 	 * expression)
 	 * @throws Exception
 	 */
-	public static Expression loadSchema(Path rngFile) {
+	public static Expression loadSchema(Path rngFile) throws IOException {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		factory.setNamespaceAware(true);
 		// Parsing the Schema with MSV
         // 4-DEBUG: DebugController ignoreController = new DebugController(true, false);
 		com.sun.msv.reader.util.IgnoreController ignoreController = new com.sun.msv.reader.util.IgnoreController();
-		String absolutePath = rngFile.toAbsolutePath().toString();
+        String filename = rngFile.getFileName().toString();
         Expression root = null;
-        if(absolutePath.endsWith(".rng")){
-             root = RELAXNGReader.parse(absolutePath, factory, ignoreController).getTopLevel();
-        }else if(absolutePath.endsWith(".xsd")){
-            root = XMLSchemaReader.parse(absolutePath, factory, ignoreController).getTopLevel();
-        }else{
+        if (filename.endsWith(".rng")) {
+            try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream(rngFile.toString())) {
+                root = RELAXNGReader.parse(new InputSource(input), factory, ignoreController).getTopLevel();
+            }
+        } else if (filename.endsWith(".xsd")) {
+            try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream(rngFile.toString())) {
+                root = XMLSchemaReader.parse(new InputSource(input), factory, ignoreController).getTopLevel();
+            }
+        } else {
             throw new RuntimeException("Reader not chosen for given schema suffix!");
         }
-		if (root == null) {
-			throw new RuntimeException("Schema could not be parsed.");
-		}
+        if (root == null) {
+            throw new RuntimeException("Schema could not be parsed.");
+        }
 		return root;
 	}
 

@@ -220,4 +220,17 @@ class OdfConfigFileHandler extends DefaultHandler {
         }
     }
 
+    /**
+     * Read config.xml. Input Convention: Input empty Maps, Maps will be filled.
+     *
+     * @param cf Config file
+     */
+    public static void readConfigFile(InputStream cf, Map<String, String> elementBaseNames,
+                                      Map<String, OdfModel.AttributeDefaults> attributeDefaults, Map<String, List<String>> elementStyleFamilies,
+                                      Map<String, String[]> datatypeValueConversion) throws Exception {
+
+        SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+        parser.parse(cf, new OdfConfigFileHandler(elementBaseNames, attributeDefaults, elementStyleFamilies, datatypeValueConversion));
+    }
+
 }

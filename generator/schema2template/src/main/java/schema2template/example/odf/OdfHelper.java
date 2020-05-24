@@ -33,6 +33,7 @@ import schema2template.model.XMLModel;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -80,7 +81,7 @@ public class OdfHelper {
     public static final int ODF11_ATTRIBUTE_NUMBER = 1162; //ToDo: 1169 - by search/Replace using RNGSchema and tools, prior exchange <name> to element or attribute declaration
     public static final int ODF12_ATTRIBUTE_NUMBER = 1300; //in RNG 1301 as there is one deprecated attribute on foreign elements not referenced (ie. @office:process-content)
 
-    public static final Path TEST_INPUT_ROOT_ODF = Paths.get("target", "classes", "examples", "odf");
+    public static final Path TEST_INPUT_ROOT_ODF = Paths.get("examples", "odf");
     public static final Path ODF10_RNG_FILE = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-strict-schema-v1.0-os.rng"));
     public static Path odf11RngFile = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-strict-schema-v1.1.rng"));
     public static Path odf12RngFile = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-v1.2-os-schema.rng"));
@@ -90,7 +91,7 @@ public class OdfHelper {
     public static Path mConfigFile = TEST_INPUT_ROOT_ODF.resolve("config.xml");
 
     // Home of test reference output of MSV ODF dump: odf10-msvtree.ref, odf11-msvtree.ref, odf12-msvtree.ref
-    public static final Path TEST_REFERENCE_DIR = Paths.get("target", "test-classes", "examples", "odf");
+    public static final Path TEST_REFERENCE_DIR = Paths.get("examples", "odf");
 
     private static final Path REFERENCE_OUTPUT_FILES_TEMPLATE = Paths.get("dom-output-files.vm");
     private static final Path REFERENCE_OUTPUT_FILES = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-reference", "reference-output-files.xml"));
@@ -140,7 +141,9 @@ public class OdfHelper {
         // 2DO - still existent? -- Manual added Java specific info - mapping ODF datatype to Java datatype  -> {odfValueType, javaConversionClassName}
         Map<String, String[]> datatypeValueAndConversionMap = new HashMap<String, String[]>();
         Map<String, OdfModel.AttributeDefaults> attributeDefaultMap = new HashMap<String, OdfModel.AttributeDefaults>();
-        OdfConfigFileHandler.readConfigFile(mConfigFile, elementToBaseNameMap, attributeDefaultMap, elementStyleFamiliesMap, datatypeValueAndConversionMap);
+        try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream(mConfigFile.toString())) {
+            OdfConfigFileHandler.readConfigFile(input, elementToBaseNameMap, attributeDefaultMap, elementStyleFamiliesMap, datatypeValueAndConversionMap);
+        }
 
 //        mOdf12SignatureSchemaModel = new XMLModel(odf12SignatureRngFile);
         mOdf12ManifestSchemaModel = new XMLModel(odf12ManifestRngFile);
