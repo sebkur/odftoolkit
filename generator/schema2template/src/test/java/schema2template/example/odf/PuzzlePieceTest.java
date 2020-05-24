@@ -30,10 +30,7 @@ import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -58,6 +55,38 @@ public class PuzzlePieceTest {
 	private static final String OUTPUT_REF_ODF12 = TEST_REFERENCE_DIR + File.separator + "odf12-msvtree.ref";
 	private static final int ODF12_ELEMENT_DUPLICATES = 7;
 	private static final int ODF12_ATTRIBUTE_DUPLICATES = 134;
+
+    @Test
+    public void generateDocumentation() throws Exception {
+        System.out.println("Loading schema...");
+        Expression root = OdfHelper.loadSchemaODF12();
+
+        System.out.println("Extracting puzzle pieces...");
+        PuzzlePieceSet elements = new PuzzlePieceSet();
+        PuzzlePieceSet attributes = new PuzzlePieceSet();
+        PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
+        Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
+
+        System.out.println(String.format("Number of elements: %d", elements.size()));
+        System.out.println(String.format("Number of attributes: %d", attributes.size()));
+        System.out.println(String.format("Number of definitions: %d", nameToDefinition.size()));
+
+        System.out.println("Generating HTML page");
+        Path dir = Paths.get("/tmp/puzzlepieces");
+        Files.createDirectories(dir);
+        for (String definition : nameToDefinition.keySet()) {
+            System.out.println(String.format("Def: '%s'", definition));
+            Path file = dir.resolve(definition + ".html");
+            System.out.println(String.format("Creating file: '%s'", file));
+            try (BufferedWriter writer = Files.newBufferedWriter(file)) {
+                writer.write("<html>");
+                writer.write("<body>");
+                writer.write(definition);
+                writer.write("</body>");
+                writer.write("</html>");
+            }
+        }
+    }
 
     @Test
     public void testStuff1() throws Exception {
