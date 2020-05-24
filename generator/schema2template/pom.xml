@@ -31,6 +31,13 @@
     <artifactId>schema2template</artifactId>
     <version>1.0.0-BETA2-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <repositories>
+        <repository>
+            <id>topobyte</id>
+            <name>Topobyte Maven repository</name>
+            <url>https://mvn.topobyte.de</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -64,6 +71,18 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.topobyte</groupId>
+            <artifactId>jsoup-utils</artifactId>
+            <version>0.1.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.topobyte</groupId>
+            <artifactId>webpaths-nio</artifactId>
+            <version>0.0.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>

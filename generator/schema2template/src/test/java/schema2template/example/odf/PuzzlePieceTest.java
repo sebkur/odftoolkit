@@ -27,10 +27,12 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import schema2template.docs.WebsiteGenerator;
+import schema2template.docs.WebsiteUtil;
 import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
 
+import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
@@ -82,7 +84,7 @@ public class PuzzlePieceTest {
 			Path file = dir.resolve(definition + ".html");
 			System.out.println(String.format("Creating file: '%s'", file));
 			WebsiteGenerator websiteGenerator = new WebsiteGenerator(definition);
-			websiteGenerator.generate(file);
+			WebsiteUtil.generate(dir, websiteGenerator);
 		}
 	}
 
