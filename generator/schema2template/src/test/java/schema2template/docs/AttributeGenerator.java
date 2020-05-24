@@ -35,9 +35,9 @@ public class AttributeGenerator extends BaseGenerator {
 	}
 
 	private void piece(Div div, PuzzlePiece puzzlePiece) {
-		section(div, puzzlePiece, "Attributes", puzzlePiece::getAttributes, false);
-		section(div, puzzlePiece, "Child Elements", puzzlePiece::getChildElements, true);
 		section(div, puzzlePiece, "Parent Elements", puzzlePiece::getParents, true);
+		section(div, puzzlePiece, "Child Elements", puzzlePiece::getChildElements, true);
+		section(div, puzzlePiece, "Attributes", puzzlePiece::getAttributes, false);
 	}
 
 	private void section(Div div, PuzzlePiece puzzlePiece, String title, Supplier<PuzzlePieceSet> references, boolean links) {
