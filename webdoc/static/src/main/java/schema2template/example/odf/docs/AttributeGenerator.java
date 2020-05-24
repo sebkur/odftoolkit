@@ -2,6 +2,8 @@ package schema2template.example.odf.docs;
 
 import de.topobyte.jsoup.HTML;
 import de.topobyte.jsoup.HtmlBuilder;
+import de.topobyte.jsoup.bootstrap3.Bootstrap;
+import de.topobyte.jsoup.bootstrap3.components.Container;
 import de.topobyte.jsoup.components.Body;
 import de.topobyte.jsoup.components.Div;
 import de.topobyte.jsoup.components.UnorderedList;
@@ -25,12 +27,15 @@ public class AttributeGenerator extends BaseGenerator {
 
     @Override
     public void generate() throws IOException {
+        super.generate();
+
         HtmlBuilder builder = getBuilder();
-
         Body body = builder.getBody();
-        body.ac(HTML.h1(definition));
+        Container content = body.ac(Bootstrap.container());
 
-        Div div = body.ac(HTML.div());
+        content.ac(HTML.h1(definition));
+
+        Div div = content.ac(HTML.div());
         piece(div, piece);
     }
 
