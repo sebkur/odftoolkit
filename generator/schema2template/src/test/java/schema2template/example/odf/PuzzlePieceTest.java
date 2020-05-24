@@ -26,7 +26,6 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.slf4j.impl.StaticLoggerBinder;
 import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
@@ -61,18 +60,36 @@ public class PuzzlePieceTest {
 	private static final int ODF12_ATTRIBUTE_DUPLICATES = 134;
 
     @Test
-    public void testStuff() throws Exception {
-        System.out.println("Loading schema...");
-        Expression root = OdfHelper.loadSchemaODF12();
-
+    public void testStuff1() throws Exception {
         String EXAMPLE_PARENT = "table:table";
         String EXAMPLE_CHILD = "table:table-row";
+        test(EXAMPLE_PARENT, EXAMPLE_CHILD);
+    }
+
+    @Test
+    public void testStuff2() throws Exception {
+        String EXAMPLE_PARENT = "text:p";
+        String EXAMPLE_CHILD = "text:span";
+        test(EXAMPLE_PARENT, EXAMPLE_CHILD);
+    }
+
+    public void test(String EXAMPLE_PARENT, String EXAMPLE_CHILD) throws Exception {
+        System.out.println("Loading schema...");
+        Expression root = OdfHelper.loadSchemaODF12();
 
         System.out.println("Extracting puzzle pieces...");
         PuzzlePieceSet elements = new PuzzlePieceSet();
         PuzzlePieceSet attributes = new PuzzlePieceSet();
         PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
         Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
+
+        System.out.println(String.format("Number of elements: %d", elements.size()));
+        System.out.println(String.format("Number of attributes: %d", attributes.size()));
+        System.out.println(String.format("Number of definitions: %d", nameToDefinition.size()));
+
+        for (String definition : nameToDefinition.keySet()) {
+            System.out.println(String.format("Def: '%s'", definition));
+        }
 
         System.out.println("Print all paths from parent element (e.g. \"text:p\") to direct child element (e.g. \"text:span\")");
 
