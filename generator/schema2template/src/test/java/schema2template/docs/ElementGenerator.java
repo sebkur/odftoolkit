@@ -41,8 +41,8 @@ public class ElementGenerator extends BaseGenerator {
 	}
 
 	private void section(Div div, PuzzlePiece puzzlePiece, String title, Supplier<PuzzlePieceSet> references, boolean links) {
-		PuzzlePieceSet childElements = puzzlePiece.getChildElements();
-		if (childElements.isEmpty()) {
+		PuzzlePieceSet elements = references.get();
+		if (elements.isEmpty()) {
 			return;
 		}
 
