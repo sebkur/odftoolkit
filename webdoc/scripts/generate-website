@@ -2,6 +2,6 @@
 
 DIR=$(dirname $0)
 CMD="$DIR/odf-webdoc.sh"
-CLASS="de.mobanisto.schema2template.webdoc.RunWebsiteGenerator"
+CLASS="com.mobanisto.schema2template.webdoc.RunWebsiteGenerator"
 
 exec "$CMD" "$CLASS" "$@"

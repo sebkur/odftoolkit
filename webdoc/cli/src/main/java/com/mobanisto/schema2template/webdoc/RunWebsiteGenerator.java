@@ -1,4 +1,4 @@
-package de.mobanisto.schema2template.webdoc;
+package com.mobanisto.schema2template.webdoc;
 
 import com.sun.msv.grammar.Expression;
 import schema2template.example.odf.docs.WebsiteGenerator;
