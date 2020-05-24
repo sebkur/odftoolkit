@@ -26,13 +26,13 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import schema2template.docs.WebsiteGenerator;
+import schema2template.docs.ElementGenerator;
+import schema2template.docs.IndexGenerator;
 import schema2template.docs.WebsiteUtil;
 import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
 
-import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
@@ -79,6 +79,10 @@ public class PuzzlePieceTest {
 		System.out.println("Generating HTML page");
 		Path dir = Paths.get("/tmp/puzzlepieces");
 		Files.createDirectories(dir);
+
+		IndexGenerator indexGenerator = new IndexGenerator(elements);
+		WebsiteUtil.generate(dir, indexGenerator);
+
 		for (String definition : nameToDefinition.keySet()) {
 			System.out.println(String.format("Def: '%s'", definition));
 			Path file = dir.resolve(definition + ".html");
@@ -86,8 +90,8 @@ public class PuzzlePieceTest {
 
 			SortedSet<PuzzlePiece> pieces = nameToDefinition.get(definition);
 
-			WebsiteGenerator websiteGenerator = new WebsiteGenerator(definition, pieces);
-			WebsiteUtil.generate(dir, websiteGenerator);
+			ElementGenerator elementGenerator = new ElementGenerator(definition, pieces);
+			WebsiteUtil.generate(dir, elementGenerator);
 		}
 	}
 

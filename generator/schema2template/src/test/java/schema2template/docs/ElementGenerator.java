@@ -5,23 +5,20 @@ import de.topobyte.jsoup.HtmlBuilder;
 import de.topobyte.jsoup.components.Body;
 import de.topobyte.jsoup.components.Div;
 import de.topobyte.jsoup.components.UnorderedList;
-import de.topobyte.webpaths.WebPath;
 import de.topobyte.webpaths.WebPaths;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.SortedSet;
 import java.util.function.Supplier;
 
-public class WebsiteGenerator extends BaseGenerator {
+public class ElementGenerator extends BaseGenerator {
 
 	private String definition;
 	private SortedSet<PuzzlePiece> pieces;
 
-	public WebsiteGenerator(String definition, SortedSet<PuzzlePiece> pieces) {
+	public ElementGenerator(String definition, SortedSet<PuzzlePiece> pieces) {
 		super(WebPaths.get(definition + ".html"));
 		this.definition = definition;
 		this.pieces = pieces;
@@ -58,20 +55,10 @@ public class WebsiteGenerator extends BaseGenerator {
 		for (PuzzlePiece element : references.get()) {
 			String referenceName = element.getQName();
 			if (links) {
-				WebPath referencePath = WebPaths.get(referenceName + ".html");
-				WebPath link = sitePath.resolve(referencePath);
-				list.addItem(HTML.a(encode(link.toString()), element.getQName()));
+				list.addItem(HTML.a(WebsiteUtil.linkElement(this, referenceName), element.getQName()));
 			} else {
 				list.addTextItem(element.getQName());
 			}
-		}
-	}
-
-	public static String encode(String name) {
-		try {
-			return URLEncoder.encode(name, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			return name;
 		}
 	}
 
