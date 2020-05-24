@@ -71,7 +71,7 @@ class GraphSupport {
         }
         try {
             String directoryName = schemaFileName.replace(".", "_");
-            Path dir = Paths.get("target/graphML/" + directoryName);
+            Path dir = Paths.get("target", "graphML", directoryName);
             Files.createDirectories(dir);
 
             // Path file = dir.resolve(fileName + ".kryo");
