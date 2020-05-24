@@ -12,12 +12,12 @@ import schema2template.model.PuzzlePieceSet;
 import java.io.IOException;
 import java.util.function.Supplier;
 
-public class ElementGenerator extends BaseGenerator {
+public class AttributeGenerator extends BaseGenerator {
 
 	private String definition;
 	private PuzzlePiece piece;
 
-	public ElementGenerator(String definition, PuzzlePiece piece) {
+	public AttributeGenerator(String definition, PuzzlePiece piece) {
 		super(WebPaths.get(definition + ".html"));
 		this.definition = definition;
 		this.piece = piece;
@@ -35,7 +35,7 @@ public class ElementGenerator extends BaseGenerator {
 	}
 
 	private void piece(Div div, PuzzlePiece puzzlePiece) {
-		section(div, puzzlePiece, "Attributes", puzzlePiece::getAttributes, true);
+		section(div, puzzlePiece, "Attributes", puzzlePiece::getAttributes, false);
 		section(div, puzzlePiece, "Child Elements", puzzlePiece::getChildElements, true);
 		section(div, puzzlePiece, "Parent Elements", puzzlePiece::getParents, true);
 	}

@@ -26,6 +26,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import schema2template.docs.AttributeGenerator;
 import schema2template.docs.ElementGenerator;
 import schema2template.docs.IndexGenerator;
 import schema2template.docs.WebsiteUtil;
@@ -64,7 +65,7 @@ public class PuzzlePieceTest {
 	@Test
 	public void generateDocumentation() throws Exception {
 		System.out.println("Loading schema...");
-		Expression root = OdfHelper.loadSchemaODF12();
+		Expression root = loadSchemaODF12();
 
 		System.out.println("Extracting puzzle pieces...");
 		PuzzlePieceSet elements = new PuzzlePieceSet();
@@ -80,18 +81,27 @@ public class PuzzlePieceTest {
 		Path dir = Paths.get("/tmp/puzzlepieces");
 		Files.createDirectories(dir);
 
-		IndexGenerator indexGenerator = new IndexGenerator(elements);
+		IndexGenerator indexGenerator = new IndexGenerator(attributes, elements);
 		WebsiteUtil.generate(dir, indexGenerator);
 
-		for (String definition : nameToDefinition.keySet()) {
-			System.out.println(String.format("Def: '%s'", definition));
-			Path file = dir.resolve(definition + ".html");
+		for (PuzzlePiece piece : attributes) {
+			String name = piece.getQName();
+			System.out.println(String.format("Attribute: '%s'", name));
+			Path file = dir.resolve(name + ".html");
 			System.out.println(String.format("Creating file: '%s'", file));
 
-			SortedSet<PuzzlePiece> pieces = nameToDefinition.get(definition);
+			AttributeGenerator generator = new AttributeGenerator(name, piece);
+			WebsiteUtil.generate(dir, generator);
+		}
 
-			ElementGenerator elementGenerator = new ElementGenerator(definition, pieces);
-			WebsiteUtil.generate(dir, elementGenerator);
+		for (PuzzlePiece piece : elements) {
+			String name = piece.getQName();
+			System.out.println(String.format("Element: '%s'", name));
+			Path file = dir.resolve(name + ".html");
+			System.out.println(String.format("Creating file: '%s'", file));
+
+			ElementGenerator generator = new ElementGenerator(name, piece);
+			WebsiteUtil.generate(dir, generator);
 		}
 	}
 

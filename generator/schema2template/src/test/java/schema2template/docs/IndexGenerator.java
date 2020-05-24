@@ -12,10 +12,12 @@ import java.io.IOException;
 
 public class IndexGenerator extends BaseGenerator {
 
+	private PuzzlePieceSet attributes;
 	private PuzzlePieceSet elements;
 
-	public IndexGenerator(PuzzlePieceSet elements) {
+	public IndexGenerator(PuzzlePieceSet attributes, PuzzlePieceSet elements) {
 		super(WebPaths.get("index.html"));
+		this.attributes = attributes;
 		this.elements = elements;
 	}
 
@@ -26,7 +28,17 @@ public class IndexGenerator extends BaseGenerator {
 		Body body = builder.getBody();
 		body.ac(HTML.h1("Index"));
 
+		body.ac(HTML.h2("Attributes"));
+
 		UnorderedList list = body.ac(HTML.ul());
+		for (PuzzlePiece puzzlePiece : attributes) {
+			String name = puzzlePiece.getQName();
+			list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
+		}
+
+		body.ac(HTML.h2("Elements"));
+
+		list = body.ac(HTML.ul());
 		for (PuzzlePiece puzzlePiece : elements) {
 			String name = puzzlePiece.getQName();
 			list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
