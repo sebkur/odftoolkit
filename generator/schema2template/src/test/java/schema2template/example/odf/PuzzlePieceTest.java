@@ -30,7 +30,10 @@ import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,12 +50,12 @@ import static schema2template.example.odf.OdfHelper.*;
 public class PuzzlePieceTest {
 
 	private static final Logger LOG = Logger.getLogger(PuzzlePieceTest.class.getName());
-	private static final String OUTPUT_DUMP_ODF10 = "target" + File.separator + "odf10-msvtree.dump";
-	private static final String OUTPUT_DUMP_ODF11 = "target" + File.separator + "odf11-msvtree.dump";
-	private static final String OUTPUT_DUMP_ODF12 = "target" + File.separator + "odf12-msvtree.dump";
-	private static final String OUTPUT_REF_ODF10 = TEST_REFERENCE_DIR + File.separator + "odf10-msvtree.ref";
-	private static final String OUTPUT_REF_ODF11 = TEST_REFERENCE_DIR + File.separator + "odf11-msvtree.ref";
-	private static final String OUTPUT_REF_ODF12 = TEST_REFERENCE_DIR + File.separator + "odf12-msvtree.ref";
+	private static final Path OUTPUT_DUMP_ODF10 = Paths.get("target", "odf10-msvtree.dump");
+	private static final Path OUTPUT_DUMP_ODF11 = Paths.get("target", "odf11-msvtree.dump");
+	private static final Path OUTPUT_DUMP_ODF12 = Paths.get("target", "odf12-msvtree.dump");
+	private static final Path OUTPUT_REF_ODF10 = TEST_REFERENCE_DIR.resolve("odf10-msvtree.ref");
+	private static final Path OUTPUT_REF_ODF11 = TEST_REFERENCE_DIR.resolve("odf11-msvtree.ref");
+	private static final Path OUTPUT_REF_ODF12 = TEST_REFERENCE_DIR.resolve("odf12-msvtree.ref");
 	private static final int ODF12_ELEMENT_DUPLICATES = 7;
 	private static final int ODF12_ATTRIBUTE_DUPLICATES = 134;
 
@@ -169,26 +172,32 @@ public class PuzzlePieceTest {
 			Expression odf10Root = OdfHelper.loadSchemaODF10();
 			String odf10Dump = MSVExpressionIterator.dumpMSVExpressionTree(odf10Root);
 			LOG.info("Writing MSV RelaxNG tree into file: " + OUTPUT_DUMP_ODF10);
-			PrintWriter out0 = new PrintWriter(new FileWriter(OUTPUT_DUMP_ODF10));
-			out0.print(odf10Dump);
-			out0.close();
+			try (Writer writer = Files.newBufferedWriter(OUTPUT_DUMP_ODF10)) {
+				PrintWriter out = new PrintWriter(writer);
+				out.print(odf10Dump);
+				out.close();
+			}
 
 			Expression odf11Root = OdfHelper.loadSchemaODF11();
 			String odf11Dump = MSVExpressionIterator.dumpMSVExpressionTree(odf11Root);
 			LOG.info("Writing MSV RelaxNG tree into file: " + OUTPUT_DUMP_ODF11);
-			PrintWriter out1 = new PrintWriter(new FileWriter(OUTPUT_DUMP_ODF11));
-			out1.print(odf11Dump);
-			out1.close();
+			try (Writer writer = Files.newBufferedWriter(OUTPUT_DUMP_ODF11)) {
+				PrintWriter out = new PrintWriter(writer);
+				out.print(odf11Dump);
+				out.close();
+			}
 
 			Expression odf12Root = OdfHelper.loadSchemaODF12();
 			String odf12Dump = MSVExpressionIterator.dumpMSVExpressionTree(odf12Root);
 			LOG.info("Writing MSV RelaxNG tree into file: " + OUTPUT_DUMP_ODF12);
-			PrintWriter out2 = new PrintWriter(new FileWriter(OUTPUT_DUMP_ODF12));
-			out2.print(odf12Dump);
-			out2.close();
+			try (Writer writer = Files.newBufferedWriter(OUTPUT_DUMP_ODF12)) {
+				PrintWriter out = new PrintWriter(writer);
+				out.print(odf12Dump);
+				out.close();
+			}
 
 			String odf10Ref = readFileAsString(OUTPUT_REF_ODF10);
-			if(!odf10Ref.equals(odf10Dump)){
+			if (!odf10Ref.equals(odf10Dump)) {
 				String errorMsg = "There is a difference between the expected outcome of the parsed ODF 1.0 tree.\n"
 					+ "Please compare the output:\n\t'" + OUTPUT_DUMP_ODF10 + "'\nwith the reference\n\t'" + ODF10_RNG_FILE;
 				LOG.severe(errorMsg);
@@ -196,7 +205,7 @@ public class PuzzlePieceTest {
 			}
 
 			String odf11Ref = readFileAsString(OUTPUT_REF_ODF11);
-			if(!odf11Ref.equals(odf11Dump)){
+			if (!odf11Ref.equals(odf11Dump)) {
 				String errorMsg = "There is a difference between the expected outcome of the parsed ODF 1.1 tree.\n"
 					+ "Please compare the output:\n\t'" + OUTPUT_DUMP_ODF11 + "'\nwith the reference\n\t'" + odf11RngFile;
 				LOG.severe(errorMsg);
@@ -204,7 +213,7 @@ public class PuzzlePieceTest {
 			}
 
 			String odf12Ref = readFileAsString(OUTPUT_REF_ODF12);
-			if(!odf12Ref.equals(odf12Dump)){
+			if (!odf12Ref.equals(odf12Dump)) {
 				String errorMsg = "There is a difference between the expected outcome of the parsed ODF 1.2 tree.\n"
 					+ "Please compare the output:\n\t'" + OUTPUT_DUMP_ODF12 + "'\nwith the reference\n\t'" + odf12RngFile;
 				LOG.severe(errorMsg);
@@ -218,11 +227,10 @@ public class PuzzlePieceTest {
 
 	/**
 	 * Reading a file into a string
-     * @param filePath  path of the file to be opened.
+     * @param file path of the file to be opened.
      */
-    private String readFileAsString(String filePath) throws java.io.IOException {
-        Path path = Paths.get(filePath);
-        try(InputStream input = Files.newInputStream(path)) {
+    private String readFileAsString(Path file) throws java.io.IOException {
+        try(InputStream input = Files.newInputStream(file)) {
             return IOUtils.toString(input, StandardCharsets.UTF_8);
         }
     }
