@@ -26,6 +26,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import schema2template.docs.WebsiteGenerator;
 import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
@@ -81,13 +82,8 @@ public class PuzzlePieceTest {
             System.out.println(String.format("Def: '%s'", definition));
             Path file = dir.resolve(definition + ".html");
             System.out.println(String.format("Creating file: '%s'", file));
-            try (BufferedWriter writer = Files.newBufferedWriter(file)) {
-                writer.write("<html>");
-                writer.write("<body>");
-                writer.write(definition);
-                writer.write("</body>");
-                writer.write("</html>");
-            }
+			WebsiteGenerator websiteGenerator = new WebsiteGenerator(definition);
+			websiteGenerator.generate(file);
         }
     }
 
