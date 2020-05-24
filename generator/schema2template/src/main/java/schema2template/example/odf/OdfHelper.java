@@ -142,10 +142,10 @@ public class OdfHelper {
         Map<String, OdfModel.AttributeDefaults> attributeDefaultMap = new HashMap<String, OdfModel.AttributeDefaults>();
         OdfConfigFileHandler.readConfigFile(mConfigFile, elementToBaseNameMap, attributeDefaultMap, elementStyleFamiliesMap, datatypeValueAndConversionMap);
 
-//        mOdf12SignatureSchemaModel = new XMLModel(new File(odf12SignatureRngFile));
+//        mOdf12SignatureSchemaModel = new XMLModel(odf12SignatureRngFile);
         mOdf12ManifestSchemaModel = new XMLModel(odf12ManifestRngFile);
         mOdf12SchemaModel = new XMLModel(odf12RngFile);
-//        mOdf11SchemaModel = new XMLModel(new File(odf11RngFile));
+//        mOdf11SchemaModel = new XMLModel(odf11RngFile);
 //
         mOdfModel = new OdfModel(elementStyleFamiliesMap, attributeDefaultMap);
 //        // Needed for the base classes - common attributes are being moved into the base classes
