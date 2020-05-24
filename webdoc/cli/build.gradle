@@ -1,6 +1,8 @@
 dependencies {
     compile project(':odf-webdoc-dynamic')
     compile project(':odf-webdoc-static')
+
+    runtime 'org.slf4j:slf4j-simple:1.7.21'
 }
 
 task copyJars(type: Copy) {
