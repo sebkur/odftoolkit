@@ -27,7 +27,7 @@ import schema2template.model.XMLModel;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class PuzzlePieceTest {
+public class WebsiteGeneratorTest {
 
     private static final Path TEST_INPUT_ROOT_ODF = Paths.get("examples", "odf");
     private static final Path TEST_INPUT_ODF_SCHEMAS = TEST_INPUT_ROOT_ODF.resolve("odf-schemas");
