@@ -74,7 +74,7 @@ public class PathPrinter {
     /**
      * Map Name to PuzzlePiece(s).
      */
-    static Map<String, SortedSet<PuzzlePiece>> createDefinitionMap(Set<PuzzlePiece> definitions) {
+    public static Map<String, SortedSet<PuzzlePiece>> createDefinitionMap(Set<PuzzlePiece> definitions) {
         Map<String, SortedSet<PuzzlePiece>> retval = new HashMap<String, SortedSet<PuzzlePiece>>();
         Iterator<PuzzlePiece> iter = definitions.iterator();
         while (iter.hasNext()) {

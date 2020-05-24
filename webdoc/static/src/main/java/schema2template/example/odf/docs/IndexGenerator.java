@@ -1,0 +1,75 @@
+package schema2template.example.odf.docs;
+
+import de.topobyte.jsoup.HTML;
+import de.topobyte.jsoup.HtmlBuilder;
+import de.topobyte.jsoup.components.Body;
+import de.topobyte.jsoup.components.UnorderedList;
+import de.topobyte.webpaths.WebPaths;
+import schema2template.model.PuzzlePiece;
+import schema2template.model.PuzzlePieceSet;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class IndexGenerator extends BaseGenerator {
+
+    private PuzzlePieceSet attributes;
+    private PuzzlePieceSet elements;
+
+    public IndexGenerator(PuzzlePieceSet attributes, PuzzlePieceSet elements) {
+        super(WebPaths.get("index.html"));
+        this.attributes = attributes;
+        this.elements = elements;
+    }
+
+    @Override
+    public void generate() throws IOException {
+        HtmlBuilder builder = getBuilder();
+
+        Body body = builder.getBody();
+        body.ac(HTML.h1("Index"));
+
+        List<PuzzlePiece> roots = new ArrayList<>();
+        for (PuzzlePiece puzzlePiece : elements) {
+            if (puzzlePiece.getParents().isEmpty()) {
+                roots.add(puzzlePiece);
+            }
+        }
+
+        rootElements(body, roots);
+        elements(body);
+        attributes(body);
+    }
+
+    private void rootElements(Body body, List<PuzzlePiece> roots) {
+        body.ac(HTML.h2("Root Elements"));
+
+        UnorderedList list = body.ac(HTML.ul());
+        for (PuzzlePiece puzzlePiece : roots) {
+            String name = puzzlePiece.getQName();
+            list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
+        }
+    }
+
+    private void elements(Body body) {
+        body.ac(HTML.h2("Elements"));
+
+        UnorderedList list = body.ac(HTML.ul());
+        for (PuzzlePiece puzzlePiece : elements) {
+            String name = puzzlePiece.getQName();
+            list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
+        }
+    }
+
+    private void attributes(Body body) {
+        body.ac(HTML.h2("Attributes"));
+
+        UnorderedList list = body.ac(HTML.ul());
+        for (PuzzlePiece puzzlePiece : attributes) {
+            String name = puzzlePiece.getQName();
+            list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
+        }
+    }
+
+}

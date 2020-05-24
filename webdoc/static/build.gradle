@@ -1,0 +1,14 @@
+if (project.hasProperty("topobyte")) {
+    apply from: 'file:///' + System.getProperty("user.home") \
+        + '/.gradle/topobyte.gradle'
+}
+
+dependencies {
+    compile project(':odf-webdoc-schema2template')
+
+    compile 'commons-io:commons-io:2.6'
+    compile 'de.topobyte:jsoup-utils:0.1.6'
+    compile 'de.topobyte:webpaths-nio:0.0.3'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.slf4j:slf4j-simple:1.7.21'
+}

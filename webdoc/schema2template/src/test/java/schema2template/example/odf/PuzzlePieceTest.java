@@ -26,10 +26,6 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import schema2template.docs.AttributeGenerator;
-import schema2template.docs.ElementGenerator;
-import schema2template.docs.IndexGenerator;
-import schema2template.docs.WebsiteUtil;
 import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
@@ -61,49 +57,6 @@ public class PuzzlePieceTest {
 	private static final Path OUTPUT_REF_ODF12 = TEST_REFERENCE_DIR.resolve("odf12-msvtree.ref");
 	private static final int ODF12_ELEMENT_DUPLICATES = 7;
 	private static final int ODF12_ATTRIBUTE_DUPLICATES = 134;
-
-	@Test
-	public void generateDocumentation() throws Exception {
-		System.out.println("Loading schema...");
-		Expression root = loadSchemaODF12();
-
-		System.out.println("Extracting puzzle pieces...");
-		PuzzlePieceSet elements = new PuzzlePieceSet();
-		PuzzlePieceSet attributes = new PuzzlePieceSet();
-		PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
-		Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
-
-		System.out.println(String.format("Number of elements: %d", elements.size()));
-		System.out.println(String.format("Number of attributes: %d", attributes.size()));
-		System.out.println(String.format("Number of definitions: %d", nameToDefinition.size()));
-
-		System.out.println("Generating HTML page");
-		Path dir = Paths.get("/tmp/puzzlepieces");
-		Files.createDirectories(dir);
-
-		IndexGenerator indexGenerator = new IndexGenerator(attributes, elements);
-		WebsiteUtil.generate(dir, indexGenerator);
-
-		for (PuzzlePiece piece : attributes) {
-			String name = piece.getQName();
-			System.out.println(String.format("Attribute: '%s'", name));
-			Path file = dir.resolve(name + ".html");
-			System.out.println(String.format("Creating file: '%s'", file));
-
-			AttributeGenerator generator = new AttributeGenerator(name, piece);
-			WebsiteUtil.generate(dir, generator);
-		}
-
-		for (PuzzlePiece piece : elements) {
-			String name = piece.getQName();
-			System.out.println(String.format("Element: '%s'", name));
-			Path file = dir.resolve(name + ".html");
-			System.out.println(String.format("Creating file: '%s'", file));
-
-			ElementGenerator generator = new ElementGenerator(name, piece);
-			WebsiteUtil.generate(dir, generator);
-		}
-	}
 
 	@Test
 	public void testStuff1() throws Exception {

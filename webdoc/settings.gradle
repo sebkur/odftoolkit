@@ -1,4 +1,5 @@
-include 'schema2template', 'cli', 'dynamic'
+include 'schema2template', 'cli', 'dynamic', 'static'
 project(':schema2template').name = 'odf-webdoc-schema2template'
 project(':cli').name = 'odf-webdoc-cli'
 project(':dynamic').name = 'odf-webdoc-dynamic'
+project(':static').name = 'odf-webdoc-static'
