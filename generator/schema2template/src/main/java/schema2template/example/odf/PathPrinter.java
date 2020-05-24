@@ -26,6 +26,9 @@ import com.sun.msv.grammar.NameClassAndExpression;
 import com.sun.msv.grammar.ReferenceExp;
 import com.sun.msv.reader.trex.ng.RELAXNGReader;
 import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,6 +38,8 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
 import schema2template.model.MSVExpressionInformation;
 import schema2template.model.MSVExpressionType;
 import schema2template.model.MSVExpressionVisitorType;
@@ -142,23 +147,23 @@ public class PathPrinter {
         return retval;
     }
 
-    private static Expression parseOdfSchema(File rngFile) throws Exception {
+    private static Expression parseOdfSchema(Path rngFile) throws Exception {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setNamespaceAware(true);
 
-        Expression root = RELAXNGReader.parse(
-                rngFile.getAbsolutePath(),
-                factory,
+        try(InputStream input = Files.newInputStream(rngFile)) {
+            Expression root = RELAXNGReader.parse(
+                new InputSource(input), factory,
                 new com.sun.msv.reader.util.IgnoreController()).getTopLevel();
-
-        if (root == null) {
-            throw new Exception("Schema could not be parsed.");
+            if (root == null) {
+                throw new Exception("Schema could not be parsed.");
+            }
+            return root;
         }
-        return root;
     }
 
     public static void main(String[] args) throws Exception {
-        Expression root = parseOdfSchema(new File(OdfHelper.odf12RngFile));
+        Expression root = parseOdfSchema(OdfHelper.odf12RngFile);
         PuzzlePieceSet elements = new PuzzlePieceSet();
         PuzzlePieceSet attributes = new PuzzlePieceSet();
         PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);

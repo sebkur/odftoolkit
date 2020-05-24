@@ -21,19 +21,17 @@
  ************************************************************************/
 package schema2template.example.odf;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.StringTokenizer;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
 
 
  // ToDo: Shall we keep one config file or shall we split them?!
@@ -212,13 +210,14 @@ class OdfConfigFileHandler extends DefaultHandler {
      *
      * @param cf Config file
      */
-    public static void readConfigFile(File cf, Map<String, String> elementBaseNames,
-            Map<String, OdfModel.AttributeDefaults> attributeDefaults, Map<String, List<String>> elementStyleFamilies,
-            Map<String, String[]> datatypeValueConversion) throws Exception {
+    public static void readConfigFile(Path cf, Map<String, String> elementBaseNames,
+                                      Map<String, OdfModel.AttributeDefaults> attributeDefaults, Map<String, List<String>> elementStyleFamilies,
+                                      Map<String, String[]> datatypeValueConversion) throws Exception {
 
         SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-        parser.parse(cf, new OdfConfigFileHandler(elementBaseNames, attributeDefaults, elementStyleFamilies, datatypeValueConversion));
-
+        try (InputStream input = Files.newInputStream(cf)) {
+            parser.parse(input, new OdfConfigFileHandler(elementBaseNames, attributeDefaults, elementStyleFamilies, datatypeValueConversion));
+        }
     }
 
 }

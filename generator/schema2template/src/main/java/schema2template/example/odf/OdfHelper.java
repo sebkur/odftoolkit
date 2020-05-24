@@ -24,20 +24,21 @@
 package schema2template.example.odf;
 
 import com.sun.msv.grammar.Expression;
-import java.io.File;
-import java.io.FileWriter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import schema2template.OutputFileListEntry;
 import schema2template.OutputFileListHandler;
 import schema2template.model.XMLModel;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Three ODF examples in one: 1) Create an ODF Reference in HTMLl 2) Create
@@ -79,36 +80,35 @@ public class OdfHelper {
     public static final int ODF11_ATTRIBUTE_NUMBER = 1162; //ToDo: 1169 - by search/Replace using RNGSchema and tools, prior exchange <name> to element or attribute declaration
     public static final int ODF12_ATTRIBUTE_NUMBER = 1300; //in RNG 1301 as there is one deprecated attribute on foreign elements not referenced (ie. @office:process-content)
 
+    public static final Path TEST_INPUT_ROOT_ODF = Paths.get("target", "classes", "examples", "odf");
+    public static final Path ODF10_RNG_FILE = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-strict-schema-v1.0-os.rng"));
+    public static Path odf11RngFile = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-strict-schema-v1.1.rng"));
+    public static Path odf12RngFile = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-v1.2-os-schema.rng"));
+    public static Path odf12SignatureRngFile = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-v1.2-os-dsig-schema.rng"));
+    public static Path odf12ManifestRngFile = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-schemas", "OpenDocument-v1.2-os-manifest-schema.rng"));
 
-    public static final String TEST_INPUT_ROOT_ODF = "target" + File.separator + "classes" + File.separator + "examples" + File.separator + "odf";
-    public static final String ODF10_RNG_FILE = TEST_INPUT_ROOT_ODF + File.separator + "odf-schemas" + File.separator + "OpenDocument-strict-schema-v1.0-os.rng";
-    public static String odf11RngFile = TEST_INPUT_ROOT_ODF + File.separator + "odf-schemas" + File.separator + "OpenDocument-strict-schema-v1.1.rng";
-    public static String odf12RngFile = TEST_INPUT_ROOT_ODF + File.separator + "odf-schemas" + File.separator + "OpenDocument-v1.2-os-schema.rng";
-    public static String odf12SignatureRngFile = TEST_INPUT_ROOT_ODF + File.separator + "odf-schemas" + File.separator + "OpenDocument-v1.2-os-dsig-schema.rng";
-    public static String odf12ManifestRngFile = TEST_INPUT_ROOT_ODF + File.separator + "odf-schemas" + File.separator + "OpenDocument-v1.2-os-manifest-schema.rng";
-
-    public static String mConfigFile = TEST_INPUT_ROOT_ODF + File.separator + "config.xml";
+    public static Path mConfigFile = TEST_INPUT_ROOT_ODF.resolve("config.xml");
 
     // Home of test reference output of MSV ODF dump: odf10-msvtree.ref, odf11-msvtree.ref, odf12-msvtree.ref
-    public static final String TEST_REFERENCE_DIR = "target" + File.separator + "test-classes" + File.separator + "examples" + File.separator + "odf";
+    public static final Path TEST_REFERENCE_DIR = Paths.get("target", "test-classes", "examples", "odf");
 
-    private static final String REFERENCE_OUTPUT_FILES_TEMPLATE = "dom-output-files.vm";
-    private static final String REFERENCE_OUTPUT_FILES = TEST_INPUT_ROOT_ODF  + File.separator + "odf-reference" + File.separator + "reference-output-files.xml";
+    private static final Path REFERENCE_OUTPUT_FILES_TEMPLATE = Paths.get("dom-output-files.vm");
+    private static final Path REFERENCE_OUTPUT_FILES = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odf-reference", "reference-output-files.xml"));
 
-    private static String odfDomResourceDir = TEST_INPUT_ROOT_ODF + File.separator + "odfdom-java" + File.separator + "dom";
-    private static String odfPkgResourceDir = TEST_INPUT_ROOT_ODF + File.separator + "odfdom-java" + File.separator + "pkg";
-    private static final String ODF_PYTHON_RESOURCE_DIR = TEST_INPUT_ROOT_ODF + File.separator + "odfdom-python";
+    private static Path odfDomResourceDir = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odfdom-java", "dom"));
+    private static Path odfPkgResourceDir = TEST_INPUT_ROOT_ODF.resolve(Paths.get("odfdom-java", "pkg"));
+    private static final Path ODF_PYTHON_RESOURCE_DIR = TEST_INPUT_ROOT_ODF.resolve("odfdom-python");
 
-    private static final String DOM_OUTPUT_FILES_TEMPLATE = "dom-output-files.vm";
-    private static final String PKG_OUTPUT_FILES_TEMPLATE = "pkg-output-files.vm";
-    private static final String PYTHON_OUTPUT_FILES_TEMPLATE = "dom-output-files.vm";
+    private static final Path DOM_OUTPUT_FILES_TEMPLATE = Paths.get("dom-output-files.vm");
+    private static final Path PKG_OUTPUT_FILES_TEMPLATE = Paths.get("pkg-output-files.vm");
+    private static final Path PYTHON_OUTPUT_FILES_TEMPLATE = Paths.get("dom-output-files.vm");
 
-    private static final String DOM_OUTPUT_FILES = "target" +  File.separator + "dom-output-files.xml";
-    private static final String PKG_OUTPUT_FILES = "target" + File.separator + "pkg-output-files.xml";
-    private static final String PYTHON_OUTPUT_FILES = "target" + File.separator + "python-output-files.xml";
+    private static final Path DOM_OUTPUT_FILES = Paths.get("target", "dom-output-files.xml");
+    private static final Path PKG_OUTPUT_FILES = Paths.get("target", "pkg-output-files.xml");
+    private static final Path PYTHON_OUTPUT_FILES = Paths.get("target", "python-output-files.xml");
 
-    private static String outputRoot = "target";
-    private static final String ODF_REFERENCE_RESOURCE_DIR = TEST_INPUT_ROOT_ODF + File.separator + "odf-reference";
+    private static Path outputRoot = Paths.get("target");
+    private static final Path ODF_REFERENCE_RESOURCE_DIR = TEST_INPUT_ROOT_ODF.resolve("odf-reference");
 
     private static XMLModel mOdf12SignatureSchemaModel;
     private static XMLModel mOdf12ManifestSchemaModel;
@@ -119,7 +119,7 @@ public class OdfHelper {
 
     public OdfHelper(){}
 
-	public OdfHelper(String domResourceRoot, String odf12SchemaFile, String odf11SchemaFile, String pkgResourceRoot, String odf12SignatureSchemaFile, String odf12ManifestSchemaFile, String targetRoot, String configFile) {
+	public OdfHelper(Path domResourceRoot, Path odf12SchemaFile, Path odf11SchemaFile, Path pkgResourceRoot, Path odf12SignatureSchemaFile, Path odf12ManifestSchemaFile, Path targetRoot, Path configFile) {
 		odfDomResourceDir = domResourceRoot;
 		odfPkgResourceDir = pkgResourceRoot;
 		odf11RngFile = odf11SchemaFile;
@@ -140,11 +140,11 @@ public class OdfHelper {
         // 2DO - still existent? -- Manual added Java specific info - mapping ODF datatype to Java datatype  -> {odfValueType, javaConversionClassName}
         Map<String, String[]> datatypeValueAndConversionMap = new HashMap<String, String[]>();
         Map<String, OdfModel.AttributeDefaults> attributeDefaultMap = new HashMap<String, OdfModel.AttributeDefaults>();
-        OdfConfigFileHandler.readConfigFile(new File(mConfigFile), elementToBaseNameMap, attributeDefaultMap, elementStyleFamiliesMap, datatypeValueAndConversionMap);
+        OdfConfigFileHandler.readConfigFile(mConfigFile, elementToBaseNameMap, attributeDefaultMap, elementStyleFamiliesMap, datatypeValueAndConversionMap);
 
 //        mOdf12SignatureSchemaModel = new XMLModel(new File(odf12SignatureRngFile));
-        mOdf12ManifestSchemaModel = new XMLModel(new File(odf12ManifestRngFile));
-        mOdf12SchemaModel = new XMLModel(new File(odf12RngFile));
+        mOdf12ManifestSchemaModel = new XMLModel(odf12ManifestRngFile);
+        mOdf12SchemaModel = new XMLModel(odf12RngFile);
 //        mOdf11SchemaModel = new XMLModel(new File(odf11RngFile));
 //
         mOdfModel = new OdfModel(elementStyleFamiliesMap, attributeDefaultMap);
@@ -210,13 +210,14 @@ public class OdfHelper {
                         throw new RuntimeException("Error in output-files.xml, line " + f.getLineNumber() + ": no or invalid odf-scope");
                     }
 
-                    File out = new File(outputRoot + File.separator + generateFilename(f.getAttribute("path"))).getCanonicalFile();
-                    ensureParentFolders(out);
-                    FileWriter fileout = new FileWriter(out);
-                    String encoding = "utf-8";
-
-                    ve.mergeTemplate(f.getAttribute("template"), encoding, context, fileout);
-                    fileout.close();
+                    Path out = outputRoot.resolve(generateFilename(f.getAttribute("path"))).normalize();
+                    if (out.getParent() != null) {
+                        Files.createDirectories(out.getParent());
+                    }
+                    try (BufferedWriter fileout = Files.newBufferedWriter(out)) {
+                        String encoding = "utf-8";
+                        ve.mergeTemplate(f.getAttribute("template"), encoding, context, fileout);
+                    }
                     break;
             }
         }
@@ -243,7 +244,7 @@ public class OdfHelper {
      * @throws Exception
      */
     public static Expression loadSchemaODF10() throws Exception {
-        return XMLModel.loadSchema(new File(ODF10_RNG_FILE));
+        return XMLModel.loadSchema(ODF10_RNG_FILE);
     }
 
     /**
@@ -254,7 +255,7 @@ public class OdfHelper {
      * @throws Exception
      */
     public static Expression loadSchemaODF11() throws Exception {
-        return XMLModel.loadSchema(new File(odf11RngFile));
+        return XMLModel.loadSchema(odf11RngFile);
     }
 
     /**
@@ -265,7 +266,7 @@ public class OdfHelper {
      * @throws Exception
      */
     public static Expression loadSchemaODF12() throws Exception {
-        return XMLModel.loadSchema(new File(odf12RngFile));
+        return XMLModel.loadSchema(odf12RngFile);
     }
 
     private static String generateFilename(String rawName) {
@@ -282,14 +283,4 @@ public class OdfHelper {
         return retFilePath;
     }
 
-    private static void ensureParentFolders(File newFile) {
-        File parent = newFile.getParentFile();
-        if (parent != null && !parent.exists()) {
-            try {
-                parent.mkdirs();
-            } catch (Exception e) {
-                LOG.log(Level.WARNING, "Could not create parent directory {0}", parent.getAbsolutePath());
-            }
-        }
-    }
 }

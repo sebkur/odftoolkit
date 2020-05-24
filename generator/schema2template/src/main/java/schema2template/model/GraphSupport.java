@@ -21,12 +21,12 @@
  *********************************************************************** */
 package schema2template.model;
 
-import com.sun.msv.grammar.ElementExp;
-import com.sun.msv.grammar.Expression;
-import com.sun.msv.grammar.NameClassAndExpression;
-import com.sun.msv.grammar.ReferenceExp;
-import com.sun.msv.grammar.SequenceExp;
-import java.io.File;
+import com.sun.msv.grammar.*;
+import org.apache.tinkerpop.gremlin.structure.Graph;
+import org.apache.tinkerpop.gremlin.structure.Vertex;
+import org.apache.tinkerpop.gremlin.structure.io.IoCore;
+import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,13 +34,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.tinkerpop.gremlin.structure.Graph;
-import org.apache.tinkerpop.gremlin.structure.Vertex;
-import org.apache.tinkerpop.gremlin.structure.io.IoCore;
-import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
-import static schema2template.model.PuzzlePiece.CHILD_VISITOR;
-import static schema2template.model.PuzzlePiece.getName;
-import static schema2template.model.PuzzlePiece.getType;
+
+import static schema2template.model.PuzzlePiece.*;
 
 /**
  * Create a Tinkerpop Graph MSV expression like:

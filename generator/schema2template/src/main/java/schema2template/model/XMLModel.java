@@ -25,6 +25,7 @@ import com.sun.msv.grammar.Expression;
 import com.sun.msv.reader.trex.ng.RELAXNGReader;
 import com.sun.msv.reader.xmlschema.XMLSchemaReader;
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -55,10 +56,9 @@ public class XMLModel {
      *
      * @param root MSV root Expression
      */
-    public XMLModel(File schemaFile) {
+    public XMLModel(Path schemaFile) {
         mRootExpression = loadSchema(schemaFile);
-		String absolutePath = schemaFile.getAbsolutePath();
-        mLastSchemaFileName = absolutePath.substring(absolutePath.lastIndexOf(File.separatorChar) + 1, absolutePath.length());
+        mLastSchemaFileName = schemaFile.toAbsolutePath().getFileName().toString();
 
         PuzzlePiece.extractPuzzlePieces(mRootExpression, mElements, mAttributes, mLastSchemaFileName);
         mElements.makeImmutable();
@@ -104,13 +104,13 @@ public class XMLModel {
 	 * expression)
 	 * @throws Exception
 	 */
-	public static Expression loadSchema(File rngFile) {
+	public static Expression loadSchema(Path rngFile) {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		factory.setNamespaceAware(true);
 		// Parsing the Schema with MSV
         // 4-DEBUG: DebugController ignoreController = new DebugController(true, false);
 		com.sun.msv.reader.util.IgnoreController ignoreController = new com.sun.msv.reader.util.IgnoreController();
-		String absolutePath = rngFile.getAbsolutePath();
+		String absolutePath = rngFile.toAbsolutePath().toString();
         Expression root = null;
         if(absolutePath.endsWith(".rng")){
              root = RELAXNGReader.parse(absolutePath, factory, ignoreController).getTopLevel();
