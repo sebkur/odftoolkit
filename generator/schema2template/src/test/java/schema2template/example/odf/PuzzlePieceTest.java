@@ -31,7 +31,6 @@ import schema2template.model.MSVExpressionIterator;
 import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
 
-import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
@@ -60,101 +59,101 @@ public class PuzzlePieceTest {
 	private static final int ODF12_ELEMENT_DUPLICATES = 7;
 	private static final int ODF12_ATTRIBUTE_DUPLICATES = 134;
 
-    @Test
-    public void generateDocumentation() throws Exception {
-        System.out.println("Loading schema...");
-        Expression root = OdfHelper.loadSchemaODF12();
+	@Test
+	public void generateDocumentation() throws Exception {
+		System.out.println("Loading schema...");
+		Expression root = OdfHelper.loadSchemaODF12();
 
-        System.out.println("Extracting puzzle pieces...");
-        PuzzlePieceSet elements = new PuzzlePieceSet();
-        PuzzlePieceSet attributes = new PuzzlePieceSet();
-        PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
-        Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
+		System.out.println("Extracting puzzle pieces...");
+		PuzzlePieceSet elements = new PuzzlePieceSet();
+		PuzzlePieceSet attributes = new PuzzlePieceSet();
+		PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
+		Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
 
-        System.out.println(String.format("Number of elements: %d", elements.size()));
-        System.out.println(String.format("Number of attributes: %d", attributes.size()));
-        System.out.println(String.format("Number of definitions: %d", nameToDefinition.size()));
+		System.out.println(String.format("Number of elements: %d", elements.size()));
+		System.out.println(String.format("Number of attributes: %d", attributes.size()));
+		System.out.println(String.format("Number of definitions: %d", nameToDefinition.size()));
 
-        System.out.println("Generating HTML page");
-        Path dir = Paths.get("/tmp/puzzlepieces");
-        Files.createDirectories(dir);
-        for (String definition : nameToDefinition.keySet()) {
-            System.out.println(String.format("Def: '%s'", definition));
-            Path file = dir.resolve(definition + ".html");
-            System.out.println(String.format("Creating file: '%s'", file));
+		System.out.println("Generating HTML page");
+		Path dir = Paths.get("/tmp/puzzlepieces");
+		Files.createDirectories(dir);
+		for (String definition : nameToDefinition.keySet()) {
+			System.out.println(String.format("Def: '%s'", definition));
+			Path file = dir.resolve(definition + ".html");
+			System.out.println(String.format("Creating file: '%s'", file));
 			WebsiteGenerator websiteGenerator = new WebsiteGenerator(definition);
 			websiteGenerator.generate(file);
-        }
-    }
+		}
+	}
 
-    @Test
-    public void testStuff1() throws Exception {
-        String EXAMPLE_PARENT = "table:table";
-        String EXAMPLE_CHILD = "table:table-row";
-        test(EXAMPLE_PARENT, EXAMPLE_CHILD);
-    }
+	@Test
+	public void testStuff1() throws Exception {
+		String EXAMPLE_PARENT = "table:table";
+		String EXAMPLE_CHILD = "table:table-row";
+		test(EXAMPLE_PARENT, EXAMPLE_CHILD);
+	}
 
-    @Test
-    public void testStuff2() throws Exception {
-        String EXAMPLE_PARENT = "text:p";
-        String EXAMPLE_CHILD = "text:span";
-        test(EXAMPLE_PARENT, EXAMPLE_CHILD);
-    }
+	@Test
+	public void testStuff2() throws Exception {
+		String EXAMPLE_PARENT = "text:p";
+		String EXAMPLE_CHILD = "text:span";
+		test(EXAMPLE_PARENT, EXAMPLE_CHILD);
+	}
 
-    public void test(String EXAMPLE_PARENT, String EXAMPLE_CHILD) throws Exception {
-        System.out.println("Loading schema...");
-        Expression root = OdfHelper.loadSchemaODF12();
+	public void test(String EXAMPLE_PARENT, String EXAMPLE_CHILD) throws Exception {
+		System.out.println("Loading schema...");
+		Expression root = OdfHelper.loadSchemaODF12();
 
-        System.out.println("Extracting puzzle pieces...");
-        PuzzlePieceSet elements = new PuzzlePieceSet();
-        PuzzlePieceSet attributes = new PuzzlePieceSet();
-        PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
-        Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
+		System.out.println("Extracting puzzle pieces...");
+		PuzzlePieceSet elements = new PuzzlePieceSet();
+		PuzzlePieceSet attributes = new PuzzlePieceSet();
+		PuzzlePiece.extractPuzzlePieces(root, elements, attributes, null);
+		Map<String, SortedSet<PuzzlePiece>> nameToDefinition = PathPrinter.createDefinitionMap(new TreeSet<PuzzlePiece>(elements));
 
-        System.out.println(String.format("Number of elements: %d", elements.size()));
-        System.out.println(String.format("Number of attributes: %d", attributes.size()));
-        System.out.println(String.format("Number of definitions: %d", nameToDefinition.size()));
+		System.out.println(String.format("Number of elements: %d", elements.size()));
+		System.out.println(String.format("Number of attributes: %d", attributes.size()));
+		System.out.println(String.format("Number of definitions: %d", nameToDefinition.size()));
 
-        for (String definition : nameToDefinition.keySet()) {
-            System.out.println(String.format("Def: '%s'", definition));
-        }
+		for (String definition : nameToDefinition.keySet()) {
+			System.out.println(String.format("Def: '%s'", definition));
+		}
 
-        System.out.println("Print all paths from parent element (e.g. \"text:p\") to direct child element (e.g. \"text:span\")");
+		System.out.println("Print all paths from parent element (e.g. \"text:p\") to direct child element (e.g. \"text:span\")");
 
-        SortedSet<PuzzlePiece> pieces = nameToDefinition.get(EXAMPLE_PARENT);
+		SortedSet<PuzzlePiece> pieces = nameToDefinition.get(EXAMPLE_PARENT);
 
-        if (pieces == null) {
-            System.out.println("No parent element found by the given name: " + EXAMPLE_PARENT);
-        }
+		if (pieces == null) {
+			System.out.println("No parent element found by the given name: " + EXAMPLE_PARENT);
+		}
 
-        PuzzlePiece parent = pieces.first();
+		PuzzlePiece parent = pieces.first();
 
-        pieces = nameToDefinition.get(EXAMPLE_CHILD);
+		pieces = nameToDefinition.get(EXAMPLE_CHILD);
 
-        if (pieces == null) {
-            System.out.println("No child element found by the given name: " + EXAMPLE_CHILD);
-        }
+		if (pieces == null) {
+			System.out.println("No child element found by the given name: " + EXAMPLE_CHILD);
+		}
 
-        PuzzlePiece child = pieces.first();
+		PuzzlePiece child = pieces.first();
 
-        if (pieces.size() > 1) {
-            System.out.println("There were more than one element by this name. Dropped all instances but one.");
-        }
+		if (pieces.size() > 1) {
+			System.out.println("There were more than one element by this name. Dropped all instances but one.");
+		}
 
-        System.out.println();
-        System.out.println("PATHS from " + parent.getQName() + " to " + child.getQName() + ": ");
-        System.out.println("---------------------------------------------------------");
+		System.out.println();
+		System.out.println("PATHS from " + parent.getQName() + " to " + child.getQName() + ": ");
+		System.out.println("---------------------------------------------------------");
 
-        List<String> paths = new PathPrinter(parent).printChildPaths(child);
+		List<String> paths = new PathPrinter(parent).printChildPaths(child);
 
-        if (paths == null) {
-            System.out.println("No Path found.");
-        } else {
-            for (String s : paths) {
-                System.out.println(s);
-            }
-        }
-    }
+		if (paths == null) {
+			System.out.println("No Path found.");
+		} else {
+			for (String s : paths) {
+				System.out.println(s);
+			}
+		}
+	}
 
 	/**
 	 * Test: Use the MSV
@@ -223,13 +222,14 @@ public class PuzzlePieceTest {
 
 	/**
 	 * Reading a file into a string
-     * @param file path of the file to be opened.
-     */
-    private String readFileAsString(Path file) throws java.io.IOException {
-        try(InputStream input = Files.newInputStream(file)) {
-            return IOUtils.toString(input, StandardCharsets.UTF_8);
-        }
-    }
+	 *
+	 * @param file path of the file to be opened.
+	 */
+	private String readFileAsString(Path file) throws java.io.IOException {
+		try (InputStream input = Files.newInputStream(file)) {
+			return IOUtils.toString(input, StandardCharsets.UTF_8);
+		}
+	}
 
 	/**
 	 * Test: Create PuzzlePiece elements and attributes with ODF Spec 1.1 (old version, won't be changed, so
@@ -280,13 +280,13 @@ public class PuzzlePieceTest {
 			int foundElementDuplicates = allElements_ODF12.size() - (ODF12_ELEMENT_NUMBER + 1);
 			int foundAttributeDuplicates = allAttributes_ODF12.size() - (ODF12_ATTRIBUTE_NUMBER + 1);
 
-			if(ODF12_ELEMENT_DUPLICATES != foundElementDuplicates){
+			if (ODF12_ELEMENT_DUPLICATES != foundElementDuplicates) {
 				String errorMsg = "There is a difference between the expected outcome of duplicates for ODF 1.2 elements.\n"
 					+ "Expected: '" + ODF12_ELEMENT_DUPLICATES + "'\tfound:'" + foundElementDuplicates;
 				LOG.severe(errorMsg);
 				Assert.fail(errorMsg);
 			}
-			if(ODF12_ATTRIBUTE_DUPLICATES != foundAttributeDuplicates){
+			if (ODF12_ATTRIBUTE_DUPLICATES != foundAttributeDuplicates) {
 				String errorMsg = "There is a difference between the expected outcome of duplicates for ODF 1.2 elements.\n"
 					+ "Expected: '" + ODF12_ATTRIBUTE_DUPLICATES + "'\tfound:'" + foundAttributeDuplicates;
 				LOG.severe(errorMsg);
@@ -298,7 +298,9 @@ public class PuzzlePieceTest {
 		}
 	}
 
-	/** Routine to compare the expected number of either attributes or elements with the found amount */
+	/**
+	 * Routine to compare the expected number of either attributes or elements with the found amount
+	 */
 	private void checkFoundNumber(PuzzlePieceSet puzzlePieceSet, int expectedAmount, String nodeName) {
 		if (expectedAmount == puzzlePieceSet.size()) {
 			LOG.log(Level.INFO, "The expected amount of {0}s could be found", nodeName);
@@ -311,7 +313,7 @@ public class PuzzlePieceTest {
 			}
 		} else {
 			String errorMsg = "Instead of " + expectedAmount
-					+ " there were " + puzzlePieceSet.size() + " " + nodeName + "s found";
+				+ " there were " + puzzlePieceSet.size() + " " + nodeName + "s found";
 			LOG.severe(errorMsg);
 			int i = 0;
 			for (PuzzlePiece piece : puzzlePieceSet) {
