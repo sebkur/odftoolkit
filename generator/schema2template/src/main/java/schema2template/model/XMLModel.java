@@ -54,7 +54,7 @@ public class XMLModel {
      * @param root MSV root Expression
      */
     public XMLModel(Path schemaFile) throws IOException {
-        mRootExpression = loadSchema(schemaFile);
+        mRootExpression = loadSchemaFromClasspath(schemaFile);
         mLastSchemaFileName = schemaFile.toAbsolutePath().getFileName().toString();
 
         PuzzlePiece.extractPuzzlePieces(mRootExpression, mElements, mAttributes, mLastSchemaFileName);
@@ -93,20 +93,50 @@ public class XMLModel {
         return retval;
     }
 
-	/**
-	 * Load and parse a Schema from File.
-	 *
-	 * @param Schema file (RelaxNG or W3C schema)
-	 * @return MSV Expression Tree (more specific: The tree's MSV root
-	 * expression)
-	 * @throws Exception
-	 */
-	public static Expression loadSchema(Path rngFile) throws IOException {
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		factory.setNamespaceAware(true);
-		// Parsing the Schema with MSV
+    /**
+     * Load and parse a Schema from File.
+     *
+     * @param Schema file (RelaxNG or W3C schema)
+     * @return MSV Expression Tree (more specific: The tree's MSV root
+     * expression)
+     * @throws Exception
+     */
+    public static Expression loadSchemaFromFile(Path rngFile) throws IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setNamespaceAware(true);
+        // Parsing the Schema with MSV
         // 4-DEBUG: DebugController ignoreController = new DebugController(true, false);
-		com.sun.msv.reader.util.IgnoreController ignoreController = new com.sun.msv.reader.util.IgnoreController();
+        com.sun.msv.reader.util.IgnoreController ignoreController = new com.sun.msv.reader.util.IgnoreController();
+        String filename = rngFile.getFileName().toString();
+        String absolutePath = rngFile.toAbsolutePath().toString();
+        Expression root = null;
+        if (filename.endsWith(".rng")) {
+            root = RELAXNGReader.parse(absolutePath, factory, ignoreController).getTopLevel();
+        } else if (filename.endsWith(".xsd")) {
+            root = XMLSchemaReader.parse(absolutePath, factory, ignoreController).getTopLevel();
+        } else {
+            throw new RuntimeException("Reader not chosen for given schema suffix!");
+        }
+        if (root == null) {
+            throw new RuntimeException("Schema could not be parsed.");
+        }
+        return root;
+    }
+
+    /**
+     * Load and parse a Schema from File.
+     *
+     * @param Schema file (RelaxNG or W3C schema)
+     * @return MSV Expression Tree (more specific: The tree's MSV root
+     * expression)
+     * @throws Exception
+     */
+    public static Expression loadSchemaFromClasspath(Path rngFile) throws IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setNamespaceAware(true);
+        // Parsing the Schema with MSV
+        // 4-DEBUG: DebugController ignoreController = new DebugController(true, false);
+        com.sun.msv.reader.util.IgnoreController ignoreController = new com.sun.msv.reader.util.IgnoreController();
         String filename = rngFile.getFileName().toString();
         Expression root = null;
         if (filename.endsWith(".rng")) {
@@ -123,8 +153,8 @@ public class XMLModel {
         if (root == null) {
             throw new RuntimeException("Schema could not be parsed.");
         }
-		return root;
-	}
+        return root;
+    }
 
     /**
      * Get all elements, sorted by ns:local name.

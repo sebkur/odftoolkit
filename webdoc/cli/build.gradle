@@ -1,5 +1,6 @@
 dependencies {
     compile project(':odf-webdoc-dynamic')
+    compile project(':odf-webdoc-static')
 }
 
 task copyJars(type: Copy) {

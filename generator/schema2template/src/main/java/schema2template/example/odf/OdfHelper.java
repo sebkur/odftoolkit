@@ -247,7 +247,7 @@ public class OdfHelper {
      * @throws Exception
      */
     public static Expression loadSchemaODF10() throws Exception {
-        return XMLModel.loadSchema(ODF10_RNG_FILE);
+        return XMLModel.loadSchemaFromClasspath(ODF10_RNG_FILE);
     }
 
     /**
@@ -258,7 +258,7 @@ public class OdfHelper {
      * @throws Exception
      */
     public static Expression loadSchemaODF11() throws Exception {
-        return XMLModel.loadSchema(odf11RngFile);
+        return XMLModel.loadSchemaFromClasspath(odf11RngFile);
     }
 
     /**
@@ -269,7 +269,7 @@ public class OdfHelper {
      * @throws Exception
      */
     public static Expression loadSchemaODF12() throws Exception {
-        return XMLModel.loadSchema(odf12RngFile);
+        return XMLModel.loadSchemaFromClasspath(odf12RngFile);
     }
 
     private static String generateFilename(String rawName) {
