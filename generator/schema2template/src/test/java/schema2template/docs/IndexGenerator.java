@@ -9,6 +9,8 @@ import schema2template.model.PuzzlePiece;
 import schema2template.model.PuzzlePieceSet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IndexGenerator extends BaseGenerator {
 
@@ -28,18 +30,43 @@ public class IndexGenerator extends BaseGenerator {
 		Body body = builder.getBody();
 		body.ac(HTML.h1("Index"));
 
+		List<PuzzlePiece> roots = new ArrayList<>();
+		for (PuzzlePiece puzzlePiece : elements) {
+			if (puzzlePiece.getParents().isEmpty()) {
+				roots.add(puzzlePiece);
+			}
+		}
+
+		rootElements(body, roots);
+		elements(body);
+		attributes(body);
+	}
+
+	private void rootElements(Body body, List<PuzzlePiece> roots) {
+		body.ac(HTML.h2("Root Elements"));
+
+		UnorderedList list = body.ac(HTML.ul());
+		for (PuzzlePiece puzzlePiece : roots) {
+			String name = puzzlePiece.getQName();
+			list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
+		}
+	}
+
+	private void elements(Body body) {
+		body.ac(HTML.h2("Elements"));
+
+		UnorderedList list = body.ac(HTML.ul());
+		for (PuzzlePiece puzzlePiece : elements) {
+			String name = puzzlePiece.getQName();
+			list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
+		}
+	}
+
+	private void attributes(Body body) {
 		body.ac(HTML.h2("Attributes"));
 
 		UnorderedList list = body.ac(HTML.ul());
 		for (PuzzlePiece puzzlePiece : attributes) {
-			String name = puzzlePiece.getQName();
-			list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
-		}
-
-		body.ac(HTML.h2("Elements"));
-
-		list = body.ac(HTML.ul());
-		for (PuzzlePiece puzzlePiece : elements) {
 			String name = puzzlePiece.getQName();
 			list.addItem(HTML.a(WebsiteUtil.linkElement(this, name), name));
 		}
