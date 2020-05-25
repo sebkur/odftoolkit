@@ -1,6 +1,5 @@
 package schema2template.example.odf.docs;
 
-import de.topobyte.jsoup.ElementBuilder;
 import de.topobyte.jsoup.HTML;
 import de.topobyte.jsoup.HtmlBuilder;
 import de.topobyte.jsoup.bootstrap3.Bootstrap;
