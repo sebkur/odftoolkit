@@ -1,291 +1,271 @@
-<html>
+<!DOCTYPE html><html lang="en">
   <head>
     <title>ODF Toolkit</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../style.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../../custom.css">
+    <link rel="stylesheet" href="../../css/odf.css" type="text/css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-          <a href="../../index.html" class="navbar-brand">ODF Toolkit</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right"></ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12 col-sm-12">
-          <div style="float:right">
-            <a href="https://www.documentfoundation.org/"><img src="../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png"></a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-xs-12 col-sm-3">
-          <h1>General</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../index.html">About</a></li> 
-            <li class="list-group-item"><a href="../../downloads.html">Downloads</a></li> 
-          </ul> 
-          <h1>Components</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../odfdom/index.html">ODFDOM</a></li> 
-            <li class="list-group-item"><a href="../../simple/index.html">Simple API (deprecated)</a></li> 
-            <li class="list-group-item"><a href="../../conformance/ODFValidator.html">ODF Validator</a></li> 
-            <li class="list-group-item"><a href="../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
-          </ul> 
-          <h1>Community</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../get-involved.html">Get Involved</a></li> 
-            <li class="list-group-item"><a href="../../mailing-lists.html">Mailing Lists</a></li> 
-            <li class="list-group-item"><a href="../../people.html">People</a></li> 
-            <li class="list-group-item"><a href="../../developer-faqs.html">FAQs</a></li> 
-          </ul> 
-          <h1>Development</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../source.html">Source Code</a></li> 
-            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
-            <li class="list-group-item"><a href="../../javadoc.html">JavaDoc</a></li> 
-            <li class="list-group-item"><a href="../../website-development.html">Website Development</a></li> 
-            <li class="list-group-item"><a href="../../release-guide.html">Release Guide</a></li> 
-          </ul> 
-          <h1>TDF</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
-          </ul> 
-        </div>
-        <div class="col col-xs-12 col-sm-9">
-          <h2>Title: Project Road Map Requirements Collection</h2> 
-          <p>This page is used to discuss the requirements from a perspective of an Office software user.</p> 
-          <p>[TOC]</p> 
-          <p>###Cut/copy/paste/selection### Select something, cut or copy it, and paste to somewhere else. These operations are easily made in Office softwares, but are hard done in APIs. The functions include:</p> 
-          <ul> 
-            <li>Create a selection</li> 
-            <li>Create a position</li> 
-            <li>Cut a selection</li> 
-            <li>Copy a selection</li> 
-            <li>Paste a selection to some position</li> 
-            <li>Delete a selection</li> 
-          </ul> 
-          <p>Part of these functions have been implemented with package org.odftoolkit.simple.common.navigation</p> 
-          <table> 
-            <tbody>
-              <tr> 
-                <th>Functions</th>
-                <th>Plan and status</th> 
-              </tr> 
-              <tr>
-                <td> Create a "selection"</td> 
-                <td></td> 
-              </tr> 
-              <tr>
-                <td> Create a "position" </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td> Cut a selection </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td> Copy a selection </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td> Paste a selection </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td> Delete a selection </td>
-                <td></td>
-              </tr> 
-            </tbody>
-          </table> 
-          <p>###Navigator/document map### With these functions, users can easily go to a certain place in the whole document. These functions can provide methods to get a certain heading, get a certain image, get a certain table and so on. The functions include:</p> 
-          <ul> 
-            <li>Return a list of main features, such as heading,paragraphs,graphics,table,bookmark,sections,hyperlinks,reference,index,comments,text frames, and draw objects.</li> 
-            <li>get next or previous feature, for example, there is a table under a paragraph, then the API can allow users to get next table after this paragraph.</li> 
-          </ul> 
-          <p>Part of these functions have been implemented with getTableList() in org.odftoolkit.simple.Document.</p> 
-          <p>###Fields### With this feature, users can create fields in the document. The available fields include:</p> 
-          <ul> 
-            <li>Fields are used to insert information about the current document, for example, file name, template, statistics, user data, date, and time.</li> 
-            <li>The references or referenced fields that are referenced fields within the same document or within sub-documents of a master document.</li> 
-            <li>Variable fields which are dynamic content to the document.</li> 
-          </ul> 
-          <p>The functions include:</p> 
-          <ul> 
-            <li>Add a field</li> 
-            <li>Edit a field</li> 
-            <li>Navigator among fields</li> 
-            <li>Delete a field</li> 
-          </ul> 
-          <p>###Frame### With frame, users can create a layout of one or more columns of text and objects. The functions include:</p> 
-          <ul> 
-            <li>Set properties to a frame, including names</li> 
-            <li>Delete a frame</li> 
-            <li>Navigator among frames</li> 
-            <li>Add caption</li> 
-          </ul> 
-          <p>####Text frame#### The functions include:</p> 
-          <ul> 
-            <li>Add a text frame</li> 
-            <li>Search a text frame by name</li> 
-          </ul> 
-          <p>####Graphics#### With graphics, users can insert a picture or create with shapes. The functions include:</p> 
-          <ul> 
-            <li>Insert a picture from file</li> 
-            <li>Create shapes</li> 
-            <li>Navigator among images and shapes</li> 
-            <li>Delete images or shapes</li> 
-            <li>Set properties</li> 
-            <li>Add caption</li> 
-          </ul> 
-          <p>###Section### Sections are named blocks of text, including graphics or objects. With section, users can:</p> 
-          <ul> 
-            <li>To prevent text from being edited.</li> 
-            <li>To show or hide text.</li> 
-            <li>To reuse text and graphics from other Lotus? Symphony? documents.</li> 
-            <li>To insert sections of text that uses a different column layout than the current page style.</li> 
-            <li>Add caption</li> 
-          </ul> 
-          <p>The functions include:</p> 
-          <ul> 
-            <li>Create Section</li> 
-            <li>Delete Section</li> 
-            <li>Copy and paste section</li> 
-            <li>Navigator through sections</li> 
-            <li>Set properties of section</li> 
-          </ul> 
-          <p>###Bullet &amp; numbering### To create bullet and numbering. The functions include:</p> 
-          <ul> 
-            <li>Create bullet to paragraphs, including graphics bullets</li> 
-            <li>create numbering to paragraphs</li> 
-            <li>Set the style properties</li> 
-          </ul> 
-          <p>###Heading### To create heading of a document. The functions include:</p> 
-          <ul> 
-            <li>Create headings</li> 
-            <li>Set styles of headings</li> 
-            <li>Set outline numbering</li> 
-          </ul> 
-          <p>###Header/footer### With these function, you can set header and footer.</p> 
-          <ul> 
-            <li>Set header and footer</li> 
-            <li>Set the styles of header and footer</li> 
-          </ul> 
-          <p>###Footnote/endnote### With these function, you can create footnote or endnote in your document.</p> 
-          <ul> 
-            <li>Add the footnote and the endnote</li> 
-            <li>Find the footnote and endnote</li> 
-            <li>Delete the foontnote and endnote</li> 
-          </ul> 
-          <p>###Hyperlinks### With these function, you can create a hyperlink in your document.</p> 
-          <ul> 
-            <li>Add a hyperlink</li> 
-            <li>Delete a hyperlink</li> 
-            <li>Find hyperlinks</li> 
-          </ul> 
-          <p>###Break### With these function, you can add break characters in your document.</p> 
-          <ul> 
-            <li>Add breaks</li> 
-            <li>Delete breaks</li> 
-            <li>Find breaks</li> 
-          </ul> 
-          <p>###Page numbering### With these function, you can add page numbering in your document.</p> 
-          <ul> 
-            <li>Add page numbering</li> 
-            <li>Delete page numbering</li> 
-          </ul> 
-          <p>###Comment### With this function, you can add comment to your document.</p> 
-          <ul> 
-            <li>Add comments</li> 
-            <li>Navigation among comments</li> 
-            <li>delete comments</li> 
-          </ul> 
-          <p>###Document bookmark### To create bookmark</p> 
-          <ul> 
-            <li>Add bookmark</li> 
-            <li>Navigation through bookmarks</li> 
-            <li>Delete bookmarks</li> 
-          </ul> 
-          <p>###Fontwork### To create a fontwork</p> 
-          <ul> 
-            <li>Add frontwork</li> 
-            <li>Delete fontwork</li> 
-            <li>Navigation through fontwork</li> 
-          </ul> 
-          <p>###Chart### To create a chart</p> 
-          <ul> 
-            <li>Add chart</li> 
-            <li>Update chart properties</li> 
-            <li>Update style setting of chart</li> 
-            <li>Navigation through chart</li> 
-            <li>Delete chart</li> 
-          </ul> 
-          <p>###OLE object### To operate OLE object</p> 
-          <ul> 
-            <li>Add a OLE object</li> 
-            <li>Navigation through OLE object</li> 
-            <li>Delete OLE object</li> 
-            <li>Update OLE object properties</li> 
-          </ul> 
-          <p>###Layout and columns### To edit the layout and columns properties</p> 
-          <ul> 
-            <li>Set properties of layout</li> 
-          </ul> 
-          <p>###Table### To provide functions to manipulate table. Following functions have been provided:</p> 
-          <ul> 
-            <li>create table</li> 
-            <li>insert row/column</li> 
-            <li>access cell</li> 
-            <li>styles handling</li> 
-            <li>merge cell</li> 
-            <li>delete row/column</li> 
-            <li>numbering format</li> 
-          </ul> 
-          <p>####Filter and validity#### To provide filter/validity functions to data in a table</p> 
-          <ul> 
-            <li>Add/delete/update filter</li> 
-            <li>Add/delete/update validity</li> 
-          </ul> 
-          <p>####Group#### To group rows or columns</p> 
-          <ul> 
-            <li>Add group</li> 
-            <li>Delete group</li> 
-          </ul> 
-          <p>####Split#### To split a cell</p> 
-          <p>###Slide### To manipulate slides. Following functions have been provided:</p> 
-          <ul> 
-            <li>Add/delete slides</li> 
-            <li>Navigation through slides</li> 
-            <li>Merge slides</li> 
-          </ul> 
-          <p>####Master Slide#### To manipulate master slides</p> 
-          <ul> 
-            <li>update styles of master slides</li> 
-          </ul> 
-          <p>##Project Roadmap##</p> 
-        </div>
+    <div id="banner">
+      <div id="bannerright">
+        <a href="https://www.documentfoundation.org/" alt="The Document Foundation"><img src="../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png" id="tdf-logo" class="w350" alt="The Document Foundation"></a>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <ul>
-          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
-          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
-        </ul>
-      </div>
-    </footer>
+    <div id="clear"></div>
+    <div id="sidenav">
+      <h1>General</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../index.html">About</a></li> 
+        <li class="list-group-item"><a href="../../downloads.html">Downloads</a></li> 
+      </ul> 
+      <h1>Components</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../odfdom/index.html">ODFDOM</a></li> 
+        <li class="list-group-item"><a href="../../simple/index.html">Simple API (deprecated)</a></li> 
+        <li class="list-group-item"><a href="../../conformance/ODFValidator.html">ODF Validator</a></li> 
+        <li class="list-group-item"><a href="../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+      </ul> 
+      <h1>Community</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../get-involved.html">Get Involved</a></li> 
+        <li class="list-group-item"><a href="../../mailing-lists.html">Mailing Lists</a></li> 
+        <li class="list-group-item"><a href="../../people.html">People</a></li> 
+        <li class="list-group-item"><a href="../../developer-faqs.html">FAQs</a></li> 
+      </ul> 
+      <h1>Development</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../source.html">Source Code</a></li> 
+        <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+        <li class="list-group-item"><a href="../../javadoc.html">JavaDoc</a></li> 
+        <li class="list-group-item"><a href="../../website-development.html">Website Development</a></li> 
+        <li class="list-group-item"><a href="../../release-guide.html">Release Guide</a></li> 
+      </ul> 
+      <h1>TDF</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+      </ul> 
+    </div>
+    <div id="contenta">
+      <h2>Title: Project Road Map Requirements Collection</h2> 
+      <p>This page is used to discuss the requirements from a perspective of an Office software user.</p> 
+      <p>[TOC]</p> 
+      <p>###Cut/copy/paste/selection### Select something, cut or copy it, and paste to somewhere else. These operations are easily made in Office softwares, but are hard done in APIs. The functions include:</p> 
+      <ul> 
+        <li>Create a selection</li> 
+        <li>Create a position</li> 
+        <li>Cut a selection</li> 
+        <li>Copy a selection</li> 
+        <li>Paste a selection to some position</li> 
+        <li>Delete a selection</li> 
+      </ul> 
+      <p>Part of these functions have been implemented with package org.odftoolkit.simple.common.navigation</p> 
+      <table> 
+        <tbody>
+          <tr> 
+            <th>Functions</th>
+            <th>Plan and status</th> 
+          </tr> 
+          <tr>
+            <td> Create a "selection"</td> 
+            <td></td> 
+          </tr> 
+          <tr>
+            <td> Create a "position" </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td> Cut a selection </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td> Copy a selection </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td> Paste a selection </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td> Delete a selection </td>
+            <td></td>
+          </tr> 
+        </tbody>
+      </table> 
+      <p>###Navigator/document map### With these functions, users can easily go to a certain place in the whole document. These functions can provide methods to get a certain heading, get a certain image, get a certain table and so on. The functions include:</p> 
+      <ul> 
+        <li>Return a list of main features, such as heading,paragraphs,graphics,table,bookmark,sections,hyperlinks,reference,index,comments,text frames, and draw objects.</li> 
+        <li>get next or previous feature, for example, there is a table under a paragraph, then the API can allow users to get next table after this paragraph.</li> 
+      </ul> 
+      <p>Part of these functions have been implemented with getTableList() in org.odftoolkit.simple.Document.</p> 
+      <p>###Fields### With this feature, users can create fields in the document. The available fields include:</p> 
+      <ul> 
+        <li>Fields are used to insert information about the current document, for example, file name, template, statistics, user data, date, and time.</li> 
+        <li>The references or referenced fields that are referenced fields within the same document or within sub-documents of a master document.</li> 
+        <li>Variable fields which are dynamic content to the document.</li> 
+      </ul> 
+      <p>The functions include:</p> 
+      <ul> 
+        <li>Add a field</li> 
+        <li>Edit a field</li> 
+        <li>Navigator among fields</li> 
+        <li>Delete a field</li> 
+      </ul> 
+      <p>###Frame### With frame, users can create a layout of one or more columns of text and objects. The functions include:</p> 
+      <ul> 
+        <li>Set properties to a frame, including names</li> 
+        <li>Delete a frame</li> 
+        <li>Navigator among frames</li> 
+        <li>Add caption</li> 
+      </ul> 
+      <p>####Text frame#### The functions include:</p> 
+      <ul> 
+        <li>Add a text frame</li> 
+        <li>Search a text frame by name</li> 
+      </ul> 
+      <p>####Graphics#### With graphics, users can insert a picture or create with shapes. The functions include:</p> 
+      <ul> 
+        <li>Insert a picture from file</li> 
+        <li>Create shapes</li> 
+        <li>Navigator among images and shapes</li> 
+        <li>Delete images or shapes</li> 
+        <li>Set properties</li> 
+        <li>Add caption</li> 
+      </ul> 
+      <p>###Section### Sections are named blocks of text, including graphics or objects. With section, users can:</p> 
+      <ul> 
+        <li>To prevent text from being edited.</li> 
+        <li>To show or hide text.</li> 
+        <li>To reuse text and graphics from other Lotus? Symphony? documents.</li> 
+        <li>To insert sections of text that uses a different column layout than the current page style.</li> 
+        <li>Add caption</li> 
+      </ul> 
+      <p>The functions include:</p> 
+      <ul> 
+        <li>Create Section</li> 
+        <li>Delete Section</li> 
+        <li>Copy and paste section</li> 
+        <li>Navigator through sections</li> 
+        <li>Set properties of section</li> 
+      </ul> 
+      <p>###Bullet &amp; numbering### To create bullet and numbering. The functions include:</p> 
+      <ul> 
+        <li>Create bullet to paragraphs, including graphics bullets</li> 
+        <li>create numbering to paragraphs</li> 
+        <li>Set the style properties</li> 
+      </ul> 
+      <p>###Heading### To create heading of a document. The functions include:</p> 
+      <ul> 
+        <li>Create headings</li> 
+        <li>Set styles of headings</li> 
+        <li>Set outline numbering</li> 
+      </ul> 
+      <p>###Header/footer### With these function, you can set header and footer.</p> 
+      <ul> 
+        <li>Set header and footer</li> 
+        <li>Set the styles of header and footer</li> 
+      </ul> 
+      <p>###Footnote/endnote### With these function, you can create footnote or endnote in your document.</p> 
+      <ul> 
+        <li>Add the footnote and the endnote</li> 
+        <li>Find the footnote and endnote</li> 
+        <li>Delete the foontnote and endnote</li> 
+      </ul> 
+      <p>###Hyperlinks### With these function, you can create a hyperlink in your document.</p> 
+      <ul> 
+        <li>Add a hyperlink</li> 
+        <li>Delete a hyperlink</li> 
+        <li>Find hyperlinks</li> 
+      </ul> 
+      <p>###Break### With these function, you can add break characters in your document.</p> 
+      <ul> 
+        <li>Add breaks</li> 
+        <li>Delete breaks</li> 
+        <li>Find breaks</li> 
+      </ul> 
+      <p>###Page numbering### With these function, you can add page numbering in your document.</p> 
+      <ul> 
+        <li>Add page numbering</li> 
+        <li>Delete page numbering</li> 
+      </ul> 
+      <p>###Comment### With this function, you can add comment to your document.</p> 
+      <ul> 
+        <li>Add comments</li> 
+        <li>Navigation among comments</li> 
+        <li>delete comments</li> 
+      </ul> 
+      <p>###Document bookmark### To create bookmark</p> 
+      <ul> 
+        <li>Add bookmark</li> 
+        <li>Navigation through bookmarks</li> 
+        <li>Delete bookmarks</li> 
+      </ul> 
+      <p>###Fontwork### To create a fontwork</p> 
+      <ul> 
+        <li>Add frontwork</li> 
+        <li>Delete fontwork</li> 
+        <li>Navigation through fontwork</li> 
+      </ul> 
+      <p>###Chart### To create a chart</p> 
+      <ul> 
+        <li>Add chart</li> 
+        <li>Update chart properties</li> 
+        <li>Update style setting of chart</li> 
+        <li>Navigation through chart</li> 
+        <li>Delete chart</li> 
+      </ul> 
+      <p>###OLE object### To operate OLE object</p> 
+      <ul> 
+        <li>Add a OLE object</li> 
+        <li>Navigation through OLE object</li> 
+        <li>Delete OLE object</li> 
+        <li>Update OLE object properties</li> 
+      </ul> 
+      <p>###Layout and columns### To edit the layout and columns properties</p> 
+      <ul> 
+        <li>Set properties of layout</li> 
+      </ul> 
+      <p>###Table### To provide functions to manipulate table. Following functions have been provided:</p> 
+      <ul> 
+        <li>create table</li> 
+        <li>insert row/column</li> 
+        <li>access cell</li> 
+        <li>styles handling</li> 
+        <li>merge cell</li> 
+        <li>delete row/column</li> 
+        <li>numbering format</li> 
+      </ul> 
+      <p>####Filter and validity#### To provide filter/validity functions to data in a table</p> 
+      <ul> 
+        <li>Add/delete/update filter</li> 
+        <li>Add/delete/update validity</li> 
+      </ul> 
+      <p>####Group#### To group rows or columns</p> 
+      <ul> 
+        <li>Add group</li> 
+        <li>Delete group</li> 
+      </ul> 
+      <p>####Split#### To split a cell</p> 
+      <p>###Slide### To manipulate slides. Following functions have been provided:</p> 
+      <ul> 
+        <li>Add/delete slides</li> 
+        <li>Navigation through slides</li> 
+        <li>Merge slides</li> 
+      </ul> 
+      <p>####Master Slide#### To manipulate master slides</p> 
+      <ul> 
+        <li>update styles of master slides</li> 
+      </ul> 
+      <p>##Project Roadmap##</p> 
+    </div>
+    <html>
+      <head></head>
+      <body>
+        <div id="footera"> 
+          <div id="copyrighta"> 
+            <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy (Datenschutzerklärung)</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, v2.0</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p> 
+          </div> 
+        </div> 
+      </body>
+    </html>
   </body>
 </html>

@@ -1,114 +1,94 @@
-<html>
+<!DOCTYPE html><html lang="en">
   <head>
     <title>ODF Toolkit</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../style.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../custom.css">
+    <link rel="stylesheet" href="../css/odf.css" type="text/css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-          <a href="../index.html" class="navbar-brand">ODF Toolkit</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right"></ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12 col-sm-12">
-          <div style="float:right">
-            <a href="https://www.documentfoundation.org/"><img src="../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png"></a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-xs-12 col-sm-3">
-          <h1>General</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../index.html">About</a></li> 
-            <li class="list-group-item"><a href="../downloads.html">Downloads</a></li> 
-          </ul> 
-          <h1>Components</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../odfdom/index.html">ODFDOM</a></li> 
-            <li class="list-group-item"><a href="../simple/index.html">Simple API (deprecated)</a></li> 
-            <li class="list-group-item"><a href="../conformance/ODFValidator.html">ODF Validator</a></li> 
-            <li class="list-group-item"><a href="../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
-          </ul> 
-          <h1>Community</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../get-involved.html">Get Involved</a></li> 
-            <li class="list-group-item"><a href="../mailing-lists.html">Mailing Lists</a></li> 
-            <li class="list-group-item"><a href="../people.html">People</a></li> 
-            <li class="list-group-item"><a href="../developer-faqs.html">FAQs</a></li> 
-          </ul> 
-          <h1>Development</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../source.html">Source Code</a></li> 
-            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
-            <li class="list-group-item"><a href="../javadoc.html">JavaDoc</a></li> 
-            <li class="list-group-item"><a href="../website-development.html">Website Development</a></li> 
-            <li class="list-group-item"><a href="../release-guide.html">Release Guide</a></li> 
-          </ul> 
-          <h1>TDF</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
-          </ul> 
-        </div>
-        <div class="col col-xs-12 col-sm-9">
-          <p>Title: Who We Are The ODFDOM project is based on the help of many contributors. We'd like to list all names here. If you think we missed a contributor, please, contact us via the development <a href="http://odftoolkit.org/projects/odfdom/lists">mailing list</a>.</p> 
-          <h2>Developers</h2> 
-          <table style="width:100%" border="1"> 
-            <tbody>
-              <tr style="background-color:#e3edf7;font-weight:bold"> 
-                <td>Name</td> 
-                <td>ID</td> 
-                <td>Organization</td> 
-              </tr> 
-              <tr>
-                <td>Tony</td>
-                <td>tony</td>
-                <td>IBM</td>
-              </tr> 
-            </tbody>
-          </table> 
-          <p>You can contact each one from the list by sending an E-Mail to ''(developer's ID)''@odftoolkit.org.</p> 
-          <h2>Contributors</h2> 
-          <table style="width:100%" border="1"> 
-            <tbody>
-              <tr style="background-color:#e3edf7;font-weight:bold"> 
-                <td>Name</td> 
-                <td>ID</td> 
-                <td>Organization</td> 
-              </tr> 
-              <tr>
-                <td></td>
-                <td>huijzer</td>
-                <td></td>
-              </tr> 
-            </tbody>
-          </table> 
-          <p>You can contact each one from the list by sending an E-Mail to ''(contributor's ID)''@odftoolkit.org.</p> 
-        </div>
+    <div id="banner">
+      <div id="bannerright">
+        <a href="https://www.documentfoundation.org/" alt="The Document Foundation"><img src="../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png" id="tdf-logo" class="w350" alt="The Document Foundation"></a>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <ul>
-          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
-          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
-        </ul>
-      </div>
-    </footer>
+    <div id="clear"></div>
+    <div id="sidenav">
+      <h1>General</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../index.html">About</a></li> 
+        <li class="list-group-item"><a href="../downloads.html">Downloads</a></li> 
+      </ul> 
+      <h1>Components</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../odfdom/index.html">ODFDOM</a></li> 
+        <li class="list-group-item"><a href="../simple/index.html">Simple API (deprecated)</a></li> 
+        <li class="list-group-item"><a href="../conformance/ODFValidator.html">ODF Validator</a></li> 
+        <li class="list-group-item"><a href="../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+      </ul> 
+      <h1>Community</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../get-involved.html">Get Involved</a></li> 
+        <li class="list-group-item"><a href="../mailing-lists.html">Mailing Lists</a></li> 
+        <li class="list-group-item"><a href="../people.html">People</a></li> 
+        <li class="list-group-item"><a href="../developer-faqs.html">FAQs</a></li> 
+      </ul> 
+      <h1>Development</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../source.html">Source Code</a></li> 
+        <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+        <li class="list-group-item"><a href="../javadoc.html">JavaDoc</a></li> 
+        <li class="list-group-item"><a href="../website-development.html">Website Development</a></li> 
+        <li class="list-group-item"><a href="../release-guide.html">Release Guide</a></li> 
+      </ul> 
+      <h1>TDF</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+      </ul> 
+    </div>
+    <div id="contenta">
+      <p>Title: Who We Are The ODFDOM project is based on the help of many contributors. We'd like to list all names here. If you think we missed a contributor, please, contact us via the development <a href="http://odftoolkit.org/projects/odfdom/lists">mailing list</a>.</p> 
+      <h2>Developers</h2> 
+      <table style="width:100%" border="1"> 
+        <tbody>
+          <tr style="background-color:#e3edf7;font-weight:bold"> 
+            <td>Name</td> 
+            <td>ID</td> 
+            <td>Organization</td> 
+          </tr> 
+          <tr>
+            <td>Tony</td>
+            <td>tony</td>
+            <td>IBM</td>
+          </tr> 
+        </tbody>
+      </table> 
+      <p>You can contact each one from the list by sending an E-Mail to ''(developer's ID)''@odftoolkit.org.</p> 
+      <h2>Contributors</h2> 
+      <table style="width:100%" border="1"> 
+        <tbody>
+          <tr style="background-color:#e3edf7;font-weight:bold"> 
+            <td>Name</td> 
+            <td>ID</td> 
+            <td>Organization</td> 
+          </tr> 
+          <tr>
+            <td></td>
+            <td>huijzer</td>
+            <td></td>
+          </tr> 
+        </tbody>
+      </table> 
+      <p>You can contact each one from the list by sending an E-Mail to ''(contributor's ID)''@odftoolkit.org.</p> 
+    </div>
+    <html>
+      <head></head>
+      <body>
+        <div id="footera"> 
+          <div id="copyrighta"> 
+            <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy (Datenschutzerklärung)</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, v2.0</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p> 
+          </div> 
+        </div> 
+      </body>
+    </html>
   </body>
 </html>

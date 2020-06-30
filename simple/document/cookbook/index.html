@@ -1,273 +1,253 @@
-<html>
+<!DOCTYPE html><html lang="en">
   <head>
     <title>ODF Toolkit</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../../style.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../../../custom.css">
+    <link rel="stylesheet" href="../../../css/odf.css" type="text/css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-          <a href="../../../index.html" class="navbar-brand">ODF Toolkit</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right"></ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12 col-sm-12">
-          <div style="float:right">
-            <a href="https://www.documentfoundation.org/"><img src="../../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png"></a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-xs-12 col-sm-3">
-          <h1>General</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../../index.html">About</a></li> 
-            <li class="list-group-item"><a href="../../../downloads.html">Downloads</a></li> 
-          </ul> 
-          <h1>Components</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../../odfdom/index.html">ODFDOM</a></li> 
-            <li class="list-group-item"><a href="../../../simple/index.html">Simple API (deprecated)</a></li> 
-            <li class="list-group-item"><a href="../../../conformance/ODFValidator.html">ODF Validator</a></li> 
-            <li class="list-group-item"><a href="../../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
-          </ul> 
-          <h1>Community</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../../get-involved.html">Get Involved</a></li> 
-            <li class="list-group-item"><a href="../../../mailing-lists.html">Mailing Lists</a></li> 
-            <li class="list-group-item"><a href="../../../people.html">People</a></li> 
-            <li class="list-group-item"><a href="../../../developer-faqs.html">FAQs</a></li> 
-          </ul> 
-          <h1>Development</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../../source.html">Source Code</a></li> 
-            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
-            <li class="list-group-item"><a href="../../../javadoc.html">JavaDoc</a></li> 
-            <li class="list-group-item"><a href="../../../website-development.html">Website Development</a></li> 
-            <li class="list-group-item"><a href="../../../release-guide.html">Release Guide</a></li> 
-          </ul> 
-          <h1>TDF</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
-          </ul> 
-        </div>
-        <div class="col col-xs-12 col-sm-9">
-          <p><strong><a href="../index.html">Documents</a></strong> &gt; <strong><a href="index.html">Cookbook</a></strong> <br><br><br><strong><a href="#Text">Text</a></strong></p> 
-          <ul> 
-            <li><a href="Text Document.html">Text Document</a> 
-              <ul> 
-                <li><a href="Text Document.html#Overview">Overview</a></li> 
-                <li><a href="Text Document.html#Generate TextDocument">Generate TextDocument</a></li> 
-                <li><a href="Text Document.html#Get TextDocument">Get TextDocument</a></li> 
-                <li><a href="Text Document.html#Insert TextDocument">Insert TextDocument</a></li> 
-                <li><a href="Text Document.html#Paragraph">Paragraph</a></li> 
-                <li><a href="Text Document.html#Section">Section</a></li> 
-                <li><a href="Text Document.html#List">List</a></li> 
-                <li><a href="Text Document.html#Header and Footer">Header and Footer</a></li> 
-                <li><a href="Text Document.html#Text Box">Text Box</a></li> 
-                <li><a href="Text Document.html#Image">Image</a></li> 
-                <li><a href="Text Document.html#Span">Span</a></li> 
-                <li><a href="Text Document.html#Page Break">Page Break</a></li> 
-                <li><a href="Text Document.html#Table of Content">Table of Content</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Presentation">Presentation</a></strong> 
-          <ul> 
-            <li><a href="Presentation Document.html">Presentation Document</a> 
-              <ul> 
-                <li><a href="Presentation Document.html#Create Presentation Document">Create Presentation Document</a></li> 
-                <li><a href="Presentation Document.html#Get Presentation Document">Get Presentation Document</a></li> 
-                <li><a href="Presentation Document.html#Change Presentation Mode">Change Presentation Mode</a></li> 
-              </ul> </li> 
-            <li><a href="Slide.html">Slide</a> 
-              <ul> 
-                <li><a href="Slide.html#Add Slide">Add Slide</a></li> 
-                <li><a href="Slide.html#Get Slide">Get Slide</a></li> 
-                <li><a href="Slide.html#Set/Get Slide Name/Index">Set/Get Slide Name/Index</a></li> 
-                <li><a href="Slide.html#Copy Slide">Copy Slide</a></li> 
-                <li><a href="Slide.html#Move/Delete Slide">Move/Delete Slide</a></li> 
-                <li><a href="Slide.html#Add Text to Slide">Add Text to Slide</a></li> 
-                <li><a href="Slide.html#Add Image to Slide">Add Image to Slide</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Table">Table</a></strong> 
-          <ul> 
-            <li><a href="Table.html">Table</a> 
-              <ul> 
-                <li><a href="Table.html#Overview">Overview</a></li> 
-                <li><a href="Table.html#Create Table">Create Table</a></li> 
-                <li><a href="Table.html#Find Table">Find Table</a></li> 
-                <li><a href="Table.html#Delete Table">Delete Table</a></li> 
-                <li><a href="Table.html#Set Table">Set Table</a></li> 
-                <li><a href="Table.html#Format Table">Format Table</a></li> 
-              </ul> </li> 
-            <li><a href="Column and Row.html">Column and Row</a> 
-              <ul> 
-                <li><a href="Column and Row.html#Get Column/Row">Get Column/Row</a></li> 
-                <li><a href="Column and Row.html#Append or Insert Column/Row">Append or Insert Column/Row</a></li> 
-                <li><a href="Column and Row.html#Remove Columns/Rows">Remove Columns/Rows</a></li> 
-                <li><a href="Column and Row.html#Set Column/Row">Set Column/Row</a></li> 
-              </ul> </li> 
-            <li><a href="Cell.html">Cell</a> 
-              <ul> 
-                <li><a href="Cell.html#Get Cell">Get Cell</a></li> 
-                <li><a href="Cell.html#Control Cell Attributes">Control Cell Attributes</a></li> 
-                <li><a href="Cell.html#Get&amp;Set Cell Value Type">Get&amp;Set Cell Value Type</a></li> 
-                <ul> 
-                  <li><a href="Cell.html#Get&amp;Set boolean type Cell">Get&amp;Set boolean type Cell</a></li> 
-                  <li><a href="Cell.html#Get&amp;Set currency type Cell">Get&amp;Set currency type Cell</a></li> 
-                  <li><a href="Cell.html#Get&amp;Set date type Cell">Get&amp;Set date type Cell</a></li> 
-                  <li><a href="Cell.html#Get&amp;Set float type Cell">Get&amp;Set float type Cell</a></li> 
-                  <li><a href="Cell.html#Get&amp;Set percentage type Cell">Get&amp;Set percentage type Cell</a></li> 
-                  <li><a href="Cell.html#Get&amp;Set string type Cell">Get&amp;Set string type Cell</a></li> 
-                  <li><a href="Cell.html#Deal with the Time Value">Deal with the Time Value</a></li> 
-                  <li><a href="Cell.html#Something about Display Text">Something about Display Text</a></li> 
-                </ul> 
-                <li><a href="Cell.html#Set image">Set image</a></li> 
-              </ul> </li> 
-            <li><a href="Cell Range.html">Cell Range</a> 
-              <ul> 
-                <li><a href="Cell Range.html#Get CellRange">Get CellRange</a></li> 
-                <li><a href="Cell Range.html#Merge Text Table">Merge Text Table</a></li> 
-                <li><a href="Cell Range.html#Merge Text Column">Merge Text Column</a></li> 
-                <li><a href="Cell Range.html#Merge Text Row">Merge Text Row</a></li> 
-                <li><a href="Cell Range.html#Merge SpreadSheet">Merge SpreadSheet</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Chart">Chart</a></strong> 
-          <ul> 
-            <li><a href="Charts.html">Charts</a> 
-              <ul> 
-                <li><a href="Charts.html#Overview">Overview</a></li> 
-                <li><a href="Charts.html#Create charts">Create charts</a></li> 
-                <li><a href="Charts.html#Update charts">Update charts</a></li> 
-                <li><a href="Charts.html#Get and delete charts">Get and delete charts</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Style">Style</a></strong> 
-          <ul> 
-            <li><a href="Style Handling.html">Style Handling</a> 
-              <ul> 
-                <li><a href="Style Handling.html#Overview">Overview</a></li> 
-                <li><a href="Style Handling.html#Font handling">Font handling</a></li> 
-                <li><a href="Style Handling.html#Advanced font handling">Advanced font handling</a></li> 
-                <li><a href="Style Handling.html#Border handling">Border handling</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Navigation">Navigation</a></strong> 
-          <ul> 
-            <li><a href="Manipulate TextSearch.html">Manipulate TextSearch</a> 
-              <ul> 
-                <li><a href="Manipulate TextSearch.html#TextNavigation">TextNavigation</a></li> 
-                <li><a href="Manipulate TextSearch.html#TextSelection">TextSelection</a></li> 
-                <ul> 
-                  <li><a href="Manipulate TextSearch.html#Get Index/Text of TextSelection">Get Index/Text of TextSelection</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Cut String">Cut String</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Paste String">Paste String</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Replace String with String">Replace String with String</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Replace String with Paragraph">Replace String with Paragraph</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Replace String with Image">Replace String with Image</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Replace String with Table">Replace String with Table</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Replace String with Field">Replace String with Field</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Replace String with TextDocument">Replace String with TextDocument</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Add Reference to String">Add Reference to String</a></li> 
-                  <li><a href="Manipulate TextSearch.html#Add Comment">Add Comment</a></li> 
-                </ul> 
-                <li><a href="Manipulate TextSearch.html#FieldSelection">FieldSelection</a></li> 
-                <li><a href="Manipulate TextSearch.html#TextStyleNavigation">TextStyleNavigation</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#TextExtractor">TextExtractor</a></strong> 
-          <ul> 
-            <li><a href="TextExtractor.html">TextExtractor</a> 
-              <ul> 
-                <li><a href="TextExtractor.html#Get Text">Get Text</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Field">Field</a></strong> 
-          <ul> 
-            <li><a href="Fields.html">Fields</a> 
-              <ul> 
-                <li><a href="Fields.html#Variable Field">Variable Field</a></li> 
-                <li><a href="Fields.html#Condition Field">Condition Field</a></li> 
-                <li><a href="Fields.html#Hidden Field">Hidden Field</a></li> 
-                <li><a href="Fields.html#Cross Reference Field">Cross Reference Field</a></li> 
-                <li><a href="Fields.html#Chapter Field">Chapter Field</a></li> 
-                <li><a href="Fields.html#Title and Subject Field">Title and Subject Field</a></li> 
-                <li><a href="Fields.html#Author Field">Author Field</a></li> 
-                <li><a href="Fields.html#Page Number Field">Page Number Field</a></li> 
-                <li><a href="Fields.html#Page Number Field">Page Number Field</a></li> 
-                <li><a href="Fields.html#Date Field">Date Field</a></li> 
-                <li><a href="Fields.html#Time Field">Time Field</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Form">Form</a></strong> 
-          <ul> 
-            <li><a href="Forms.html">Forms</a> 
-              <ul> 
-                <li><a href="Forms.html#Form">Form</a></li> 
-                <li><a href="Forms.html#Controls">Controls</a></li> 
-                <ul> 
-                  <li><a href="Forms.html#Button">Button</a></li> 
-                  <li><a href="Forms.html#Label">Label</a></li> 
-                  <li><a href="Forms.html#TextBox">TextBox</a></li> 
-                  <li><a href="Forms.html#ListBox">ListBox</a></li> 
-                  <li><a href="Forms.html#ComboBox">ComboBox</a></li> 
-                  <li><a href="Forms.html#RadioButton">RadioButton</a></li> 
-                  <li><a href="Forms.html#CheckBox">CheckBox</a></li> 
-                  <li><a href="Forms.html#Date Field">Date Field</a></li> 
-                  <li><a href="Forms.html#Time Field">Time Field</a></li> 
-                  <li><a href="Forms.html#Numeric Field">Numeric Field</a></li> 
-                  <li><a href="Forms.html#Pattern Field">Patter Field</a></li> 
-                  <li><a href="Forms.html#Currency Field">Currency Field</a></li> 
-                </ul> 
-                <li><a href="Forms.html#Time Field">Size and Style</a></li> 
-              </ul> </li> 
-          </ul> 
-          <br>
-          <strong><a href="#Metadata">Metadata</a></strong> 
-          <ul> 
-            <li><a href="Manipulate Metadata.html">Manipulate Metadata</a> 
-              <ul> 
-                <li><a href="Manipulate Metadata.html#Overview">Overview</a></li> 
-                <li><a href="Manipulate Metadata.html#Get Meta object">Get Meta object</a></li> 
-                <li><a href="Manipulate Metadata.html#Access metadata">Access metadata</a></li> 
-                <li><a href="Manipulate Metadata.html#Access the user defined element">Access the user defined element</a></li> 
-                <li><a href="Manipulate Metadata.html#Access the document statistics">Access the document statistics</a></li> 
-              </ul> </li> 
-          </ul> 
-        </div>
+    <div id="banner">
+      <div id="bannerright">
+        <a href="https://www.documentfoundation.org/" alt="The Document Foundation"><img src="../../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png" id="tdf-logo" class="w350" alt="The Document Foundation"></a>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <ul>
-          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
-          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
-        </ul>
-      </div>
-    </footer>
+    <div id="clear"></div>
+    <div id="sidenav">
+      <h1>General</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../../index.html">About</a></li> 
+        <li class="list-group-item"><a href="../../../downloads.html">Downloads</a></li> 
+      </ul> 
+      <h1>Components</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../../odfdom/index.html">ODFDOM</a></li> 
+        <li class="list-group-item"><a href="../../../simple/index.html">Simple API (deprecated)</a></li> 
+        <li class="list-group-item"><a href="../../../conformance/ODFValidator.html">ODF Validator</a></li> 
+        <li class="list-group-item"><a href="../../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+      </ul> 
+      <h1>Community</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../../get-involved.html">Get Involved</a></li> 
+        <li class="list-group-item"><a href="../../../mailing-lists.html">Mailing Lists</a></li> 
+        <li class="list-group-item"><a href="../../../people.html">People</a></li> 
+        <li class="list-group-item"><a href="../../../developer-faqs.html">FAQs</a></li> 
+      </ul> 
+      <h1>Development</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../../source.html">Source Code</a></li> 
+        <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+        <li class="list-group-item"><a href="../../../javadoc.html">JavaDoc</a></li> 
+        <li class="list-group-item"><a href="../../../website-development.html">Website Development</a></li> 
+        <li class="list-group-item"><a href="../../../release-guide.html">Release Guide</a></li> 
+      </ul> 
+      <h1>TDF</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+      </ul> 
+    </div>
+    <div id="contenta">
+      <p><strong><a href="../index.html">Documents</a></strong> &gt; <strong><a href="index.html">Cookbook</a></strong> <br><br><br><strong><a href="#Text">Text</a></strong></p> 
+      <ul> 
+        <li><a href="Text Document.html">Text Document</a> 
+          <ul> 
+            <li><a href="Text Document.html#Overview">Overview</a></li> 
+            <li><a href="Text Document.html#Generate TextDocument">Generate TextDocument</a></li> 
+            <li><a href="Text Document.html#Get TextDocument">Get TextDocument</a></li> 
+            <li><a href="Text Document.html#Insert TextDocument">Insert TextDocument</a></li> 
+            <li><a href="Text Document.html#Paragraph">Paragraph</a></li> 
+            <li><a href="Text Document.html#Section">Section</a></li> 
+            <li><a href="Text Document.html#List">List</a></li> 
+            <li><a href="Text Document.html#Header and Footer">Header and Footer</a></li> 
+            <li><a href="Text Document.html#Text Box">Text Box</a></li> 
+            <li><a href="Text Document.html#Image">Image</a></li> 
+            <li><a href="Text Document.html#Span">Span</a></li> 
+            <li><a href="Text Document.html#Page Break">Page Break</a></li> 
+            <li><a href="Text Document.html#Table of Content">Table of Content</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Presentation">Presentation</a></strong> 
+      <ul> 
+        <li><a href="Presentation Document.html">Presentation Document</a> 
+          <ul> 
+            <li><a href="Presentation Document.html#Create Presentation Document">Create Presentation Document</a></li> 
+            <li><a href="Presentation Document.html#Get Presentation Document">Get Presentation Document</a></li> 
+            <li><a href="Presentation Document.html#Change Presentation Mode">Change Presentation Mode</a></li> 
+          </ul> </li> 
+        <li><a href="Slide.html">Slide</a> 
+          <ul> 
+            <li><a href="Slide.html#Add Slide">Add Slide</a></li> 
+            <li><a href="Slide.html#Get Slide">Get Slide</a></li> 
+            <li><a href="Slide.html#Set/Get Slide Name/Index">Set/Get Slide Name/Index</a></li> 
+            <li><a href="Slide.html#Copy Slide">Copy Slide</a></li> 
+            <li><a href="Slide.html#Move/Delete Slide">Move/Delete Slide</a></li> 
+            <li><a href="Slide.html#Add Text to Slide">Add Text to Slide</a></li> 
+            <li><a href="Slide.html#Add Image to Slide">Add Image to Slide</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Table">Table</a></strong> 
+      <ul> 
+        <li><a href="Table.html">Table</a> 
+          <ul> 
+            <li><a href="Table.html#Overview">Overview</a></li> 
+            <li><a href="Table.html#Create Table">Create Table</a></li> 
+            <li><a href="Table.html#Find Table">Find Table</a></li> 
+            <li><a href="Table.html#Delete Table">Delete Table</a></li> 
+            <li><a href="Table.html#Set Table">Set Table</a></li> 
+            <li><a href="Table.html#Format Table">Format Table</a></li> 
+          </ul> </li> 
+        <li><a href="Column and Row.html">Column and Row</a> 
+          <ul> 
+            <li><a href="Column and Row.html#Get Column/Row">Get Column/Row</a></li> 
+            <li><a href="Column and Row.html#Append or Insert Column/Row">Append or Insert Column/Row</a></li> 
+            <li><a href="Column and Row.html#Remove Columns/Rows">Remove Columns/Rows</a></li> 
+            <li><a href="Column and Row.html#Set Column/Row">Set Column/Row</a></li> 
+          </ul> </li> 
+        <li><a href="Cell.html">Cell</a> 
+          <ul> 
+            <li><a href="Cell.html#Get Cell">Get Cell</a></li> 
+            <li><a href="Cell.html#Control Cell Attributes">Control Cell Attributes</a></li> 
+            <li><a href="Cell.html#Get&amp;Set Cell Value Type">Get&amp;Set Cell Value Type</a></li> 
+            <ul> 
+              <li><a href="Cell.html#Get&amp;Set boolean type Cell">Get&amp;Set boolean type Cell</a></li> 
+              <li><a href="Cell.html#Get&amp;Set currency type Cell">Get&amp;Set currency type Cell</a></li> 
+              <li><a href="Cell.html#Get&amp;Set date type Cell">Get&amp;Set date type Cell</a></li> 
+              <li><a href="Cell.html#Get&amp;Set float type Cell">Get&amp;Set float type Cell</a></li> 
+              <li><a href="Cell.html#Get&amp;Set percentage type Cell">Get&amp;Set percentage type Cell</a></li> 
+              <li><a href="Cell.html#Get&amp;Set string type Cell">Get&amp;Set string type Cell</a></li> 
+              <li><a href="Cell.html#Deal with the Time Value">Deal with the Time Value</a></li> 
+              <li><a href="Cell.html#Something about Display Text">Something about Display Text</a></li> 
+            </ul> 
+            <li><a href="Cell.html#Set image">Set image</a></li> 
+          </ul> </li> 
+        <li><a href="Cell Range.html">Cell Range</a> 
+          <ul> 
+            <li><a href="Cell Range.html#Get CellRange">Get CellRange</a></li> 
+            <li><a href="Cell Range.html#Merge Text Table">Merge Text Table</a></li> 
+            <li><a href="Cell Range.html#Merge Text Column">Merge Text Column</a></li> 
+            <li><a href="Cell Range.html#Merge Text Row">Merge Text Row</a></li> 
+            <li><a href="Cell Range.html#Merge SpreadSheet">Merge SpreadSheet</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Chart">Chart</a></strong> 
+      <ul> 
+        <li><a href="Charts.html">Charts</a> 
+          <ul> 
+            <li><a href="Charts.html#Overview">Overview</a></li> 
+            <li><a href="Charts.html#Create charts">Create charts</a></li> 
+            <li><a href="Charts.html#Update charts">Update charts</a></li> 
+            <li><a href="Charts.html#Get and delete charts">Get and delete charts</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Style">Style</a></strong> 
+      <ul> 
+        <li><a href="Style Handling.html">Style Handling</a> 
+          <ul> 
+            <li><a href="Style Handling.html#Overview">Overview</a></li> 
+            <li><a href="Style Handling.html#Font handling">Font handling</a></li> 
+            <li><a href="Style Handling.html#Advanced font handling">Advanced font handling</a></li> 
+            <li><a href="Style Handling.html#Border handling">Border handling</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Navigation">Navigation</a></strong> 
+      <ul> 
+        <li><a href="Manipulate TextSearch.html">Manipulate TextSearch</a> 
+          <ul> 
+            <li><a href="Manipulate TextSearch.html#TextNavigation">TextNavigation</a></li> 
+            <li><a href="Manipulate TextSearch.html#TextSelection">TextSelection</a></li> 
+            <ul> 
+              <li><a href="Manipulate TextSearch.html#Get Index/Text of TextSelection">Get Index/Text of TextSelection</a></li> 
+              <li><a href="Manipulate TextSearch.html#Cut String">Cut String</a></li> 
+              <li><a href="Manipulate TextSearch.html#Paste String">Paste String</a></li> 
+              <li><a href="Manipulate TextSearch.html#Replace String with String">Replace String with String</a></li> 
+              <li><a href="Manipulate TextSearch.html#Replace String with Paragraph">Replace String with Paragraph</a></li> 
+              <li><a href="Manipulate TextSearch.html#Replace String with Image">Replace String with Image</a></li> 
+              <li><a href="Manipulate TextSearch.html#Replace String with Table">Replace String with Table</a></li> 
+              <li><a href="Manipulate TextSearch.html#Replace String with Field">Replace String with Field</a></li> 
+              <li><a href="Manipulate TextSearch.html#Replace String with TextDocument">Replace String with TextDocument</a></li> 
+              <li><a href="Manipulate TextSearch.html#Add Reference to String">Add Reference to String</a></li> 
+              <li><a href="Manipulate TextSearch.html#Add Comment">Add Comment</a></li> 
+            </ul> 
+            <li><a href="Manipulate TextSearch.html#FieldSelection">FieldSelection</a></li> 
+            <li><a href="Manipulate TextSearch.html#TextStyleNavigation">TextStyleNavigation</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#TextExtractor">TextExtractor</a></strong> 
+      <ul> 
+        <li><a href="TextExtractor.html">TextExtractor</a> 
+          <ul> 
+            <li><a href="TextExtractor.html#Get Text">Get Text</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Field">Field</a></strong> 
+      <ul> 
+        <li><a href="Fields.html">Fields</a> 
+          <ul> 
+            <li><a href="Fields.html#Variable Field">Variable Field</a></li> 
+            <li><a href="Fields.html#Condition Field">Condition Field</a></li> 
+            <li><a href="Fields.html#Hidden Field">Hidden Field</a></li> 
+            <li><a href="Fields.html#Cross Reference Field">Cross Reference Field</a></li> 
+            <li><a href="Fields.html#Chapter Field">Chapter Field</a></li> 
+            <li><a href="Fields.html#Title and Subject Field">Title and Subject Field</a></li> 
+            <li><a href="Fields.html#Author Field">Author Field</a></li> 
+            <li><a href="Fields.html#Page Number Field">Page Number Field</a></li> 
+            <li><a href="Fields.html#Page Number Field">Page Number Field</a></li> 
+            <li><a href="Fields.html#Date Field">Date Field</a></li> 
+            <li><a href="Fields.html#Time Field">Time Field</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Form">Form</a></strong> 
+      <ul> 
+        <li><a href="Forms.html">Forms</a> 
+          <ul> 
+            <li><a href="Forms.html#Form">Form</a></li> 
+            <li><a href="Forms.html#Controls">Controls</a></li> 
+            <ul> 
+              <li><a href="Forms.html#Button">Button</a></li> 
+              <li><a href="Forms.html#Label">Label</a></li> 
+              <li><a href="Forms.html#TextBox">TextBox</a></li> 
+              <li><a href="Forms.html#ListBox">ListBox</a></li> 
+              <li><a href="Forms.html#ComboBox">ComboBox</a></li> 
+              <li><a href="Forms.html#RadioButton">RadioButton</a></li> 
+              <li><a href="Forms.html#CheckBox">CheckBox</a></li> 
+              <li><a href="Forms.html#Date Field">Date Field</a></li> 
+              <li><a href="Forms.html#Time Field">Time Field</a></li> 
+              <li><a href="Forms.html#Numeric Field">Numeric Field</a></li> 
+              <li><a href="Forms.html#Pattern Field">Patter Field</a></li> 
+              <li><a href="Forms.html#Currency Field">Currency Field</a></li> 
+            </ul> 
+            <li><a href="Forms.html#Time Field">Size and Style</a></li> 
+          </ul> </li> 
+      </ul> 
+      <br>
+      <strong><a href="#Metadata">Metadata</a></strong> 
+      <ul> 
+        <li><a href="Manipulate Metadata.html">Manipulate Metadata</a> 
+          <ul> 
+            <li><a href="Manipulate Metadata.html#Overview">Overview</a></li> 
+            <li><a href="Manipulate Metadata.html#Get Meta object">Get Meta object</a></li> 
+            <li><a href="Manipulate Metadata.html#Access metadata">Access metadata</a></li> 
+            <li><a href="Manipulate Metadata.html#Access the user defined element">Access the user defined element</a></li> 
+            <li><a href="Manipulate Metadata.html#Access the document statistics">Access the document statistics</a></li> 
+          </ul> </li> 
+      </ul> 
+    </div>
+    <html>
+      <head></head>
+      <body>
+        <div id="footera"> 
+          <div id="copyrighta"> 
+            <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy (Datenschutzerklärung)</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, v2.0</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p> 
+          </div> 
+        </div> 
+      </body>
+    </html>
   </body>
 </html>

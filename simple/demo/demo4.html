@@ -1,82 +1,62 @@
-<html>
+<!DOCTYPE html><html lang="en">
   <head>
     <title>ODF Toolkit</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../style.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../../custom.css">
+    <link rel="stylesheet" href="../../css/odf.css" type="text/css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-          <a href="../../index.html" class="navbar-brand">ODF Toolkit</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right"></ul>
-        </div>
+    <div id="banner">
+      <div id="bannerright">
+        <a href="https://www.documentfoundation.org/" alt="The Document Foundation"><img src="../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png" id="tdf-logo" class="w350" alt="The Document Foundation"></a>
       </div>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12 col-sm-12">
-          <div style="float:right">
-            <a href="https://www.documentfoundation.org/"><img src="../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png"></a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-xs-12 col-sm-3">
-          <h1>General</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../index.html">About</a></li> 
-            <li class="list-group-item"><a href="../../downloads.html">Downloads</a></li> 
-          </ul> 
-          <h1>Components</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../odfdom/index.html">ODFDOM</a></li> 
-            <li class="list-group-item"><a href="../../simple/index.html">Simple API (deprecated)</a></li> 
-            <li class="list-group-item"><a href="../../conformance/ODFValidator.html">ODF Validator</a></li> 
-            <li class="list-group-item"><a href="../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
-          </ul> 
-          <h1>Community</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../get-involved.html">Get Involved</a></li> 
-            <li class="list-group-item"><a href="../../mailing-lists.html">Mailing Lists</a></li> 
-            <li class="list-group-item"><a href="../../people.html">People</a></li> 
-            <li class="list-group-item"><a href="../../developer-faqs.html">FAQs</a></li> 
-          </ul> 
-          <h1>Development</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../source.html">Source Code</a></li> 
-            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
-            <li class="list-group-item"><a href="../../javadoc.html">JavaDoc</a></li> 
-            <li class="list-group-item"><a href="../../website-development.html">Website Development</a></li> 
-            <li class="list-group-item"><a href="../../release-guide.html">Release Guide</a></li> 
-          </ul> 
-          <h1>TDF</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
-          </ul> 
-        </div>
-        <div class="col col-xs-12 col-sm-9">
-          <p><strong><a href="index.html">Demos</a></strong> &gt; <strong>List and Table Conversion</strong></p> 
-          <p><strong>Overview</strong></p> 
-          <p>Starting in version 0.4, we have added methods to support bullet, numbered and image lists to the Simple API. This includes frequently used features for processing lists and list item. This demo is designed to show the power of List API and help you learn how to use it.</p> 
-          <p>This demo shows how to convert between a nested List and Table. As you can see in the following two pictures, on the left we have a simple outline of a corporate hierarchy. There are four departments in this company. Each department has several managers and each manager has several reporting staff. Now we want to change this list to a table, just like the picture on the right shows.</p> 
-          <p><img src="image/demo4_organization_list.png" alt="image1"></p> 
-          <p>However, sometimes we want to convert in the opposite direction, from a table to a list. Take the following two pictures as example. The left one is table of country calling codes, which includes the codes of countries from different continents. Suppose you want to convert this table representation into a nested list. The picture on the right shows the conversion result. The first level list show the continent names and the second level list show the countries and their calling codes.</p> 
-          <p><img src="image/demo4_code_list.png" alt="image2"></p> 
-          <p>You can see similar functionality in office software, such as selective copy and paste. In the next section, I will show how easy to do these kinds of conversions using the Simple API.</p> 
-          <p><strong>Code Introduction</strong></p> 
-          <p>Let's have a look at the main method. It will help us get an overview of this demo. First, the list data text document, "ListTable.odt" and table data spreadsheet document "TableList.ods" are loaded. Secondly, we use the list iteration function to get all of the lists in the text document and invoke the method <code>convertFromListToTable</code> to convert each of them to a table. Finally, we get the data table from "TableList.ods" and invoke the method <code>convertFromTableToList</code> to convert this table to a list. All of the updated documents are saved as new files. You can open them and see the conversion results.</p> 
-          <pre><code>public static void main(String[] args) {
+    </div>
+    <div id="clear"></div>
+    <div id="sidenav">
+      <h1>General</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../index.html">About</a></li> 
+        <li class="list-group-item"><a href="../../downloads.html">Downloads</a></li> 
+      </ul> 
+      <h1>Components</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../odfdom/index.html">ODFDOM</a></li> 
+        <li class="list-group-item"><a href="../../simple/index.html">Simple API (deprecated)</a></li> 
+        <li class="list-group-item"><a href="../../conformance/ODFValidator.html">ODF Validator</a></li> 
+        <li class="list-group-item"><a href="../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+      </ul> 
+      <h1>Community</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../get-involved.html">Get Involved</a></li> 
+        <li class="list-group-item"><a href="../../mailing-lists.html">Mailing Lists</a></li> 
+        <li class="list-group-item"><a href="../../people.html">People</a></li> 
+        <li class="list-group-item"><a href="../../developer-faqs.html">FAQs</a></li> 
+      </ul> 
+      <h1>Development</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../source.html">Source Code</a></li> 
+        <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+        <li class="list-group-item"><a href="../../javadoc.html">JavaDoc</a></li> 
+        <li class="list-group-item"><a href="../../website-development.html">Website Development</a></li> 
+        <li class="list-group-item"><a href="../../release-guide.html">Release Guide</a></li> 
+      </ul> 
+      <h1>TDF</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+      </ul> 
+    </div>
+    <div id="contenta">
+      <p><strong><a href="index.html">Demos</a></strong> &gt; <strong>List and Table Conversion</strong></p> 
+      <p><strong>Overview</strong></p> 
+      <p>Starting in version 0.4, we have added methods to support bullet, numbered and image lists to the Simple API. This includes frequently used features for processing lists and list item. This demo is designed to show the power of List API and help you learn how to use it.</p> 
+      <p>This demo shows how to convert between a nested List and Table. As you can see in the following two pictures, on the left we have a simple outline of a corporate hierarchy. There are four departments in this company. Each department has several managers and each manager has several reporting staff. Now we want to change this list to a table, just like the picture on the right shows.</p> 
+      <p><img src="image/demo4_organization_list.png" alt="image1"></p> 
+      <p>However, sometimes we want to convert in the opposite direction, from a table to a list. Take the following two pictures as example. The left one is table of country calling codes, which includes the codes of countries from different continents. Suppose you want to convert this table representation into a nested list. The picture on the right shows the conversion result. The first level list show the continent names and the second level list show the countries and their calling codes.</p> 
+      <p><img src="image/demo4_code_list.png" alt="image2"></p> 
+      <p>You can see similar functionality in office software, such as selective copy and paste. In the next section, I will show how easy to do these kinds of conversions using the Simple API.</p> 
+      <p><strong>Code Introduction</strong></p> 
+      <p>Let's have a look at the main method. It will help us get an overview of this demo. First, the list data text document, "ListTable.odt" and table data spreadsheet document "TableList.ods" are loaded. Secondly, we use the list iteration function to get all of the lists in the text document and invoke the method <code>convertFromListToTable</code> to convert each of them to a table. Finally, we get the data table from "TableList.ods" and invoke the method <code>convertFromTableToList</code> to convert this table to a list. All of the updated documents are saved as new files. You can open them and see the conversion results.</p> 
+      <pre><code>public static void main(String[] args) {
 	try {
 		TextDocument textDoc = TextDocument.loadDocument("ListTable.odt");
 		SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument.loadDocument("TableList.ods");
@@ -105,10 +85,10 @@
 	}
 }
 </code></pre> 
-          <p>In the following two sections, I will review the implementation of the methods <code>convertFromListToTable</code> and <code>convertFromTableToList</code>.</p> 
-          <p><em><strong>Convert from List to Table</strong></em></p> 
-          <p>This is a recursive method, similar to a depth-first tree traversal. You determine the paste cell address by <code>startColumn</code> and <code>startRow</code>. First, all of the items in the list are retrieved. Second, each list item is converted to table cell. Its text content is extracted and set as the cell's display text. If the item has a sub list, its sub list is also handled the same as the parent list. After all of the items are converted to cells, we invoke <code>CellRange.merge()</code> to merge the blank cells. The generation document appears just like the picture shown earlier.</p> 
-          <pre><code>private static int convertFromListToTable(List list, Table table, int startColumn, int startRow) {
+      <p>In the following two sections, I will review the implementation of the methods <code>convertFromListToTable</code> and <code>convertFromTableToList</code>.</p> 
+      <p><em><strong>Convert from List to Table</strong></em></p> 
+      <p>This is a recursive method, similar to a depth-first tree traversal. You determine the paste cell address by <code>startColumn</code> and <code>startRow</code>. First, all of the items in the list are retrieved. Second, each list item is converted to table cell. Its text content is extracted and set as the cell's display text. If the item has a sub list, its sub list is also handled the same as the parent list. After all of the items are converted to cells, we invoke <code>CellRange.merge()</code> to merge the blank cells. The generation document appears just like the picture shown earlier.</p> 
+      <pre><code>private static int convertFromListToTable(List list, Table table, int startColumn, int startRow) {
 	java.util.List&lt;listitem&gt; items = list.getItems();
 	int newItemCount = startRow;
 	for (ListItem item : items) {
@@ -133,9 +113,9 @@
 	}
 }
 </code></pre> 
-          <p><em><strong>Convert from Table to List</strong></em></p> 
-          <p>This is also a recursive method. You determine the conversion range of the table by <code>startColumn</code>, <code>startRow</code>, <code>endColumn</code> and <code>endRow</code>. First, every cell in the selected range is retrieved by <code>Table.getCellByPosition</code>. Next, a list item is created to store the cell display text. If the <code>rowSpannedNumber &gt; 1</code>, that means this item has a sub list. Parts of the cells in the right columns of this cell become the items of the sub list. They are also determined by recursive calls to <code>convertFromTableToList</code>. If the <code>rowSpannedNumber = 1</code>, there is no need to create a sub list, all of the content in the right cells is just added to this item.</p> 
-          <pre><code>private static void convertFromTableToList(Table table, List list, int startColumn, int startRow, int endColumn, int endRow) {
+      <p><em><strong>Convert from Table to List</strong></em></p> 
+      <p>This is also a recursive method. You determine the conversion range of the table by <code>startColumn</code>, <code>startRow</code>, <code>endColumn</code> and <code>endRow</code>. First, every cell in the selected range is retrieved by <code>Table.getCellByPosition</code>. Next, a list item is created to store the cell display text. If the <code>rowSpannedNumber &gt; 1</code>, that means this item has a sub list. Parts of the cells in the right columns of this cell become the items of the sub list. They are also determined by recursive calls to <code>convertFromTableToList</code>. If the <code>rowSpannedNumber = 1</code>, there is no need to create a sub list, all of the content in the right cells is just added to this item.</p> 
+      <pre><code>private static void convertFromTableToList(Table table, List list, int startColumn, int startRow, int endColumn, int endRow) {
 	while (startRow &lt;= endRow) {
 		Cell cell = table.getCellByPosition(startColumn, startRow);
 		int rowSpannedNumber = cell.getRowSpannedNumber();
@@ -165,18 +145,18 @@
 	}
 }
 </code></pre> 
-          <p><strong>Download</strong></p> 
-          <p>Powered by Simple API version <a href="../downloads.html">0.4</a>. You can download the code of this demo from <a href="table_list_convertion.zip">here</a>.</p> 
-        </div>
-      </div>
+      <p><strong>Download</strong></p> 
+      <p>Powered by Simple API version <a href="../downloads.html">0.4</a>. You can download the code of this demo from <a href="table_list_convertion.zip">here</a>.</p> 
     </div>
-    <footer class="footer">
-      <div class="container">
-        <ul>
-          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
-          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
-        </ul>
-      </div>
-    </footer>
+    <html>
+      <head></head>
+      <body>
+        <div id="footera"> 
+          <div id="copyrighta"> 
+            <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy (Datenschutzerklärung)</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, v2.0</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p> 
+          </div> 
+        </div> 
+      </body>
+    </html>
   </body>
 </html>

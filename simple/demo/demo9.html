@@ -1,83 +1,63 @@
-<html>
+<!DOCTYPE html><html lang="en">
   <head>
     <title>ODF Toolkit</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../../style.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../../custom.css">
+    <link rel="stylesheet" href="../../css/odf.css" type="text/css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button data-target="#bs-navbar-collapse" data-toggle="collapse" aria-controls="navbar" aria-expanded="false" type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-          <a href="../../index.html" class="navbar-brand">ODF Toolkit</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="https://www.documentfoundation.org/">The Document Foundation</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right"></ul>
-        </div>
+    <div id="banner">
+      <div id="bannerright">
+        <a href="https://www.documentfoundation.org/" alt="The Document Foundation"><img src="../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png" id="tdf-logo" class="w350" alt="The Document Foundation"></a>
       </div>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12 col-sm-12">
-          <div style="float:right">
-            <a href="https://www.documentfoundation.org/"><img src="../../images/LibreOffice-Initial-Artwork-Logo-ColorLogoBasic-500px.png"></a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-xs-12 col-sm-3">
-          <h1>General</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../index.html">About</a></li> 
-            <li class="list-group-item"><a href="../../downloads.html">Downloads</a></li> 
-          </ul> 
-          <h1>Components</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../odfdom/index.html">ODFDOM</a></li> 
-            <li class="list-group-item"><a href="../../simple/index.html">Simple API (deprecated)</a></li> 
-            <li class="list-group-item"><a href="../../conformance/ODFValidator.html">ODF Validator</a></li> 
-            <li class="list-group-item"><a href="../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
-          </ul> 
-          <h1>Community</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../get-involved.html">Get Involved</a></li> 
-            <li class="list-group-item"><a href="../../mailing-lists.html">Mailing Lists</a></li> 
-            <li class="list-group-item"><a href="../../people.html">People</a></li> 
-            <li class="list-group-item"><a href="../../developer-faqs.html">FAQs</a></li> 
-          </ul> 
-          <h1>Development</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="../../source.html">Source Code</a></li> 
-            <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
-            <li class="list-group-item"><a href="../../javadoc.html">JavaDoc</a></li> 
-            <li class="list-group-item"><a href="../../website-development.html">Website Development</a></li> 
-            <li class="list-group-item"><a href="../../release-guide.html">Release Guide</a></li> 
-          </ul> 
-          <h1>TDF</h1> 
-          <ul class="list-group"> 
-            <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
-          </ul> 
-        </div>
-        <div class="col col-xs-12 col-sm-9">
-          <p><a href="index.html"><strong>Demos</strong></a> &gt; <b>Create Analysis Report with Charts</b></p> 
-          <p><strong>Overview</strong></p> 
-          <p>Simple ODF provides Chart API since version 0.6. Chart is a visualized way of data show in electronic document. For ODF document, text document, spreadsheet document and presentation document can embed charts to help describe content. This demo shows the power of chart support in Simple ODF.</p> 
-          <p>In this demo, a web traffic analytics report will be generated in presentation document and text document format. The initial data is stored in a spreadsheet document, which includes visitors, traffic sources and page visit information. These data will be used in charts. Each chart chooses a cell range and uses the values of these cells to draw picture. It's easy and convenient.</p> 
-          <p>No need predefined template, all of the document are generated by Simple ODF API. This demo not only tell you how to use Chart API, but also teach you ro use slide layout to improve presentation design.<br><br> This picture shows the generated presentation document.</p> 
-          <p><img src="image/demo9p.png" alt="image"> This picture shows the generated text document.</p> 
-          <p><img src="image/demo9t.png" alt="image"></p> 
-          <p>Besides, we also supply some codes to show how to create chart in a spreadsheet document. The following picture shows the generated document.</p> 
-          <p><img src="image/demo9s.png" alt="image"></p> 
-          <p><strong>Code Introduction</strong></p> 
-          <p>There code of this demo is very clear. First, we create a presentation document and load the data document. Second, we create cover page and set its content. Thirdly, we add charts to each slide. If you want to add chart to a slide, you must chose a layout which can hold chart. In Simple ODF 0.6, these layouts are "TITLE_PLUS_CHART", "TITLE_PLUS_2_CHART", "TITLE_LEFT_CHART_RIGHT_OUTLINE", "TITLE_PLUS_3_OBJECT", "TITLE_PLUS_4_OBJECT". Different layout can own different count of charts. Please be sure you know that, otherwise chart insert would be failed. For slide, you needn't set the chart size or position, Simple ODF will do it automatically. Finally, the data document is closed and the new created document is saved.</p> 
-          <pre><code>private static void generatePresentationChart() {
+    </div>
+    <div id="clear"></div>
+    <div id="sidenav">
+      <h1>General</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../index.html">About</a></li> 
+        <li class="list-group-item"><a href="../../downloads.html">Downloads</a></li> 
+      </ul> 
+      <h1>Components</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../odfdom/index.html">ODFDOM</a></li> 
+        <li class="list-group-item"><a href="../../simple/index.html">Simple API (deprecated)</a></li> 
+        <li class="list-group-item"><a href="../../conformance/ODFValidator.html">ODF Validator</a></li> 
+        <li class="list-group-item"><a href="../../xsltrunner/ODFXSLTRunner.html">XSLT Runner</a></li> 
+      </ul> 
+      <h1>Community</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../get-involved.html">Get Involved</a></li> 
+        <li class="list-group-item"><a href="../../mailing-lists.html">Mailing Lists</a></li> 
+        <li class="list-group-item"><a href="../../people.html">People</a></li> 
+        <li class="list-group-item"><a href="../../developer-faqs.html">FAQs</a></li> 
+      </ul> 
+      <h1>Development</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="../../source.html">Source Code</a></li> 
+        <li class="list-group-item"><a href="https://github.com/tdf/odftoolkit/issues">Bug Tracker</a></li> 
+        <li class="list-group-item"><a href="../../javadoc.html">JavaDoc</a></li> 
+        <li class="list-group-item"><a href="../../website-development.html">Website Development</a></li> 
+        <li class="list-group-item"><a href="../../release-guide.html">Release Guide</a></li> 
+      </ul> 
+      <h1>TDF</h1> 
+      <ul class="list-group"> 
+        <li class="list-group-item"><a href="https://www.documentfoundation.org/">The Document Foundation</a></li> 
+      </ul> 
+    </div>
+    <div id="contenta">
+      <p><a href="index.html"><strong>Demos</strong></a> &gt; <b>Create Analysis Report with Charts</b></p> 
+      <p><strong>Overview</strong></p> 
+      <p>Simple ODF provides Chart API since version 0.6. Chart is a visualized way of data show in electronic document. For ODF document, text document, spreadsheet document and presentation document can embed charts to help describe content. This demo shows the power of chart support in Simple ODF.</p> 
+      <p>In this demo, a web traffic analytics report will be generated in presentation document and text document format. The initial data is stored in a spreadsheet document, which includes visitors, traffic sources and page visit information. These data will be used in charts. Each chart chooses a cell range and uses the values of these cells to draw picture. It's easy and convenient.</p> 
+      <p>No need predefined template, all of the document are generated by Simple ODF API. This demo not only tell you how to use Chart API, but also teach you ro use slide layout to improve presentation design.<br><br> This picture shows the generated presentation document.</p> 
+      <p><img src="image/demo9p.png" alt="image"> This picture shows the generated text document.</p> 
+      <p><img src="image/demo9t.png" alt="image"></p> 
+      <p>Besides, we also supply some codes to show how to create chart in a spreadsheet document. The following picture shows the generated document.</p> 
+      <p><img src="image/demo9s.png" alt="image"></p> 
+      <p><strong>Code Introduction</strong></p> 
+      <p>There code of this demo is very clear. First, we create a presentation document and load the data document. Second, we create cover page and set its content. Thirdly, we add charts to each slide. If you want to add chart to a slide, you must chose a layout which can hold chart. In Simple ODF 0.6, these layouts are "TITLE_PLUS_CHART", "TITLE_PLUS_2_CHART", "TITLE_LEFT_CHART_RIGHT_OUTLINE", "TITLE_PLUS_3_OBJECT", "TITLE_PLUS_4_OBJECT". Different layout can own different count of charts. Please be sure you know that, otherwise chart insert would be failed. For slide, you needn't set the chart size or position, Simple ODF will do it automatically. Finally, the data document is closed and the new created document is saved.</p> 
+      <pre><code>private static void generatePresentationChart() {
 	try {
 		PresentationDocument presentationDoc = PresentationDocument.newPresentationDocument();
 		SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument.loadDocument("demo9_data.ods");
@@ -137,8 +117,8 @@
 	}
 }
 </code></pre> 
-          <p>The following codes show how to generate the text document format report. Different from presentation, you need to set chart size before add it to the document.</p> 
-          <pre><code>private static void generateTextDocument() {
+      <p>The following codes show how to generate the text document format report. Different from presentation, you need to set chart size before add it to the document.</p> 
+      <pre><code>private static void generateTextDocument() {
 	try {
 		TextDocument textDoc = TextDocument.newTextDocument();
 		SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument.loadDocument("demo9_data.ods");
@@ -188,8 +168,8 @@
 	}
 }
 </code></pre> 
-          <p>Lastly, let's have a look at how to add chart to spreadsheet document. It's similar with text and presentation documents. On the other hand, it also has a special feature. You can specify a cell as the position where the chart should be located.</p> 
-          <pre><code>private static void generateSpreadsheetDocument() {
+      <p>Lastly, let's have a look at how to add chart to spreadsheet document. It's similar with text and presentation documents. On the other hand, it also has a special feature. You can specify a cell as the position where the chart should be located.</p> 
+      <pre><code>private static void generateSpreadsheetDocument() {
 	try {
 		SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument.loadDocument("demo9_data.ods");
 		// create visitors overview page 1
@@ -206,18 +186,18 @@
 	}
 }
 </code></pre> 
-          <p><strong>Download</strong></p> 
-          <p>Powered by the Simple Java API for ODF version <a href="../downloads.html">0.6</a>. You can download the code of this demo from <a href="demo9.zip">here</a>.</p> 
-        </div>
-      </div>
+      <p><strong>Download</strong></p> 
+      <p>Powered by the Simple Java API for ODF version <a href="../downloads.html">0.6</a>. You can download the code of this demo from <a href="demo9.zip">here</a>.</p> 
     </div>
-    <footer class="footer">
-      <div class="container">
-        <ul>
-          <li><a href="https://www.libreoffice.org/imprint">Impressum</a></li>
-          <li><a href="https://www.libreoffice.org/privacy">Privacy policy</a></li>
-        </ul>
-      </div>
-    </footer>
+    <html>
+      <head></head>
+      <body>
+        <div id="footera"> 
+          <div id="copyrighta"> 
+            <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy (Datenschutzerklärung)</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, v2.0</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p> 
+          </div> 
+        </div> 
+      </body>
+    </html>
   </body>
 </html>
