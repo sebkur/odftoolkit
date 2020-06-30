@@ -62,20 +62,13 @@
       <p><strong>NOTE:</strong> Some of us are using on their computer a VirtualBox with Linux (e.g. Ubuntu) just for this environment.</p> 
       <h3>Install Python 2 dependencies</h3> 
       <h4>Check your version of Python</h4> 
-      <pre><code>python --version
-</code></pre> 
+      <p><em>python --version</em></p> 
       <p>Source code generation has been tested successfully with Python 2.7.16</p> 
       <h4>Install dependencies</h4> 
       <p>NOTE: The Apache CMS <a href="http://www.apache.org/dev/cmsref.html#local-build">5</a> bundled within the site directory depends on old libraries.</p> 
-      <pre><code>sudo apt-get install -y python2.7-elementtree
-sudo apt install python-pip
-python -m pip install "Markdown==2.6.11"
-python -m pip install "Pygments==2.2.0"
-</code></pre> 
+      <p><em>sudo apt-get install -y python2.7-elementtree</em> <em>sudo apt install python-pip</em> <em>python -m pip install "Markdown==2.6.11"</em> <em>python -m pip install "Pygments==2.2.0"</em></p> 
       <h3>Download the repo</h3> 
-      <pre><code>git clone https://github.com/tdf/odftoolkit
-cd odftoolkit/src/site
-</code></pre> 
+      <p><em>git clone https://github.com/tdf/odftoolkit</em> <em>cd odftoolkit/src/site</em></p> 
       <h2>Directory Layout</h2> 
       <h3>Content directory</h3> 
       <p>The <code>src/site/site/content/odftoolkit</code> directory contains web content - markdown, html, javascript, css, images and other files. Files that do not fit recognized patterns from <code>site/lib/path.pm</code> are copied as is to the web site during the build.</p> 
@@ -102,7 +95,7 @@ cd odftoolkit/src/site
       <h3>Edit the site</h3> 
       <p>Using your favorite editors edit the site content, templates.</p> 
       <h3>Build the site</h3> 
-      <p>Run the <code>build-site.sh</code> script to build the markdown to HTML and copy all resources into the odftoolkit/docs directory. Afterthe changes have been merged to the master branch, all changes will become visible at <a href="https://tdf.github.io/odftoolkit/docs/">https://tdf.github.io/odftoolkit/docs/</a></p> 
+      <p>Run the <code>build-site.sh</code> script to build the markdown to HTML and copy all resources into the odftoolkit/docs directory. After the changes have been merged into the master branch, all changes will become visible at &lt;./docs/&gt; as our GitHub project has enabled this feature. <strong>NOTE:</strong> Before commiting, you should test if all content of the HTML pages have been created - by clicking on every link on the local page. Often ODFDOM or Validator page were empty.</p> 
       <h2>Building JavaDoc and publishing the JavaDoc</h2> 
       <p>JavaDoc is generated as part of the <code>mvn clean install</code> command called from the root of the project. Run the <code>copy-javadoc.sh</code> script to build copy the created API directories into the odftoolkit/docs/api directory and remove any prior files within.</p> 
       <h2>Submitting your results</h2> 

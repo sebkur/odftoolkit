@@ -46,16 +46,16 @@
       </ul> 
     </div>
     <div id="contenta">
-      <p>Title: ODFDOM Release Notes</p> 
+      <h1>Release Notes</h1> 
       <h2>Release 1.0.0</h2> 
-      <p>The <a href="https://repo1.maven.org/maven2/org/odftoolkit/odfdom-java/1.0.0-BETA1/">first beta release of ODFDOM 1.0.0</a> is released on Oct 6th, 2019. Major enhancements are coming with this version:</p> 
+      <p>The <a href="https://repo1.maven.org/maven2/org/odftoolkit/odfdom-java/1.0.0/">ODFDOM 1.0.0</a> was released on Jun 30th, 2020. Major updates are coming with this version:</p> 
       <ul> 
         <li>JDK 9 (or higher) is required to build</li> 
-        <li><strong>Collaboration API</strong>: Any OpenDocumen Text can now be transformed into an equal sequence of user changes (<a href="https://tdf.github.io/odftoolkit/docs/docs/presentations/character-styles.odt">ODT</a>/<a href="https://tdf.github.io/odftoolkit/docs/docs/presentations/character-styles.json">JSON</a>). This list of user changes is like a batch of text operations, similar as if the user would created the document from top to the bottom. In addition, new user changes can be merged into the document via JSON.</li> 
-        <li>Many fixes &amp; enhancements</li> 
+        <li><strong>Collaboration API</strong>: No developer would ever sent a zipped repository for exchangin work with other developers. Still we are doing this by zipping document and sending those. To be able to dispatch only changes among collaborators new functionalty had bee added: Any OpenDocumen Text can now be transformed into an equal sequence of user changes (<a href="../docs/presentations/character-styles.odt">ODT</a>/<a href="../docs/presentations/character-styles.json">JSON</a>). This list of user changes is like a batch of text operations, similar as if the user would created the document from top to the bottom. Formost, new user changes can be merged into the existing document via JSON. For more details see the <a href="./operations/operations.html">list of supported changes/operations</a></li> 
+        <li>Many Fixes &amp; enhancements, which were done over several years by merging (more an overwriting) with the former Open-XChange ODFDOM fork.</li> 
       </ul> 
       <h2>Release 0.9.0</h2> 
-      <p>The <a href="https://mvnrepository.com/artifact/org.odftoolkit/odfdom-java/0.9.0-RC1">first release candidate of ODFDOM 0.9.0</a> is released on Oct 5th, 2019:</p> 
+      <p>The <a href="https://mvnrepository.com/artifact/org.odftoolkit/odfdom-java/0.9.0">release of ODFDOM 0.9.0</a> is released on Jun 30th, 2020:</p> 
       <ul> 
         <li>JDK 8 is required to build</li> 
         <li>First release of the ODF Toolkit at The Document Foundation (TDF)</li> 
@@ -74,10 +74,10 @@
         <li>A new function to extract text from documents, DOMs and elements has been provided.</li> 
         <li>Several bugs related with table and presentation had been fixed.</li> 
       </ul> 
-      <p><strong>Resolved Issues</strong></p> 
+      <h3>Resolved Issues: 0.8.7</h3> 
       <ul> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=5">Bug 5</a> - Enabling public Maven repository</li> 
-        <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=35">Bug 35</a>- JavaDoc enhancments</li> 
+        <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=35">Bug 35</a> - JavaDoc enhancments</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=66">Bug 66</a> - Enabling the ODF validation for ODFDOM</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=69">Bug 69</a> - Redesign: Break up DOM/DOC inheritance, removing empty DOC classes, moving DOC functionality to incubator package</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=91">Bug 91</a> - Enabling new source code generation for ODF 1.2 typed DOM using MultiSchemaValidator as RelaxNG parser &amp; Apache Velocity as template engine</li> 
@@ -104,598 +104,532 @@
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=236">Bug 236</a> - Column without width, should not have empty width attributes when split up</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=257">Bug 257</a> - Test utility does not handle spaces in directory names</li> 
       </ul> 
-      <p><strong>API changes since 0.8.6 Release</strong> <em><strong>1.Package/Class Change List</strong></em> Note: The first column 'Java class' package is relative to 'org.odftoolkit'.</p> 
-      <table> 
-        <tbody>
-          <tr> 
-            <td>Previous Package</td>
-            <td>Previous Class</td>
-            <td>New Package</td>
-            <td>New Class</td> 
+      <h3>API changes since 0.8.6 Release</h3> 
+      <p><em><strong>1.Package/Class Change List</strong></em> Note: The first column 'Java class' package is relative to 'org.odftoolkit'.</p> 
+      <table class="table"> 
+        <thead> 
+          <tr>
+            <th>Previous Package</th>
+            <th>Previous Class</th>
+            <th>New Package</th>
+            <th>New Class</th>
           </tr> 
-          <tr> 
+        </thead> 
+        <tbody> 
+          <tr>
             <td>odfdom.doc.draw</td>
             <td>OdfDrawFrame</td>
             <td>odfdom.incubator.doc.draw</td>
-            <td>OdfDrawFrame</td> 
+            <td>OdfDrawFrame</td>
           </tr> 
-          <tr> 
+          <tr>
             <td>odfdom.doc.number</td>
             <td>OdfNumberCurrencyStyle</td>
             <td>odfdom.incubator.doc.number</td>
-            <td>OdfNumberCurrencyStyle</td> 
+            <td>OdfNumberCurrencyStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfNumberDateStyle</td>
             <td></td>
-            <td>OdfNumberDateStyle</td> 
+            <td>OdfNumberDateStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfNumberPercentageStyle</td>
             <td></td>
-            <td>OdfNumberPercentageStyle</td> 
+            <td>OdfNumberPercentageStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfNumberStyle</td>
             <td></td>
-            <td>OdfNumberStyle</td> 
+            <td>OdfNumberStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfNumberTimeStyle</td>
             <td></td>
-            <td>OdfNumberTimeStyle</td> 
+            <td>OdfNumberTimeStyle</td>
           </tr> 
-          <tr> 
+          <tr>
             <td>odfdom.doc.office</td>
             <td>OdfOfficeAutomaticStyles</td>
             <td>odfdom.incubator.doc.office</td>
-            <td>OdfOfficeAutomaticStyles</td> 
+            <td>OdfOfficeAutomaticStyles</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfOfficeMasterStyles</td>
             <td></td>
-            <td>OdfOfficeMasterStyles</td> 
+            <td>OdfOfficeMasterStyles</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfOfficeStyles</td>
             <td></td>
-            <td>OdfOfficeStyles</td> 
+            <td>OdfOfficeStyles</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfStylesBase</td>
             <td></td>
-            <td>OdfStylesBase</td> 
+            <td>OdfStylesBase</td>
           </tr> 
-          <tr> 
+          <tr>
             <td>odfdom.doc.style</td>
             <td>OdfDefaultStyle</td>
             <td>odfdom.incubator.doc.style</td>
-            <td>OdfDefaultStyle</td> 
+            <td>OdfDefaultStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfStyle</td>
             <td></td>
-            <td>OdfStyle</td> 
+            <td>OdfStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfStylePageLayout</td>
             <td></td>
-            <td>OdfStylePageLayout</td> 
+            <td>OdfStylePageLayout</td>
           </tr> 
-          <tr> 
+          <tr>
             <td>odfdom.doc.text</td>
             <td>OdfTextHeading</td>
             <td>odfdom.incubator.doc.text</td>
-            <td>OdfTextHeading</td> 
+            <td>OdfTextHeading</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextList</td>
             <td></td>
-            <td>OdfTextList</td> 
+            <td>OdfTextList</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextListLevelStyleBullet</td>
             <td></td>
-            <td>OdfTextListLevelStyleBullet</td> 
+            <td>OdfTextListLevelStyleBullet</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextListLevelStyleImage</td>
             <td></td>
-            <td>OdfTextListLevelStyleImage</td> 
+            <td>OdfTextListLevelStyleImage</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextListLevelStyleNumber</td>
             <td></td>
-            <td>OdfTextListLevelStyleNumber</td> 
+            <td>OdfTextListLevelStyleNumber</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextListStyle</td>
             <td></td>
-            <td>OdfTextListStyle</td> 
+            <td>OdfTextListStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextOutlineLevelStyle</td>
             <td></td>
-            <td>OdfTextOutlineLevelStyle</td> 
+            <td>OdfTextOutlineLevelStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextOutlineStyle</td>
             <td></td>
-            <td>OdfTextOutlineStyle</td> 
+            <td>OdfTextOutlineStyle</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextParagraph</td>
             <td></td>
-            <td>OdfTextParagraph</td> 
+            <td>OdfTextParagraph</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfTextSpan</td>
             <td></td>
-            <td>OdfTextSpan</td> 
+            <td>OdfTextSpan</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfWhitespaceProcessor</td>
             <td></td>
-            <td>OdfWhitespaceProcessor</td> 
+            <td>OdfWhitespaceProcessor</td>
           </tr> 
-          <tr> 
+          <tr>
             <td>odfdom.doc.draw</td>
             <td>OdfDrawPage</td>
             <td>odfdom.doc.presentation</td>
-            <td>OdfSlide</td> 
+            <td>OdfSlide</td>
           </tr> 
-          <tr> 
+          <tr>
             <td>odfdom.pkg</td>
             <td>OdfPackageStream</td>
             <td>odfdom.pkg</td>
-            <td>OdfPackageDocument</td> 
+            <td>OdfPackageDocument</td>
           </tr> 
-          <tr> 
+          <tr>
             <td>odfdom</td>
             <td>NamespaceName</td>
             <td>odfdom.pkg</td>
-            <td>NamespaceName</td> 
+            <td>NamespaceName</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfAlienAttribute</td>
             <td></td>
-            <td>OdfAlienAttribute</td> 
+            <td>OdfAlienAttribute</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfAlienElement</td>
             <td></td>
-            <td>OdfAlienElement</td> 
+            <td>OdfAlienElement</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfAttribute</td>
             <td></td>
-            <td>OdfAttribute</td> 
+            <td>OdfAttribute</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfContainerElementBase</td>
             <td></td>
-            <td>OdfContainerElementBase</td> 
+            <td>OdfContainerElementBase</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfElement</td>
             <td></td>
-            <td>OdfElement</td> 
+            <td>OdfElement</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfFileDom</td>
             <td></td>
-            <td>OdfFileDom</td> 
+            <td>OdfFileDom</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfName</td>
             <td></td>
-            <td>OdfName</td> 
+            <td>OdfName</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfNamespace</td>
             <td></td>
-            <td>OdfNamespace</td> 
+            <td>OdfNamespace</td>
           </tr> 
-          <tr> 
-            <td></td>
+          <tr>
             <td>OdfXMLFactory</td>
             <td></td>
-            <td>OdfXMLFactory</td> 
+            <td>OdfXMLFactory</td>
           </tr> 
-        </tbody>
+        </tbody> 
       </table> 
       <p><em><strong>2.Method Change List</strong></em> Note: The first column 'Java class' package is relative to 'org.odftoolkit.odfdom'.</p> 
-      <table> 
-        <tbody>
+      <table class="table"> 
+        <thead> 
           <tr>
-            <td>Previous Java Class </td>
-            <td>Previous API </td>
-            <td>New Java Class </td>
-            <td>New API</td> 
-          </tr>
-          <tr> 
-            <td>doc.OdfChartDocument </td>
-            <td>OdfOfficeChart getContentRoot() </td>
-            <td>doc.OdfChartDocument </td>
-            <td>OfficeChartElement getContentRoot()</td> 
-          </tr>
-          <tr> 
-            <td>doc.OdfGraphicsDocument </td>
-            <td>OdfOfficeDrawing getContentRoot() </td>
-            <td>doc.OdfGraphicsDocument </td>
-            <td>OfficeDrawingElement getContentRoot()</td> 
-          </tr>
-          <tr> 
-            <td>doc.OdfImageDocument </td>
-            <td>OdfOfficeImage getContentRoot() </td>
-            <td>doc.OdfImageDocument </td>
-            <td>OfficeImageElement getContentRoot()</td> 
-          </tr>
-          <tr> 
-            <td>doc.OdfSpreadsheetDocument </td>
-            <td>OdfOfficeSpreadsheet getContentRoot() </td>
-            <td>doc.OdfSpreadsheetDocument </td>
-            <td>OfficeSpreadsheetElement getContentRoot()</td> 
-          </tr>
-          <tr> 
-            <td>doc.OdfTextDocument </td>
-            <td>OdfOfficeText getContentRoot() </td>
-            <td>doc.OdfTextDocument </td>
-            <td>OfficeTextElement getContentRoot()</td> 
-          </tr>
-          <tr> 
-            <td>doc.OdfPresentationDocument </td>
-            <td>void deleteSlideByIndex(int) </td>
-            <td>doc.OdfPresentationDocument </td>
-            <td>boolean deleteSlideByIndex(int)</td> 
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void deleteSlideByName(String) </td>
-            <td> </td>
-            <td>boolean deleteSlideByName(String)</td> 
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfDrawPage getSlideByIndex(int) </td>
-            <td> </td>
-            <td>OdfSlide getSlideByIndex(int) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfDrawPage getSlideByName(String) </td>
-            <td> </td>
-            <td>OdfSlide getSlideByName(String)</td> 
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfDrawPage copySlide(int,int,String) </td>
-            <td> </td>
-            <td>OdfSlide copySlide(int,int,String)</td> 
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfDrawPage copyForeignSlide(int,OdfPresentationDocument,int) </td>
-            <td> </td>
-            <td>OdfSlide copyForeignSlide(int,OdfPresentationDocument,int)</td> 
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfDrawPage newSlide(int,String,OdfDrawPage.SlideLayout) </td>
-            <td> </td>
-            <td>OdfSlide newSlide(int,String,OdfSlide.SlideLayout)</td> 
-          </tr>
-          <tr> 
-            <td>doc.OdfDocument </td>
-            <td>OdfDocument loadTemplate(OdfDocument.Resource) </td>
-            <td>doc.OdfDocument </td>
-            <td>OdfDocument loadTemplate(OdfPackageDocument.Resource,OdfDocument.OdfMediaType)</td> 
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfDocument getEmbeddedDocument(String) </td>
-            <td> </td>
-            <td>OdfDocument loadSubDocument(String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>List getEmbeddedDocuments() </td>
-            <td> </td>
-            <td>Map loadSubDocuments() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>List getEmbeddedDocuments(OdfDocument.OdfMediaType) </td>
-            <td> </td>
-            <td>Map loadSubDocuments(OdfDocument.OdfMediaType) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getMediaType() </td>
-            <td> </td>
-            <td>OdfDocument.OdfMediaType getOdfMediaType() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void setMediaType(OdfDocument.OdfMediaType) </td>
-            <td> </td>
-            <td>void setOdfMediaType(OdfDocument.OdfMediaType) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>InputStream getContentStream() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>InputStream getContentStream() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>InputStream getContentStream() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>InputStream getContentStream() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>InputStream getStylesStream() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>InputStream getStylesStream() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>InputStream getSettingsStream() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>InputStream getSettingsStream() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>InputStream getMetaStream() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>InputStream getMetaStream() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfContentDom getContentDom() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>OdfContentDom getContentDom() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfStylesDom getStylesDom() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>OdfStylesDom getStylesDom() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfMetaDom getMetaDom() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>OdfMetaDom getMetaDom() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfSettingsDom getSettingsDom() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>OdfSettingsDom getSettingsDom() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfOfficeStyles getDocumentStyles() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>OdfOfficeStyles getDocumentStyles() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfOfficeStyles getOrCreateDocumentStyles() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>OdfOfficeStyles getOrCreateDocumentStyles() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfOfficeMasterStyles getOfficeMasterStyles() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>OdfOfficeMasterStyles getOfficeMasterStyles() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getBaseURI() </td>
-            <td>dom.OdfSchemaDocument </td>
-            <td>String getBaseURI() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void embedDocument(String,OdfDocument) </td>
-            <td>pkg.OdfPackageDocument </td>
-            <td>void insertDocument(OdfPackageDocument,String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void RemoveEmbedDocument(String) </td>
-            <td>pkg.OdfPackageDocument </td>
-            <td>void removeDocument(String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfPackage getPackage() </td>
-            <td>pkg.OdfPackageDocument </td>
-            <td>OdfPackage getPackage() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void setPackage(OdfPackage) </td>
-            <td>pkg.OdfPackageDocument </td>
-            <td>void setPackage(OdfPackage) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getDocumentPackagePath() </td>
-            <td>pkg.OdfPackageDocument </td>
-            <td>String getDocumentPackagePath() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>EntityResolver getEntityResolver() </td>
-            <td>pkg.OdfPackageDocument </td>
-            <td>EntityResolver getEntityResolver() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>URIResolver getURIResolver() </td>
-            <td>pkg.OdfPackageDocument </td>
-            <td>URIResolver getURIResolver() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>XPath getXPath() </td>
-            <td>pkg.OdfFileDom </td>
-            <td>XPath getXPath() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfDocument getRootDocument() </td>
-            <td>pkg.OdfPackage </td>
-            <td>OdfPackageDocument getRootDocument() </td>
-          </tr>
-          <tr> 
-            <td>pkg.manifest.OdfFileEntry </td>
-            <td>String getMediaType() </td>
-            <td>pkg.manifest.OdfFileEntry </td>
-            <td>String getMediaTypeString() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void setMediaType(String) </td>
-            <td> </td>
-            <td>void setMediaTypeString(String) </td>
-          </tr>
-          <tr> 
-            <td>pkg.OdfPackage </td>
-            <td>HashMap getManifestEntries() </td>
-            <td>pkg.OdfPackage </td>
-            <td>Map getManifestEntries() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>getFileEntries() </td>
-            <td> </td>
-            <td>getFilePaths() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getMediaType() </td>
-            <td> </td>
-            <td>String getMediaTypeString() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>insertPackageDocument(OdfPackageDocument,String) </td>
-            <td> </td>
-            <td>insertDocument(OdfPackageDocument, String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void removePackageDocument(String) </td>
-            <td> </td>
-            <td>void removeDocument(String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>void flushDecendentDoms(OdfPackageDocument) </td>
-            <td> </td>
-            <td>void flushDoms(OdfPackageDocument) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>OdfPackageDocument loadPackageDocument(String) </td>
-            <td> </td>
-            <td>OdfPackageDocument loadDocument(String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>Set getInnerDocumentPaths(String) </td>
-            <td> </td>
-            <td>Set getDocumentPaths() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>Set getInnerDocumentPaths(String,String) </td>
-            <td> </td>
-            <td>Set getDocumentPaths(String,String) </td>
-          </tr>
-          <tr> 
-            <td>incubator.meta.OdfOfficeMeta </td>
-            <td>void setDcdate(Calendar) </td>
-            <td>incubator.meta.OdfOfficeMeta </td>
-            <td>void setDate(Calendar) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>Calendar getDcdate() </td>
-            <td> </td>
-            <td>Calendar getDate() </td>
+            <th>Previous Java Class</th>
+            <th>Previous API</th>
+            <th>New Java Class</th>
+            <th>New API</th>
           </tr> 
-        </tbody>
+        </thead> 
+        <tbody> 
+          <tr>
+            <td>doc.OdfChartDocument</td>
+            <td>OdfOfficeChart getContentRoot()</td>
+            <td>doc.OdfChartDocument</td>
+            <td>OfficeChartElement getContentRoo()</td>
+          </tr> 
+          <tr>
+            <td>doc.OdfGraphicsDocument</td>
+            <td>OdfOfficeDrawing getContentRoot()</td>
+            <td>doc.OdfGraphicsDocument</td>
+            <td>OfficeDrawingElement getContentRoot()</td>
+          </tr> 
+          <tr>
+            <td>doc.OdfImageDocument</td>
+            <td>OdfOfficeImage getContentRoot()</td>
+            <td>doc.OdfImageDocument</td>
+            <td>OfficeImageElement getContentRoot()</td>
+          </tr> 
+          <tr>
+            <td>doc.OdfSpreadsheetDocument</td>
+            <td>OdfOfficeSpreadsheet getContentRoot()</td>
+            <td>doc.OdfSpreadsheetDocument</td>
+            <td>OfficeSpreadsheetElement getContentRoot()</td>
+          </tr> 
+          <tr>
+            <td>doc.OdfTextDocument</td>
+            <td>OdfOfficeText getContentRoot()</td>
+            <td>doc.OdfTextDocument</td>
+            <td>OfficeTextElement getContentRoot()</td>
+          </tr> 
+          <tr>
+            <td>doc.OdfPresentationDocument</td>
+            <td>void deleteSlideByIndex(int)</td>
+            <td>doc.OdfPresentationDocument</td>
+            <td>boolean deleteSlideByIndex(int)</td>
+          </tr> 
+          <tr>
+            <td>void deleteSlideByName(String)</td>
+            <td></td>
+            <td>boolean deleteSlideByName(String)</td>
+          </tr> 
+          <tr>
+            <td>OdfDrawPage getSlideByIndex(int)</td>
+            <td></td>
+            <td>OdfSlide getSlideByIndex(int)</td>
+          </tr> 
+          <tr>
+            <td>OdfDrawPage getSlideByName(String)</td>
+            <td></td>
+            <td>OdfSlide getSlideByName(String)</td>
+          </tr> 
+          <tr>
+            <td>OdfDrawPage copySlide(int,int,String)</td>
+            <td></td>
+            <td>OdfSlide copySlide(int,int,String)</td>
+          </tr> 
+          <tr>
+            <td>OdfDrawPage copyForeignSlide(int,OdfPresentationDocument,int)</td>
+            <td></td>
+            <td>OdfSlide copyForeignSlide(int,OdfPresentationDocument,int)</td>
+          </tr> 
+          <tr>
+            <td>OdfDrawPage newSlide(int,String,OdfDrawPage.SlideLayout)</td>
+            <td></td>
+            <td>OdfSlide newSlide(int,String,OdfSlide.SlideLayout)</td>
+          </tr> 
+          <tr>
+            <td>doc.OdfDocument</td>
+            <td>OdfDocument loadTemplate(OdfDocument.Resource)</td>
+            <td>doc.OdfDocument</td>
+            <td>OdfDocument loadTemplate(OdfPackageDocument.Resource,OdfDocument.OdfMediaType)</td>
+          </tr> 
+          <tr>
+            <td>OdfDocument getEmbeddedDocument(String)</td>
+            <td></td>
+            <td>OdfDocument loadSubDocument(String)</td>
+          </tr> 
+          <tr>
+            <td>List getEmbeddedDocuments()</td>
+            <td></td>
+            <td>Map loadSubDocuments()</td>
+          </tr> 
+          <tr>
+            <td>List getEmbeddedDocuments(OdfDocument.OdfMediaType)</td>
+            <td></td>
+            <td>Map loadSubDocuments(OdfDocument.OdfMediaType)</td>
+          </tr> 
+          <tr>
+            <td>String getMediaType()</td>
+            <td></td>
+            <td>OdfDocument.OdfMediaType getOdfMediaType()</td>
+          </tr> 
+          <tr>
+            <td>void setMediaType(OdfDocument.OdfMediaType)</td>
+            <td></td>
+            <td>void setOdfMediaType(OdfDocument.OdfMediaType)</td>
+          </tr> 
+          <tr>
+            <td>InputStream getContentStream()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>InputStream getContentStream()</td>
+          </tr> 
+          <tr>
+            <td>InputStream getContentStream()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>InputStream getContentStream()</td>
+          </tr> 
+          <tr>
+            <td>InputStream getStylesStream()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>InputStream getStylesStream()</td>
+          </tr> 
+          <tr>
+            <td>InputStream getSettingsStream()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>InputStream getSettingsStream()</td>
+          </tr> 
+          <tr>
+            <td>InputStream getMetaStream()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>InputStream getMetaStream()</td>
+          </tr> 
+          <tr>
+            <td>OdfContentDom getContentDom()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>OdfContentDom getContentDom()</td>
+          </tr> 
+          <tr>
+            <td>OdfStylesDom getStylesDom()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>OdfStylesDom getStylesDom()</td>
+          </tr> 
+          <tr>
+            <td>OdfMetaDom getMetaDom()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>OdfMetaDom getMetaDom()</td>
+          </tr> 
+          <tr>
+            <td>OdfSettingsDom getSettingsDom()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>OdfSettingsDom getSettingsDom()</td>
+          </tr> 
+          <tr>
+            <td>OdfOfficeStyles getDocumentStyles()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>OdfOfficeStyles getDocumentStyles()</td>
+          </tr> 
+          <tr>
+            <td>OdfOfficeStyles getOrCreateDocumentStyles()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>OdfOfficeStyles getOrCreateDocumentStyles()</td>
+          </tr> 
+          <tr>
+            <td>OdfOfficeMasterStyles getOfficeMasterStyles()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>OdfOfficeMasterStyles getOfficeMasterStyles()</td>
+          </tr> 
+          <tr>
+            <td>String getBaseURI()</td>
+            <td>dom.OdfSchemaDocument</td>
+            <td>String getBaseURI()</td>
+          </tr> 
+          <tr>
+            <td>void embedDocument(String,OdfDocument)</td>
+            <td>pkg.OdfPackageDocument</td>
+            <td>void insertDocument(OdfPackageDocument,String)</td>
+          </tr> 
+          <tr>
+            <td>void RemoveEmbedDocument(String)</td>
+            <td>pkg.OdfPackageDocument</td>
+            <td>void removeDocument(String)</td>
+          </tr> 
+          <tr>
+            <td>OdfPackage getPackage()</td>
+            <td>pkg.OdfPackageDocument</td>
+            <td>OdfPackage getPackage()</td>
+          </tr> 
+          <tr>
+            <td>void setPackage(OdfPackage)</td>
+            <td>pkg.OdfPackageDocument</td>
+            <td>void setPackage(OdfPackage)</td>
+          </tr> 
+          <tr>
+            <td>String getDocumentPackagePath()</td>
+            <td>pkg.OdfPackageDocument</td>
+            <td>String getDocumentPackagePath()</td>
+          </tr> 
+          <tr>
+            <td>EntityResolver getEntityResolver()</td>
+            <td>pkg.OdfPackageDocument</td>
+            <td>EntityResolver getEntityResolver()</td>
+          </tr> 
+          <tr>
+            <td>URIResolver getURIResolver()</td>
+            <td>pkg.OdfPackageDocument</td>
+            <td>URIResolver getURIResolver()</td>
+          </tr> 
+          <tr>
+            <td>XPath getXPath()</td>
+            <td>pkg.OdfFileDom</td>
+            <td>XPath getXPath()</td>
+          </tr> 
+          <tr>
+            <td>OdfDocument getRootDocument()</td>
+            <td>pkg.OdfPackage</td>
+            <td>OdfPackageDocument getRootDocument()</td>
+          </tr> 
+          <tr>
+            <td>pkg.manifest.OdfFileEntry</td>
+            <td>String getMediaType()</td>
+            <td>pkg.manifest.OdfFileEntry</td>
+          </tr> 
+          <tr>
+            <td>String getMediaTypeString()</td>
+            <td>void setMediaType(String)</td>
+            <td></td>
+            <td>void setMediaTypeString(String)</td>
+          </tr> 
+          <tr>
+            <td>pkg.OdfPackage</td>
+            <td>HashMap getManifestEntries()</td>
+            <td>pkg.OdfPackage</td>
+            <td>Map getManifestEntries()</td>
+          </tr> 
+          <tr>
+            <td>getFileEntries()</td>
+            <td></td>
+            <td>getFilePaths()</td>
+          </tr> 
+          <tr>
+            <td>String getMediaType()</td>
+            <td></td>
+            <td>String getMediaTypeString()</td>
+          </tr> 
+          <tr>
+            <td>insertPackageDocument(OdfPackageDocument,String)</td>
+            <td></td>
+            <td>insertDocument(OdfPackageDocument, String)</td>
+          </tr> 
+          <tr>
+            <td>void removePackageDocument(String)</td>
+            <td></td>
+            <td>void removeDocument(String)</td>
+          </tr> 
+          <tr>
+            <td>void flushDecendentDoms(OdfPackageDocument)</td>
+            <td></td>
+            <td>void flushDoms(OdfPackageDocument)</td>
+          </tr> 
+          <tr>
+            <td>OdfPackageDocument loadPackageDocument(String)</td>
+            <td></td>
+            <td>OdfPackageDocument loadDocument(String)</td>
+          </tr> 
+          <tr>
+            <td>Set getInnerDocumentPaths(String)</td>
+            <td></td>
+            <td>Set getDocumentPaths()</td>
+          </tr> 
+          <tr>
+            <td>Set getInnerDocumentPaths(String,String)</td>
+            <td></td>
+            <td>Set getDocumentPaths(String,String)</td>
+          </tr> 
+          <tr>
+            <td>incubator.meta.OdfOfficeMeta</td>
+            <td>void setDcdate(Calendar)</td>
+            <td>incubator.meta.OdfOfficeMeta</td>
+            <td>void setDate(Calendar)</td>
+          </tr> 
+          <tr>
+            <td>Calendar getDcdate()</td>
+            <td></td>
+            <td>Calendar getDate()</td>
+          </tr> 
+        </tbody> 
       </table> 
       <p><em><strong>3.Package/Class/Method Removed List</strong></em></p> 
-      <table> 
-        <tbody>
-          <tr> 
-            <td>Removed Package/Class/Method</td>
-            <td>Adaptive Solution</td> 
-          </tr>
-          <tr> 
-            <td>remove empty DOC classes from the following packages: <br> org.odftoolkit.odfdom.doc.anim;<br> org.odftoolkit.odfdom.doc.chart;<br> org.odftoolkit.odfdom.doc.config;<br> org.odftoolkit.odfdom.doc.db;<br> org.odftoolkit.odfdom.doc.dc;<br> org.odftoolkit.odfdom.doc.dr3d;<br> org.odftoolkit.odfdom.doc.draw;<br> org.odftoolkit.odfdom.doc.form;<br> org.odftoolkit.odfdom.doc.math;<br> org.odftoolkit.odfdom.doc.meta;<br> org.odftoolkit.odfdom.doc.number;<br> org.odftoolkit.odfdom.doc.office;<br> org.odftoolkit.odfdom.doc.presentation;<br> org.odftoolkit.odfdom.doc.script;<br> org.odftoolkit.odfdom.doc.style;<br> org.odftoolkit.odfdom.doc.svg;<br> org.odftoolkit.odfdom.doc.text;<br> org.odftoolkit.odfdom.doc.xforms </td>
-            <td>use corresponding DOM layer classes directly. <br> sample: org.odftoolkit.odfdom.doc.anim.OdfAnimate -&gt; org.odftoolkit.odfdom.dom.anim.AnimAnimateElement </td>
-          </tr>
-          <tr> 
-            <td>remove get/setValue() from dom attribute classes </td>
-            <td>use get/setValue() in XML DOM directly. </td>
-          </tr>
-          <tr> 
-            <td>remove classes:<br> OdfAttributeNames, OdfElementNames, OdfNamespaceNames<br> from package org.odftoolkit.odfdom.dom </td>
-            <td>use String to replace emun value. </td>
-          </tr>
-          <tr> 
-            <td>remove the following methods:<br> int getColumnSpannedNumber();<br> int getColumnsRepeatedNumber();<br> int getRowSpannedNumber();<br> void setColumnsRepeatedNumber(int repeatedNum);<br> void setColumnSpannedNumber(int spannedNum);<br> void setRowSpannedNumber(int spannedNum);<br> from org.odftoolkit.odfdom.doc.table.OdfTable; </td>
-            <td>use OdfTableCellRange.merge(). </td>
-          </tr>
-          <tr> 
-            <td>remove method:<br> OdfOfficeBody getOfficeBody()<br> from org.odftoolkit.odfdom.doc.OdfDocument </td>
-            <td> </td>
-          </tr>
-          <tr> 
-            <td>remove class:<br> OdfXMLHelper<br> from org.odftoolkit.odfdom.pkg </td>
-            <td> </td>
+      <table class="table"> 
+        <thead> 
+          <tr>
+            <th>Removed Package/Class/Method</th>
+            <th>Adaptive Solution</th>
           </tr> 
-        </tbody>
+        </thead> 
+        <tbody> 
+          <tr>
+            <td>remove empty DOC classes from the following packages: <br>org.odftoolkit.odfdom.doc.anim;<br>org.odftoolkit.odfdom.doc.chart;<br>org.odftoolkit.odfdom.doc.config;<br>org.dftoolkit.odfdom.doc.db;<br>org.odftoolkit.odfdom.doc.dc;<br>org.odftoolkit.odfdom.doc.dr3d;<br>org.odftoolkit.odfdom.doc.draw;<br>org.odftoolkit.odfdom.doc.form;<br>org.odftoolkit.odfdom.doc.math;<br>org.odftoolkit.odfdom.doc.meta;<br>org.odftoolkit.odfdom.doc.number;<br>org.odftoolkit.odfdom.doc.office;<br>org.odftoolkit.odfdom.doc.presentation;<br>org.odftoolkit.odfdom.doc.script;<br>org.odftoolkit.odfdom.doc.style;<br>org.odftoolkit.odfdom.doc.svg;<br>org.odftoolkit.odfdom.doc.text;<br>org.odftoolkit.odfdom.doc.xforms</td>
+            <td>use corresponding DOM layer classes directly. <br>sample: org.odftoolkit.odfdom.doc.anim.OdfAnimate -&gt; org.odftoolkit.odfdom.dom.anim.AnimAnimateElement</td>
+          </tr> 
+          <tr>
+            <td>remove get/setValue() from dom attribute classes</td>
+            <td>use get/setValue() in XML DOM directly.</td>
+          </tr> 
+          <tr>
+            <td>remove classes:<br>OdfAttributeNames, OdfElementNames, OdfNamespaceNames<br>from package org.odftoolkit.odfdom.dom</td>
+            <td>use String to replace emun value.</td>
+          </tr> 
+          <tr>
+            <td>remove the following methods:<br>int getColumnSpannedNumber();<br>int getColumnsRepeatedNumber();<br>int getRowSpannedNumber();<br>void setColumnsRepeatedNumber(int repeatedNum);<br>void setColumnSpannedNumber(int spannedNum);<br>void setRowSpannedNumber(int spannedNum);<br>from org.odftoolkit.odfdom.doc.table.OdfTable;</td>
+            <td>use OdfTableCellRange.merge().</td>
+          </tr> 
+          <tr>
+            <td>remove method:<br>OdfOfficeBody getOfficeBody()<br>from org.odftoolkit.odfdom.doc.OdfDocument</td>
+          </tr> 
+          <tr>
+            <td>remove class:<br>OdfXMLHelper<br>from org.odftoolkit.odfdom.pkg</td>
+          </tr> 
+        </tbody> 
       </table> 
       <h2>Release 0.8.6</h2> 
       <p>On July 16th, version 0.8.6 has been released. About a month after the release of 0.8.5 the new 0.8.6 version provides more than a dozen of bug fixes mainly for Table usage from the <a href="high-level-ODF-Document-API">ProjectOverview</a>. Aside of this, minor enhancements have been added, e.g. a higher usability for the Color type.</p> 
-      <p><strong>Resolved Issues</strong></p> 
+      <h3>Resolved Issues: 0.8.6</h3> 
       <ul> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=146">Bug 146</a> - Some resources for performance test are not available</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=161">Bug 161</a> - Adapt line breaking activating Mercurial plugin</li> 
@@ -714,142 +648,127 @@
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=210">Bug 210</a> - Make API for metadata of odfdom.jar more obvious</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=212">Bug 212</a> - Trying to access a spreadsheet cell without first inserting rows causes NPE</li> 
       </ul> 
-      <p><strong>API changes since 0.8.5 Release</strong></p> 
+      <h3>API changes since 0.8.5 Release</h3> 
       <p>Note: The first column 'Java class' package is relative to 'org.odftoolkit.odfdom'.</p> 
-      <table> 
-        <tbody>
-          <tr> 
-            <td>Previous Java Class</td> 
-            <td>Previous API</td> 
-            <td>New Java Class</td> 
-            <td>New API</td> 
-          </tr>
-          <tr> 
-            <td>Version </td>
-            <td>String getApplicationName() </td>
-            <td>JarManifest </td>
-            <td>String getOdfdomName() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getApplicationTitle() </td>
-            <td> </td>
-            <td>String getOdfdomTitle() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getApplicationVersion() </td>
-            <td> </td>
-            <td>String getOdfdomSupportedOdfVersion() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getApplicationWebsite() </td>
-            <td> </td>
-            <td>String getOdfdomWebsite() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getBuildDate() </td>
-            <td> </td>
-            <td>String getOdfdomBuildDate() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getBuildResponsible() </td>
-            <td> </td>
-            <td>String getOdfdomBuildResponsible() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>String getSupportedOdfVersion() </td>
-            <td> </td>
-            <td>String getOdfdomVersion() </td>
-          </tr>
-          <tr> 
-            <td>doc.table.OdfTableCell </td>
-            <td>double getCurrencyValue() </td>
-            <td>doc.table.OdfTableCell </td>
-            <td>Double getCurrencyValue() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>double getPercentageValue() </td>
-            <td> </td>
-            <td>Double getPercentageValue() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setBooleanValue(boolean) </td>
-            <td> </td>
-            <td>setBooleanValue(Boolean) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setCurrencyValue(double, String) </td>
-            <td> </td>
-            <td>setCurrencyValue(Double, String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setDoubleValue(double) </td>
-            <td> </td>
-            <td>setDoubleValue(Double) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setPercentageValue(double) </td>
-            <td> </td>
-            <td>setPercentageValue(Double) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>getVerticalJustify() </td>
-            <td> </td>
-            <td>getVerticalAlignment() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setVerticalJustify(String) </td>
-            <td> </td>
-            <td>setVerticalAlignment(String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>getHorizontalJustify() </td>
-            <td> </td>
-            <td>getHorizontalAlignment() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setHorizontalJustify(String) </td>
-            <td> </td>
-            <td>setHorizontalAlignment(String) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>getCellBackColor() </td>
-            <td> </td>
-            <td>getCellBackgroundColor() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setCellBackColor(Color) </td>
-            <td> </td>
-            <td>setCellBackgroundColor(Color) </td>
-          </tr>
-          <tr> 
-            <td>type.Color </td>
-            <td>String mapColorFromRgbToHex(String) </td>
-            <td>type.Color </td>
-            <td>String toSixDigitHexRGB(String)</td> 
+      <table class="table"> 
+        <thead> 
+          <tr>
+            <th>Previous Java Class</th>
+            <th>Previous API</th>
+            <th>New Java Class</th>
+            <th>New API</th>
           </tr> 
-        </tbody>
+        </thead> 
+        <tbody> 
+          <tr>
+            <td>Version</td>
+            <td>String getApplicationName()</td>
+            <td>JarManifest</td>
+            <td>String getOdfdomName()</td>
+          </tr> 
+          <tr>
+            <td>String getApplicationTitle()</td>
+            <td></td>
+            <td>String getOdfdomTitle()</td>
+          </tr> 
+          <tr>
+            <td>String getApplicationVersion()</td>
+            <td></td>
+            <td>String getOdfdomSupportedOdfVersion()</td>
+          </tr> 
+          <tr>
+            <td>String getApplicationWebsite()</td>
+            <td></td>
+            <td>String getOdfdomWebsite()</td>
+          </tr> 
+          <tr>
+            <td>String getBuildDate()</td>
+            <td></td>
+            <td>String getOdfdomBuildDate()</td>
+          </tr> 
+          <tr>
+            <td>String getBuildResponsible()</td>
+            <td></td>
+            <td>String getOdfdomBuildResponsible()</td>
+          </tr> 
+          <tr>
+            <td>String getSupportedOdfVersion()</td>
+            <td></td>
+            <td>String getOdfdomVersion()</td>
+          </tr> 
+          <tr>
+            <td>doc.table.OdfTableCell</td>
+            <td>double getCurrencyValue()</td>
+            <td>doc.table.OdfTableCell</td>
+            <td>Double getCurrencyValue()</td>
+          </tr> 
+          <tr>
+            <td>double getPercentageValue()</td>
+            <td></td>
+            <td>Double getPercentageValue()</td>
+          </tr> 
+          <tr>
+            <td>setBooleanValue(boolean)</td>
+            <td></td>
+            <td>setBooleanValue(Boolean)</td>
+          </tr> 
+          <tr>
+            <td>setCurrencyValue(double, String)</td>
+            <td></td>
+            <td>setCurrencyValue(Double, String)</td>
+          </tr> 
+          <tr>
+            <td>setDoubleValue(double)</td>
+            <td></td>
+            <td>setDoubleValue(Double)</td>
+          </tr> 
+          <tr>
+            <td>setPercentageValue(double)</td>
+            <td></td>
+            <td>setPercentageValue(Double)</td>
+          </tr> 
+          <tr>
+            <td>getVerticalJustify()</td>
+            <td></td>
+            <td>getVerticalAlignment()</td>
+          </tr> 
+          <tr>
+            <td>setVerticalJustify(String)</td>
+            <td></td>
+            <td>setVerticalAlignment(String)</td>
+          </tr> 
+          <tr>
+            <td>getHorizontalJustify()</td>
+            <td></td>
+            <td>getHorizontalAlignment()</td>
+          </tr> 
+          <tr>
+            <td>setHorizontalJustify(String)</td>
+            <td></td>
+            <td>setHorizontalAlignment(String)</td>
+          </tr> 
+          <tr>
+            <td>getCellBackColor()</td>
+            <td></td>
+            <td>getCellBackgroundColor()</td>
+          </tr> 
+          <tr>
+            <td>setCellBackColor(Color)</td>
+            <td></td>
+            <td>setCellBackgroundColor(Color)</td>
+          </tr> 
+          <tr>
+            <td>type.Color</td>
+            <td>String mapColorFromRgbToHex(String)</td>
+            <td>type.Color</td>
+            <td>String toSixDigitHexRGB(String)</td>
+          </tr> 
+        </tbody> 
       </table> 
       <h2>Release: 0.8.5</h2> 
       <p>On 3rd July 2010 version 0.8.5 of the Java implementation has been released. In this version, ODFDOM supports the load, parse and save of all available media types of OpenDocument documents - except Formula (MathML) and Database front end documents. As well, ODFDOM now allows the load &amp; save of none-ODF XML elements and attributes. Furthermore, we introduced a series of slide relevant convenient methods for the Document API, which makes easy slide handling possible. In particular the slide access, deletion, reordering, the copy of slides from a presentation to another and even merge of two presentations were enabled.</p> 
       <p>A second focus had been the overall performance. We improved the start-up time of ODFDOM using a class lazy loading approach and reduced the saving time of ODF documents by avoiding the compressing of already compressed file, e.g. images. In special the performance of table handling via the Document API have been enhanced. For instance by using now automatic table expansion when a requested cell index was out of range. Finally we improved table method robustness by adding sanity checks and the fix of several table issues.</p> 
-      <p><strong>Resolved Issues</strong></p> 
+      <h3>Resolved Issues: 0.8.5</h3> 
       <p>The resolved issues in this version include:</p> 
       <ul> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=97">Bug 97</a> - OdfTableRow.getCellAt(int) returns null when the cell is a repeat cell;</li> 
@@ -869,81 +788,74 @@
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=169">Bug 169</a> - Minor fix for OdfPackage Performance;</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=170">Bug 170</a> - Update of ODF 1.2 part 1 specification in ODFDOM JavaDoc to Public Review Draft (CD05).</li> 
       </ul> 
-      <p><strong>API changes since 0.8 Release</strong></p> 
+      <h3>API changes since 0.8 Release</h3> 
       <p>Note: The first column 'Java class' package is relative to 'org.odftoolkit.odfdom'.</p> 
-      <table> 
-        <tbody>
-          <tr> 
-            <td>Previous Java Class</td>
-            <td>Previous API</td>
-            <td>New Java Class</td>
-            <td>New API</td> 
-          </tr>
-          <tr> 
-            <td>pkg.element.OdfAlienElement </td>
-            <td>getOdfName() </td>
-            <td>OdfAlienElement </td>
-            <td>getOdfName() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr> 
-            <td>pkg.element.OdfAlienAttribute </td>
-            <td>getOdfName() </td>
-            <td>OdfAlienAttribute </td>
-            <td>getOdfName() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>getDefault() </td>
-            <td> </td>
-            <td>getDefault() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>hasDefault() </td>
-            <td> </td>
-            <td>hasDefault() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr> 
-            <td>doc.OdfElementFactory </td>
-            <td>newOdfElement(OdfFileDom,OdfName) </td>
-            <td>OdfXMLFactory </td>
-            <td>newOdfElement(OdfFileDom,OdfName) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>newOdfAttribute(OdfFileDom,OdfName) </td>
-            <td> </td>
-            <td>newOdfAttribute(OdfFileDom,OdfName) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>mapElementOdfNameToClass(OdfName,Class) </td>
-            <td> </td>
-            <td>setOdfElementClass(OdfName,Class) </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>mapAttributeOdfNameToClass(OdfName,Class) </td>
-            <td> </td>
-            <td>setOdfAttributeClass(OdfName,Class) </td>
+      <table class="table"> 
+        <thead> 
+          <tr>
+            <th>Previous Java Class</th>
+            <th>Previous API</th>
+            <th>New Java Class</th>
+            <th>New API</th>
           </tr> 
-        </tbody>
+        </thead> 
+        <tbody> 
+          <tr>
+            <td>pkg.element.OdfAlienElement</td>
+            <td>getOdfName()</td>
+            <td>OdfAlienElement</td>
+            <td>getOdfName()</td>
+          </tr> 
+          <tr>
+            <td></td>
+            <td></td>
+          </tr> 
+          <tr>
+            <td>pkg.element.OdfAlienAttribute</td>
+            <td>getOdfName()</td>
+            <td>OdfAlienAttribute</td>
+            <td>getOdfName()</td>
+          </tr> 
+          <tr>
+            <td>getDefault()</td>
+            <td></td>
+            <td>getDefault()</td>
+          </tr> 
+          <tr>
+            <td>hasDefault()</td>
+            <td></td>
+            <td>hasDefault()</td>
+          </tr> 
+          <tr>
+            <td></td>
+            <td></td>
+          </tr> 
+          <tr>
+            <td>doc.OdfElementFactory</td>
+            <td>newOdfElement(OdfFileDom,OdfName)</td>
+            <td>OdfXMLFactory</td>
+            <td>newOdfElement(OdfFileDom,OdfName)</td>
+          </tr> 
+          <tr>
+            <td>newOdfAttribute(OdfFileDom,OdfName)</td>
+            <td></td>
+            <td>newOdfAttribute(OdfFileDom,OdfName)</td>
+          </tr> 
+          <tr>
+            <td>mapElementOdfNameToClass(OdfName,Class)</td>
+            <td></td>
+            <td>setOdfElementClass(OdfName,Class)</td>
+          </tr> 
+          <tr>
+            <td>mapAttributeOdfNameToClass(OdfName,Class)</td>
+            <td></td>
+            <td>setOdfAttributeClass(OdfName,Class)</td>
+          </tr> 
+        </tbody> 
       </table> 
       <h2>Release: 0.8</h2> 
       <p>On 19 Feb 2010 version 0.8 of the Java implementation has been released. The API adapts to latest ODF Specification 1.2 part Community Draft 4 and the codegeneration has been updated to the new RelaxNG schema. A major improvement of convenient layer is the introduce of table convenient API - a first prototype of ODF features - which provides methods to manipulate table feature and its sub-features, such as rows, columns, cells and cell ranges. In this prototype, the 1:1 inheritance relationships between convenient layer classes and dom layer classes have been broken up, and composite relationships are used instead. We also provide metadata convenient API in incubator package which will be improved in the following version. Dom layer has been improved to support invalid attributes and values in DOM tree. Some bugs in package layer, DOM/XML layer and document/convenient layer have been fixed. The Java Docs are improved.</p> 
-      <p><strong>Resolved Issues</strong></p> 
+      <h3>Resolved Issues: 0.8</h3> 
       <p>The resolved issues in this version includes:</p> 
       <ul> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=19">Bug 19</a> - Special characters in package path string not handled correctly;</li> 
@@ -961,71 +873,60 @@
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=128">Bug 128</a> - Exchange System.out.print/println with JDK logging;</li> 
         <li><a href="https://odftoolkit.org/bugzilla/show_bug.cgi?id=133">Bug 133</a> - Slight enhancements of the Maven pom.xml.</li> 
       </ul> 
-      <p><strong>API changes since 0.7 Release (possibly uncomplete)</strong></p> 
+      <h3>API changes since 0.7 Release (possibly uncomplete)</h3> 
       <p>Note: The first column 'Java class' package is relative to 'org.odftoolkit.odfdom'.</p> 
-      <table> 
-        <tbody>
-          <tr> 
-            <td>Java Class</td>
-            <td>Previous API</td>
-            <td>New API</td> 
-          </tr>
-          <tr> 
-            <td>NamespaceName.OdfNamespaceNames </td>
-            <td>getNamespaceUri() </td>
-            <td>getUri() </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td> </td>
-            <td> </td>
-          </tr>
-          <tr> 
-            <td>OdfTable </td>
-            <td>getTableColumn(int):OdfTableColumn </td>
-            <td>getColumnByIndex(int):OdfTableColumn </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>getTableColumnList():List&lt;OdfTableColumn&gt; </td>
-            <td>getColumnList():List&lt;OdfTableColumn&gt; </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>getTableColumnCount():int </td>
-            <td>getColumnNumber():int </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>addTableColumn():OdfTableColumn </td>
-            <td>appendColumn():OdfTableColumn </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>addTableColumn(int):OdfTableColumn </td>
-            <td>insertColumnBefore(int nIndex,int nCount):List&lt;OdfTableColumn&gt; </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>appendRow(Node):Node </td>
-            <td>appendRow():OdfTableRow </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>addStyledTableColumn(String):OdfTableColumn </td>
-            <td> </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>makeStyledColumnList(List&lt;String&gt;):List&lt;OdfTableColumn&gt; </td>
-            <td> </td>
-          </tr>
-          <tr> 
-            <td> </td>
-            <td>setColumnList(List&lt;OdfTableColumn) </td>
-            <td> </td>
+      <table class="table"> 
+        <thead> 
+          <tr>
+            <th>Java Class</th>
+            <th>Previous API</th>
+            <th>New API</th>
           </tr> 
-        </tbody>
+        </thead> 
+        <tbody> 
+          <tr>
+            <td>NamespaceName.OdfNamespaceNames</td>
+            <td>getNamespaceUri()</td>
+            <td>getUri()</td>
+          </tr> 
+          <tr>
+            <td></td>
+          </tr> 
+          <tr>
+            <td>OdfTable</td>
+            <td>getTableColumn(int):OdfTableColumn</td>
+            <td>getColumnByIndex(int):OdfTableColumn</td>
+          </tr> 
+          <tr>
+            <td>getTableColumnList():List&lt;OdfTableColumn&gt;</td>
+            <td>getColumnList():List&lt;OdfTableColumn&gt;</td>
+          </tr> 
+          <tr>
+            <td>getTableColumnCount():int</td>
+            <td>getColumnNumber():int</td>
+          </tr> 
+          <tr>
+            <td>addTableColumn():OdfTableColumn</td>
+            <td>appendColumn():OdfTableColumn</td>
+          </tr> 
+          <tr>
+            <td>addTableColumn(int):OdfTableColumn</td>
+            <td>insertColumnBefore(int nIndex,int nCount):List&lt;OdfTableColumn&gt;</td>
+          </tr> 
+          <tr>
+            <td>appendRow(Node):Node</td>
+            <td>appendRow():OdfTableRow</td>
+          </tr> 
+          <tr>
+            <td>addStyledTableColumn(String):OdfTableColumn</td>
+          </tr> 
+          <tr>
+            <td>makeStyledColumnList(List&lt;String&gt;):List&lt;OdfTableColumn&gt;</td>
+          </tr> 
+          <tr>
+            <td>setColumnList(List&lt;OdfTableColumn)</td>
+          </tr> 
+        </tbody> 
       </table> 
     </div>
     <html>

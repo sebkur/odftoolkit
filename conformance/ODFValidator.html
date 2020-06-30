@@ -61,7 +61,7 @@
         <li> <p>You may <strong>deploy the WAR bundle from the target file into your application server</strong> of choice (e.g. Tomcat)</p> </li> 
         <li> <p>Choose an arbitrary OpenDocument file &lt;odffile&gt;</p> </li> 
         <li> <p>OR for command line usage and help, call the '''ODF Validator''' with</p> <p>java -jar "./target/odfvalidator-&lt;VERSION&gt;-jar-with-dependencies.jar" &lt;odffile&gt;</p> </li> 
-        <li> <p>You may call the ODF Validator via</p> <p>java -Djavax.xml.validation.SchemaFactory:<a href="http://relaxng.org/ns/structure/1.0">http://relaxng.org/ns/structure/1.0</a>=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl -Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl -jar "&lt;PATH&gt;/odfvalidator-&lt;VERSION&gt;-jar-with-dependencies.jar" &lt;odffile&gt;</p> </li> 
+        <li> <p>You may call the ODF Validator via</p> <p>java -Djavax.xml.validation.SchemaFactory:&lt;http://relaxng.org/ns/structure/1.0&gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl -Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl -jar "&lt;PATH&gt;/odfvalidator-&lt;VERSION&gt;-jar-with-dependencies.jar" &lt;odffile&gt;</p> </li> 
       </ul> 
       <h2>Usage</h2> 
       <h3>Usage Summary</h3> 
@@ -70,20 +70,20 @@
 </code></pre> 
       <p>For instance, with the following parameters:</p> 
       <pre><code>java
-  -Djavax.xml.validation.SchemaFactory:&lt;http://relaxng.org/ns/structure/1.0&gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
+  -Djavax.xml.validation.SchemaFactory:&amp;lt;http://relaxng.org/ns/structure/1.0&amp;gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
   -Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl
   -jar "&lt;path&gt;/odfvalidator-&lt;VERSION&gt;-jar-with-dependencies.jar"
 </code></pre> 
       <p>These command lines are abbreviated <em>odfvalidator</em> from now on.</p> 
       <p>The <strong>ODF Validator</strong> may be called with the following options:</p> 
-      <pre><code> odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
+      <pre><code>odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
               [-o outputfile] [-1.0|-1.1|-1.2] &lt;odffiles&gt;
- odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
+odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
               [-o outputfile] -S &lt;schemafile&gt; &amp;lt;odffiles&gt;
- odfvalidator [-c|-s] [-v|-w] [-d] [-o outputfile] -C &amp;lt;configfile&gt;
- odfvalidator -g &lt;odffiles&gt;
- odfvalidator -h
- odfvalidator -V
+odfvalidator [-c|-s] [-v|-w] [-d] [-o outputfile] -C &amp;lt;configfile&gt;
+odfvalidator -g &lt;odffiles&gt;
+odfvalidator -h
+odfvalidator -V
 </code></pre> 
       <p>If no parameters are specified, the files <strong>&lt;odffiles&gt;</strong> are validated using the schema that belongs to the ODF version of the file. For ODF 1.0 files the ODF 1.0 schema is used, for ODF 1.1 files the ODF 1.1 schema is used, and so on. The version of an ODF file is detected for each file separately.</p> 
       <p>The options have the following meaning:</p> 
@@ -107,7 +107,7 @@
       <h3>Validation using default schemas</h3> 
       <p>The ODF 1.0, ODF 1.1, ODF 1.2 schemas as well as the MathML 1.01 DTD and the MathML 2.0 schema are included in the <strong>ODFValidator.jar</strong> file. If the ODFValidator is called without the <strong>-S</strong> or <strong>-C</strong> options, these schemas are used for validation.</p> 
       <pre><code>odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
-              [-o outputfile] [-1.0|-1.1|-1.2] &lt;odffiles&gt;
+            [-o outputfile] [-1.0|-1.1|-1.2] &lt;odffiles&gt;
 </code></pre> 
       <p><strong>&lt;odffiles&gt;</strong> is the list of files and directories that should be validated. If a directory is specified, all files that have an OpenDocument extension (like <strong>odt</strong>, <strong>ods</strong> or <strong>ott</strong>) are validated. If <strong>-r</strong> is specified additionally, all directories are processed recursively.</p> 
       <p>By default, the <strong>ODF Validator</strong> detects the version of the files that shall be validated and chooses the corresponding schema. The command line options <strong>-1.0</strong>', <strong>-1.1</strong> and <strong>-1.2</strong> can be used to specify that the schemas of a particular ODF version should be used for all files, regardless of the version they specify themselves.</p> 
@@ -120,7 +120,7 @@
       <h3>Validation using a non-default schema</h3> 
       <p>To specify the schema that is used for <strong>meta-xml</strong>, <strong>content.xml</strong>, <strong>styles.xml</strong> and <strong>settings.xml</strong> on the command line, <strong>ODF Validator</strong> has to be called with the following parameters:</p> 
       <pre><code>odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &amp;lt;expclude pattern&amp;gt;]
- [-o outputfile] -S &lt;schemafile&gt; &lt;odffiles&gt;
+[-o outputfile] -S &lt;schemafile&gt; &lt;odffiles&gt;
 </code></pre> 
       <p><strong>&lt;schemafile&gt;</strong> is the schema that shall be used.</p> 
       <p>All other command line option are as described in <em>Validation using default schemas</em>.</p> 
@@ -149,9 +149,25 @@
       <h2>What is checked</h2> 
       <p>The following items are checked:</p> 
       <ul> 
-        <li>OpenDocument v1.2 documents * If the test type is <strong>conformance test</strong> (default, or if <strong>-c</strong> is provided) , and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated with respect to the OpenDocument v1.2 schema. * If the test type is <strong>extended conformance test</strong> (<strong>-e</strong> is provided), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are pre-processed as described in section 1.4.2.1 of the OpenDocument v1.2 specification (that is <em>foreign elements and attributes</em> are removed), and are then validated with respect to the OpenDocument v1.2 schema.</li> 
-        <li>OpenDocument v1.1/1.0 documents * If the test type is <strong>conformance test</strong> (<strong>-c</strong> is provided), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are pre-processed as described in section 1.5 of the <a href="http://docs.oasis-open.org/office/v1.1/OS/OpenDocument-v1.1.odt">OpenDocument specification</a> (that is <em>foreign elements and attributes</em> are removed), and are then validated with respect to the schema of the selected OpenDocument version. * If the test type is <strong>validation</strong> (default), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated with respect to the schema of the selected OpenDocument version. Pre-processing of <em>foreign elements and attributes</em> is not applied. * If the test type is <strong>strict validation</strong> (<strong>-s</strong> is provided), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated with respect to the strict schema of the selected OpenDocument version. Pre-processing of <em>foreign elements and attributes</em> is not applied.</li> 
-        <li>All versions * If the file is a formula file, then the sub file <em>content.xml</em> is validated with respect to the MathML 2.0 W3C XSD schema. The sub files <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are checked as described for other document types. * The file <em>META-INF/manifest.xml</em> is validated with respect to the manifest schema of the selected ODF specification. * If the file is an ODF 1.2 file, then the <em>META-INF/documentsignatures.xml</em> and <em>META-INF/macrosignatures.xml</em> sub files are validated with respect to the digital signatures schema of the ODF 1.2 specification. * For all embedded objects in ODF format, the <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated as described for the main document above. * It is checked whether the file itself and all embedded objects in ODF format contain at least a <em>content.xml</em> or <em>styles.xml</em> sub file.</li> 
+        <li>OpenDocument v1.2 documents 
+          <ul> 
+            <li>If the test type is <strong>conformance test</strong> (default, or if <strong>-c</strong> is provided) , and if the file is not a formula file, then the subfiles <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated with respect to the OpenDocument v1.2 schema.</li> 
+            <li>If the test type is <strong>extended conformance test</strong> (<strong>-e</strong> is provided), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are pre-processed as described in section 1.4.2.1 of the OpenDocument v1.2 specification (that is <em>foreign elements and attributes</em> are removed), and are then validated with respect to the OpenDocument v1.2 schema.</li> 
+          </ul> </li> 
+        <li>OpenDocument v1.1/1.0 documents 
+          <ul> 
+            <li>If the test type is <strong>conformance test</strong> (<strong>-c</strong> is provided), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are pre-processed as described in section 1.5 of the <a href="http://docs.oasis-open.org/office/v1.1/OS/OpenDocument-v1.1.odt">OpenDocument specification</a> (that is <em>foreign elements and attributes</em> are removed), and are then validated with respect to the schema of the selected OpenDocument version.</li> 
+            <li>If the test type is <strong>validation</strong> (default), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated with respect to the schema of the selected OpenDocument version. Pre-processing of <em>foreign elements and attributes</em> is not applied.</li> 
+            <li>If the test type is <strong>strict validation</strong> (<strong>-s</strong> is provided), and if the file is not a formula file, then the sub files <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated with respect to the strict schema of the selected OpenDocument version. Pre-processing of <em>foreign elements and attributes</em> is not applied.</li> 
+          </ul> </li> 
+        <li>All versions 
+          <ul> 
+            <li>If the file is a formula file, then the sub file <em>content.xml</em> is validated with respect to the MathML 2.0 W3C XSD schema. The sub files <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are checked as described for other document types.</li> 
+            <li>The file <em>META-INF/manifest.xml</em> is validated with respect to the manifest schema of the selected ODF specification.</li> 
+            <li>If the file is an ODF 1.2 file, then the <em>META-INF/documentsignatures.xml</em> and <em>META-INF/macrosignatures.xml</em> sub files are validated with respect to the digital signatures schema of the ODF 1.2 specification.</li> 
+            <li>For all embedded objects in ODF format, the <em>content.xml</em>, <em>styles.xml</em>, <em>meta.xml</em> and <em>settings.xml</em> are validated as described for the main document above.</li> 
+            <li>It is checked whether the file itself and all embedded objects in ODF format contain at least a <em>content.xml</em> or <em>styles.xml</em> sub file.</li> 
+          </ul> </li> 
       </ul> 
       <p>The following actions take place before or during the validation:</p> 
       <ul> 
@@ -166,8 +182,8 @@
       <p>The MathML DTD that is included in the ODF Validator us the one that is included in the <strong>/share/dtd/math/1_01/</strong> folder of each OpenOffice.org/Oracle Open Office installation.</p> 
       <h2>Requirements</h2> 
       <p><strong>ODF Validator</strong> requires J2RE 1.5 or J2RE 1.6. For J2RE 1.6, the following options have to be included into the <strong>java</strong> command line:</p> 
-      <pre><code> -Djavax.xml.validation.SchemaFactory:&lt;http://relaxng.org/ns/structure/1.0&gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
- -Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl
+      <pre><code>-Djavax.xml.validation.SchemaFactory:&lt;http://relaxng.org/ns/structure/1.0&gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
+-Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl
 </code></pre> 
       <p><strong>ODF Validator</strong> further requires the following packages:</p> 
       <ul> 
