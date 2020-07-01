@@ -48,7 +48,8 @@
     <div id="contenta">
       <p>Title: Maven Repository We have an interim maven repository. So far, all that is deployed in it are the artifacts for the code generator.</p> 
       <p>To use this, you'll need something like the following:</p> 
-      <pre><code> &lt;repositories&gt;
+      <div class="codehilite">
+        <pre><code> &lt;repositories&gt;
     &lt;repository&gt;
       &lt;releases&gt;
         &lt;enabled&gt;false&lt;/enabled&gt;
@@ -66,7 +67,8 @@
       &lt;layout&gt;default&lt;/layout&gt;
     &lt;/repository&gt;
   &lt;/repositories&gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>You'll need the same thing in pluginRepositories to use the codegen-maven-plugin.</p> 
     </div>
     <html>

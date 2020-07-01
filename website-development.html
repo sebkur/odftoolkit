@@ -48,56 +48,44 @@
     <div id="contenta">
       <h1>Website Development</h1> 
       <h2>Introduction</h2> 
-      <p>The pages on this website are written in [markdown syntax] <a href="https://www.apache.org/dev/cmsref.html#markdown">1</a> and stored in our GIT repro at [src/site] <a href="https://github.com/tdf/odftoolkit/tree/master/src/site">2</a></p> 
-      <p>We are bundling the previous used [Apache CMS] <a href="https://www.apache.org/dev/cmsref.html">7</a> now as [local CMS] <a href="https://github.com/tdf/odftoolkit/tree/master/src/site/cms">3</a> and capsulating its complexity via [two bash scripts] <a href="https://github.com/tdf/odftoolkit/tree/master/src/site">4</a>. By this it is possible to edit, stage and publish website updates from the command line under Linux (see below)</p> 
+      <p>The pages on this website are written in [markdown syntax] <a href="https://www.apache.org/dev/cmsref.html#markdown">1</a> and stored in our GIT repo at [src/site] <a href="https://github.com/tdf/odftoolkit/tree/master/src/site">2</a></p> 
+      <p>A subproject contained within the repo is used to generate the website from the Markdown text files and the resources stored in the content directory.</p> 
       <h2>Overview</h2> 
       <p>This website development page is divided into:</p> 
       <ul> 
         <li><a href="#setup">Setup</a> - How to download the website and setup the tooling.</li> 
-        <li><a href="#directory-layout">Directory Layout</a> - Where to find the content, templates, and scripts.</li> 
+        <li><a href="#directory-layout">Directory Layout</a> - Where to find the content and scripts.</li> 
         <li><a href="#local-development">Local Development</a> - How to build and test locally.</li> 
         <li><a href="#submitting-your-results">Submitting Your Results</a> - How to contribute your edits.</li> 
       </ul> 
       <h2>Setup</h2> 
-      <p><strong>NOTE:</strong> Some of us are using on their computer a VirtualBox with Linux (e.g. Ubuntu) just for this environment.</p> 
-      <h3>Install Python 2 dependencies</h3> 
-      <h4>Check your version of Python</h4> 
-      <p><em>python --version</em></p> 
-      <p>Source code generation has been tested successfully with Python 2.7.16</p> 
-      <h4>Install dependencies</h4> 
-      <p>NOTE: The Apache CMS <a href="http://www.apache.org/dev/cmsref.html#local-build">5</a> bundled within the site directory depends on old libraries.</p> 
-      <p><em>sudo apt-get install -y python2.7-elementtree</em> <em>sudo apt install python-pip</em> <em>python -m pip install "Markdown==2.6.11"</em> <em>python -m pip install "Pygments==2.2.0"</em></p> 
       <h3>Download the repo</h3> 
-      <p><em>git clone https://github.com/tdf/odftoolkit</em> <em>cd odftoolkit/src/site</em></p> 
+      <p>Check out the repository:</p> 
+      <pre><code class="language-shell">git clone https://github.com/tdf/odftoolkit
+</code></pre> 
+      <p>Then build the project:</p> 
+      <pre><code class="language-shell">cd odftoolkit/src/site/java
+./new-build-html.sh
+</code></pre> 
       <h2>Directory Layout</h2> 
       <h3>Content directory</h3> 
-      <p>The <code>src/site/site/content/odftoolkit</code> directory contains web content - markdown, html, javascript, css, images and other files. Files that do not fit recognized patterns from <code>site/lib/path.pm</code> are copied as is to the web site during the build.</p> 
-      <h3>Templates directory</h3> 
-      <p>The <code>src/site/site/templates</code> directory contains the html skeletons used during the site build.</p> 
-      <ul> 
-        <li><code>skeleton.html</code> - our current html page template.</li> 
-        <li><code>sidenav.mdtext</code> - markdown of the side navigation panel.</li> 
-      </ul> 
-      <h3>Lib directory</h3> 
-      <p>The <code>src/site/site/lib</code> directory contains two python modules that determine how content files are processed during the site build.</p> 
-      <ul> 
-        <li><code>path.pm</code> - maps file patterns like <code>.mdtext</code> into the view building routines. We can expand to cover other patterns.</li> 
-        <li><code>view.pm</code> - a set of python subroutines for converting content into web pages.</li> 
-      </ul> 
-      <h3>Build tools</h3> 
-      <p>You can find the CMS build tools in the <code>cms</code> directory.</p> 
-      <ul> 
-        <li><code>src/site/cms/build/</code> - perl scripts for building the site and markdown extensions.</li> 
-        <li><code>src/site/cms/conversion-utilities/</code> - scripts used by various projects for conversion including <code>cwiki</code> conversion.</li> 
-        <li><code>src/site/cms/webgui/</code> - the webgui behind the <code>bookmarklet</code>.</li> 
-      </ul> 
+      <p>The <code>src/site/site/content/odftoolkit</code> directory contains web content - markdown, html, javascript, css, images and other files. Resources such as images, CSS files and ZIP files are copied as is to the web site during the build.</p> 
       <h2>Local Development</h2> 
       <h3>Edit the site</h3> 
-      <p>Using your favorite editors edit the site content, templates.</p> 
+      <p>Using your favorite editors edit the site content.</p> 
       <h3>Build the site</h3> 
-      <p>Run the <code>build-site.sh</code> script to build the markdown to HTML and copy all resources into the odftoolkit/docs directory. After the changes have been merged into the master branch, all changes will become visible at &lt;./docs/&gt; as our GitHub project has enabled this feature. <strong>NOTE:</strong> Before commiting, you should test if all content of the HTML pages have been created - by clicking on every link on the local page. Often ODFDOM or Validator page were empty.</p> 
+      <p>Run this to generate the website into GitHub Pages directory &lt;ODFTOOLKIT_ROOT&gt;/docs</p> 
+      <pre><code class="language-shell">cd odftoolkit/src/site/java
+./new-build-html.sh
+</code></pre> 
       <h2>Building JavaDoc and publishing the JavaDoc</h2> 
-      <p>JavaDoc is generated as part of the <code>mvn clean install</code> command called from the root of the project. Run the <code>copy-javadoc.sh</code> script to build copy the created API directories into the odftoolkit/docs/api directory and remove any prior files within.</p> 
+      <p>JavaDoc is generated as part of by calling from the root of the project the command:</p> 
+      <pre><code class="language-shell">mvn clean install
+</code></pre> 
+      <p>Run <code>copy-javadoc.sh</code> to build &amp; copy the created API directories into the &lt;ODFTOOLKIT_ROOT&gt;/docs/api directory and remove any prior files within.</p> 
+      <pre><code class="language-shell">cd odftoolkit/src/site/java
+./copy-javadoc.sh
+</code></pre> 
       <h2>Submitting your results</h2> 
       <h3>Committer</h3> 
       <p>Do the appropriate combination of git status, git add, and git commits.</p> 

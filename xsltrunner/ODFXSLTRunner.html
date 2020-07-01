@@ -53,22 +53,24 @@
       <p><strong>ODF XSLT Runner</strong> is build by a NetBeans project. After you have checked out the sources from the Mercurial repository, you can open the project in NetBeans and build <strong>odfxsltrunner</strong>.</p> 
       <p>A binary release of <strong>odfxsltrunner.jar</strong> is available in the ODF Toolkit binary package. Please download <a href="../downloads.html">here</a>. If you need the earlier single jars, please access <a href="http://code.google.com/a/apache-extras.org/p/odftoolkit-extra/downloads/list">here</a>.</p> 
       <p>Building and running <strong>odfxsltrunner.jar</strong> requires additional jar files. Please see Requirements for details.</p> 
+      <h2>Examples</h2> 
+      <p>Example stylesheets can be found on the <a href="ODFXSLTRunnerExamples.html">ODFXSLTRunner Examples</a> page.</p> 
       <h2>Command Line Options</h2> 
       <p><strong>ODF XSLT Runner</strong> is called by one of the below command lines:</p> 
-      <pre><code>java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&gt;]
-  [-l log file] &lt;input package&gt; [&lt;output package&gt; [name=value ...]
+      <pre><code class="language-shell">java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&gt;]
+     [-l log file] &lt;input package&gt; [&lt;output package&gt; [name=value ...]
 
- java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&gt;]
- [-l log file] -t &lt;input package&amp;gt; &lt;output package&amp;gt; [name=value ...]
+java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&gt;]
+     [-l log file] -t &lt;input package&amp;gt; &lt;output package&amp;gt; [name=value ...]
 
- java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&amp;gt;]
-  [-l log file] -r &lt;package&gt; [name=value ...]
+java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&amp;gt;]
+     [-l log file] -r &lt;package&gt; [name=value ...]
 
- java -jar odfxsltrunner.jar &lt;style sheet&gt;; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&amp;gt;]
-  [-l log file] [-x &lt;extract path&gt; ...] -o &lt;input package&gt; &lt;output file&gt; [name=value ...]
+java -jar odfxsltrunner.jar &lt;style sheet&gt;; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&amp;gt;]
+     [-l log file] [-x &lt;extract path&gt; ...] -o &lt;input package&gt; &lt;output file&gt; [name=value ...]
 
- java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&amp;gt;]
-  [-l log file] -i &lt;input file&gt; &lt;output package&gt; [name=value ...]
+java -jar odfxsltrunner.jar &lt;style sheet&gt; [-v] [-f &lt;factory&gt;] [-p &lt;path in package&amp;gt;]
+     [-l log file] -i &lt;input file&gt; &lt;output package&gt; [name=value ...]
 </code></pre> 
       <p>The default is to apply the XSLT stylesheet <strong>&lt;style-sheet&gt;</strong> to the stream <strong>content.xml</strong> of the ODF file <strong>&lt;input package&gt;</strong>. If no <strong>&lt;output package&gt;</strong> parameter is specified, then the result of the transformation will be printed to the standard output. If an <strong>&lt;output package&gt;</strong> is specified, the <strong>&lt;input package&gt;</strong> is copied to the <strong>&lt;output package&gt;</strong>, and the steam <strong>content.xml</strong> of the <strong>&lt;output package&gt;</strong> is replaced with the result of the transformation.</p> 
       <p>The <strong>-p</strong> option allows to specify another stream in the package as source of the transformation than <strong>content.xml</strong>.</p> 
@@ -79,7 +81,7 @@
       <p>The <strong>-v</strong> option enables a verbose mode.</p> 
       <p>The <strong>-f</strong> option specifies the ''javax.xml.transform.TransformerFactory'' to use.</p> 
       <p><strong>Note:</strong> When calling ''java'' with the ''-jar'' option, the user class path is ignored. If a transformer factory is used which is not contained in the JRE, like Saxon, <strong>odfxsltrunner</strong> has to be called without the ''-jar'' option:</p> 
-      <pre><code> java -cp odfxsltrunner.jar:&amp;lt;factory jar&amp;gt; org.odftoolkit.odfxsltrunner.Main ...
+      <pre><code class="language-shell">java -cp odfxsltrunner.jar:&amp;lt;factory jar&amp;gt; org.odftoolkit.odfxsltrunner.Main ...
 </code></pre> 
       <p>The <strong>-l</strong> option can be used to redirect diagnostic messages into a log file. By default they are printed on standard error.</p> 
       <p>XSLT <a href="http://www.w3.org/TR/1999/REC-xslt-19991116#top-level-variables">Parameters</a> can be passed to the transformation by specifying them as name=value pairs. They must appear behind all other command line parameters.</p> 
@@ -87,7 +89,7 @@
       <p>If the source of a transformation is an ODF package, the XSLT <a href="http://www.w3.org/TR/1999/REC-xslt-19991116#document">document</a> function can be used to access other files in the package than the one that is the source of the transformation. To do so, the first parameter of the <em>document()</em> function must be a relative URI that references the file that shall be accessed. The reference must be relative to the source file. The second parameter of the <em>document()</em> function must be a node within the source file.</p> 
       <p><strong>Note:</strong> The second parameter specifies the base URI for the resolution of the URI that is specified by the first parameter. This base URI is the base URI of the file that contains the node that is passed as second parameter. If the second parameter is omitted, the base URI is the one of the XSLT stylesheet containing the <em>document()</em> function itself. <strong>odfxsltrunner</strong> runner uses the rules ODF defines for resolving relative URIs only for URIs that are relative to a file within an ODF package.</p> 
       <p><strong>Example:</strong> When transforming a content.xml file contained in an ODF package, the following rule applies templates to the style elements contained in the style.xml file:</p> 
-      <pre><code> &lt;xsl:apply-templates select="document('styles.xml',.)//office:styles/style:style"/&gt;
+      <pre><code class="language-xml">&lt;xsl:apply-templates select="document('styles.xml',.)//office:styles/style:style"/&gt;
 </code></pre> 
       <h2>Requirements</h2> 
       <p><strong>ODF XSLT Runner</strong> requires <a href="https://openjdk.java.net/install/">Java RE 5</a>, or a later version of Java.</p> 
@@ -95,8 +97,6 @@
       <p>Alternatively, the reference to the ODFDOM project in the compile time classpath of the <strong>ODF XSLT Runner</strong> project may be replaced with a reference to an already compiled <strong>odfdom.jar</strong>.</p> 
       <p>At run time, the <strong>odfdom.jar</strong> file must be either located in folder called <strong>lib</strong> next to the <strong>odfxsltrunner.jar</strong> file, or it must be in the classpath.</p> 
       <p><strong>Note:</strong> ODFDOM requires [Apache Xerces] <a href="http://xml.apache.org/dist/xerces-j/">7</a>. The jar file <strong>xercesImpl.jar</strong> also must exist in a folder <strong>lib</strong> next to <strong>odfxsltrunner.jar</strong> file, or it must be in the classpath. The <strong>ODF XSLT Runner</strong> NetBeans projects includes a reference to <strong>xersesImpl.jar</strong> in the runtime classpath which has to be adapted after checking out the project.</p> 
-      <h2>Examples</h2> 
-      <p>Example stylesheets can be found on the <a href="ODFXSLTRunnerExamples.html">ODFXSLTRunner Examples</a> page.</p> 
     </div>
     <html>
       <head></head>

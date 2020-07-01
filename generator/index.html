@@ -46,40 +46,29 @@
       </ul> 
     </div>
     <div id="contenta">
-      <h1>Who We Are</h1> 
-      <p>The ODFDOM project is based on the help of many contributors. We'd like to list all names here. If you think we missed a contributor, please, contact us via the development <a href="http://odftoolkit.org/projects/odfdom/lists">mailing list</a>.</p> 
-      <h2>Developers</h2> 
-      <table style="width:100%" border="1"> 
-        <tbody>
-          <tr style="background-color:#e3edf7;font-weight:bold"> 
-            <td>Name</td> 
-            <td>ID</td> 
-            <td>Organization</td> 
-          </tr> 
-          <tr>
-            <td>Tony</td>
-            <td>tony</td>
-            <td>IBM</td>
-          </tr> 
-        </tbody>
-      </table> 
-      <p>You can contact each one from the list by sending an E-Mail to ''(developer's ID)''@odftoolkit.org.</p> 
-      <h2>Contributors</h2> 
-      <table style="width:100%" border="1"> 
-        <tbody>
-          <tr style="background-color:#e3edf7;font-weight:bold"> 
-            <td>Name</td> 
-            <td>ID</td> 
-            <td>Organization</td> 
-          </tr> 
-          <tr>
-            <td></td>
-            <td>huijzer</td>
-            <td></td>
-          </tr> 
-        </tbody>
-      </table> 
-      <p>You can contact each one from the list by sending an E-Mail to ''(contributor's ID)''@odftoolkit.org.</p> 
+      <h1>Generator (schema2template)</h1> 
+      <h2>Overview</h2> 
+      <p>The schema2template library loads arbitrary XML schemata (XML grammar) into the most powerful grammar model, which is the one given by RelaxNG XML. Based on loaded XML model given by the grammar Schema2template offers functionality to fill arbitrary user templates files with data.</p> 
+      <p>The ODF Toolkit uses Schema2template to generate the XML layer. Every XML element and XML attribute from the grammar is given a Java class in the ODFDOM project. In the ODFDOM project these classes have the following locations:</p> 
+      <ul> 
+        <li>ODF attributes <a href="https://github.com/tdf/odftoolkit/tree/master/odfdom/src/main/java/org/odftoolkit/odfdom/dom/attribute">odfdom/src/main/java/org/odftoolkit/odfdom/dom/attribute</a></li> 
+        <li>ODF elements: <a href="https://github.com/tdf/odftoolkit/tree/master/odfdom/src/main/java/org/odftoolkit/odfdom/dom/element">odfdom/src/main/java/org/odftoolkit/odfdom/dom/element</a></li> 
+      </ul> 
+      <h2>Architecture</h2> 
+      <p>The library is build upon two powerful open source tools:</p> 
+      <ol> 
+        <li> <p><a href="https://github.com/kohsuke/msv">Multi Schema Validator (MSV)</a> Used to read arbitrary XML schema and map them to an internal RelaxNG model.</p> </li> 
+        <li> <p><a href="http://velocity.apache.org/">Apache's Velocity Template Engine</a> Used as template framework, e.g. to provide scripting within templates.</p> </li> 
+      </ol> 
+      <p>Within schema2template three common use cases covers with default templates as examples. For a given XML schema (e.g. RelaxNG, DTD, W3C schema) the following can be created:</p> 
+      <ol> 
+        <li>a XML node reference for the given format as HTML file</li> 
+        <li>Java sources for a typed DOM tree of the format</li> 
+      </ol> 
+      <h2>Design</h2> 
+      <p>Read in the Java documentation more about the <a href="../api/schema2template/index.html">generator design</a> build upon the Multi Schema Validator (MSV).</p> 
+      <h2>License</h2> 
+      <p>Apache License, Version 2.0. Please see file <a href="../LICENSE">LICENSE</a>.</p> 
     </div>
     <html>
       <head></head>
