@@ -56,7 +56,8 @@
       <p>You can see similar functionality in office software, such as selective copy and paste. In the next section, I will show how easy to do these kinds of conversions using the Simple API.</p> 
       <p><strong>Code Introduction</strong></p> 
       <p>Let's have a look at the main method. It will help us get an overview of this demo. First, the list data text document, "ListTable.odt" and table data spreadsheet document "TableList.ods" are loaded. Secondly, we use the list iteration function to get all of the lists in the text document and invoke the method <code>convertFromListToTable</code> to convert each of them to a table. Finally, we get the data table from "TableList.ods" and invoke the method <code>convertFromTableToList</code> to convert this table to a list. All of the updated documents are saved as new files. You can open them and see the conversion results.</p> 
-      <pre><code>public static void main(String[] args) {
+      <div class="codehilite">
+        <pre><code>public static void main(String[] args) {
 	try {
 		TextDocument textDoc = TextDocument.loadDocument("ListTable.odt");
 		SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument.loadDocument("TableList.ods");
@@ -84,11 +85,13 @@
 		e.printStackTrace();
 	}
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p>In the following two sections, I will review the implementation of the methods <code>convertFromListToTable</code> and <code>convertFromTableToList</code>.</p> 
       <p><em><strong>Convert from List to Table</strong></em></p> 
       <p>This is a recursive method, similar to a depth-first tree traversal. You determine the paste cell address by <code>startColumn</code> and <code>startRow</code>. First, all of the items in the list are retrieved. Second, each list item is converted to table cell. Its text content is extracted and set as the cell's display text. If the item has a sub list, its sub list is also handled the same as the parent list. After all of the items are converted to cells, we invoke <code>CellRange.merge()</code> to merge the blank cells. The generation document appears just like the picture shown earlier.</p> 
-      <pre><code>private static int convertFromListToTable(List list, Table table, int startColumn, int startRow) {
+      <div class="codehilite">
+        <pre><code>private static int convertFromListToTable(List list, Table table, int startColumn, int startRow) {
 	java.util.List&lt;listitem&gt; items = list.getItems();
 	int newItemCount = startRow;
 	for (ListItem item : items) {
@@ -112,10 +115,12 @@
 		return startRow;
 	}
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p><em><strong>Convert from Table to List</strong></em></p> 
       <p>This is also a recursive method. You determine the conversion range of the table by <code>startColumn</code>, <code>startRow</code>, <code>endColumn</code> and <code>endRow</code>. First, every cell in the selected range is retrieved by <code>Table.getCellByPosition</code>. Next, a list item is created to store the cell display text. If the <code>rowSpannedNumber &gt; 1</code>, that means this item has a sub list. Parts of the cells in the right columns of this cell become the items of the sub list. They are also determined by recursive calls to <code>convertFromTableToList</code>. If the <code>rowSpannedNumber = 1</code>, there is no need to create a sub list, all of the content in the right cells is just added to this item.</p> 
-      <pre><code>private static void convertFromTableToList(Table table, List list, int startColumn, int startRow, int endColumn, int endRow) {
+      <div class="codehilite">
+        <pre><code>private static void convertFromTableToList(Table table, List list, int startColumn, int startRow, int endColumn, int endRow) {
 	while (startRow &lt;= endRow) {
 		Cell cell = table.getCellByPosition(startColumn, startRow);
 		int rowSpannedNumber = cell.getRowSpannedNumber();
@@ -144,7 +149,8 @@
 		startRow += rowSpannedNumber;
 	}
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>Download</strong></p> 
       <p>Powered by Simple API version <a href="../downloads.html">0.4</a>. You can download the code of this demo from <a href="table_list_convertion.zip">here</a>.</p> 
     </div>

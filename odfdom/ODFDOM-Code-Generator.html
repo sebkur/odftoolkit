@@ -46,16 +46,19 @@
       </ul> 
     </div>
     <div id="contenta">
-      <h1>ODFDOM Code Generator</h1> 
+      <h1 id="odfdom-code-generator">ODFDOM Code Generator</h1> 
       <p>The ODFDOMCodeGenerator is a java application to create source code for elements and attributes that are defined using relaxng schema. It is used in the ODFDOM project to generate the java source files for the elements available in the OpenDocument format.</p> 
-      <h2>Usage</h2> 
+      <h2 id="usage">Usage</h2> 
       <p>To generate source code files, start the application with</p> 
-      <pre><code class="language-shell">    java -jar ODFDOMCodeGenerator.jar your-schema.rng your-config.xml your-template.xml /your/target/directory
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">    java -jar ODFDOMCodeGenerator.jar your-schema.rng your-config.xml your-template.xml /your/target/directory
+</code></pre>
+      </div> 
       <p>Please not, if you use the ODFDOM project, you can change the setting 'gen-flat-odf-schema' inside the user.properties file to 'true' and the next build will use the 'schema/OpenDocument-schema-v1.1.rng' schema, the 'codegen/config.xml' config file, the 'codegen/javacodetemplate.xml' template file and the src directory of the project as the target directory. This will override all generated code files in your project.</p> 
-      <h2>The config file</h2> 
+      <h2 id="the-config-file">The config file</h2> 
       <p>The config file must be an xml file with the following structure</p> 
-      <pre><code class="language-xml">  &amp;lt;?xml version="1.0" encoding="UTF-8"?&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;?xml version="1.0" encoding="UTF-8"?&amp;gt;
   &amp;lt;config&amp;gt;
   &amp;lt;elements&amp;gt;
   &amp;lt;element .../&amp;gt;
@@ -74,8 +77,9 @@
   ...
   &amp;lt;/attributes&amp;gt;
   &amp;lt;/config&amp;gt;
-</code></pre> 
-      <h2>Element</h2> 
+</code></pre>
+      </div> 
+      <h2 id="element">Element</h2> 
       <p>The &lt;element&gt; element supports the following attributes</p> 
       <p><strong>Name</strong></p> 
       <p>The mandatory attribute 'name' selects the element from the relaxng schema with its qualified name (qname).</p> 
@@ -85,7 +89,7 @@
       <p>The optional attribute 'base' changes the variable 'elementbasename' for this element.</p> 
       <p><strong>Family</strong></p> 
       <p>The optional attribute 'family' changes the variable 'elementstylefamily' for this element.</p> 
-      <h2>Attribute</h2> 
+      <h2 id="attribute">Attribute</h2> 
       <p>The &lt;attribute&gt; element supports the following attributes</p> 
       <p><strong>Name</strong></p> 
       <p>The mandatory attribute 'name' selects the attribute from the relaxng schema with its qname.</p> 
@@ -95,7 +99,7 @@
       <p>The optional attribute 'rename' changes the variable 'attributename' for the selected attributes. This can be used f.e. to avoid generating getter/setter methods which names collide with base class methods.</p> 
       <p><strong>Type-name</strong></p> 
       <p>The optional attribute 'type-name' changes the variable 'conversiontype' for the selected attributes. This can be used f.e. to have different attributes from multiple elements with the same defined values to use a shared class for conversions.</p> 
-      <h2>Data</h2> 
+      <h2 id="data">Data</h2> 
       <p>The &lt;data&gt; element supports the following attributes</p> 
       <p><strong>Name</strong></p> 
       <p>The mandatory attribute 'name' selects the data type by its qname. Data types are the types defined in the relaxng schema by the &lt;data&gt; elements inside the &lt;attribute&gt; element. The name can also be the name of a &lt;ref&gt; element. In that case the processing of the relaxng schema stops at this &lt;ref&gt; element and the configuration from this element is used.</p> 
@@ -103,40 +107,47 @@
       <p>The mandatory attribute 'value-type' changes the variable 'valuetype' for attributes using this data-type.</p> 
       <p><strong>Conversion-type</strong></p> 
       <p>The optional attribute 'conversion-type' changes the variable 'conversion-type' for attributes using this data-type. If this attribute is not available, the variable 'conversion-type' will have the same value as the variable 'valuetype'.</p> 
-      <h2>The template file</h2> 
+      <h2 id="the-template-file">The template file</h2> 
       <p>The template file must be a valid xml file with the element &lt;template&gt; as the root element. It can contain the following elements</p> 
-      <h2>Code</h2> 
+      <h2 id="code">Code</h2> 
       <p>The &lt;code&gt; element outputs the characters inside this element to the current output file. The characters are scanned for expressions before written to the file.</p> 
-      <pre><code class="language-xml">&amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">&amp;lt;code&amp;gt;
   // this element generates a comment
 &amp;lt;/code&amp;gt;
-</code></pre> 
-      <h2>Define</h2> 
+</code></pre>
+      </div> 
+      <h2 id="define">Define</h2> 
       <p>The &lt;define&gt; element does not execute its child elements but remembers them with the given name for later use with the &lt;ref&gt; element.</p> 
       <p>The mandatory attribute 'name' gives the name for this define.</p> 
-      <pre><code class="language-xml">&amp;lt;define name="header"&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">&amp;lt;define name="header"&amp;gt;
   &amp;lt;code&amp;gt;
   // This file uses the gpl
   // Do not edit this file as it is automaticaly generated!
   &amp;lt;/code&amp;gt;
 &amp;lt;/define&amp;gt;
-</code></pre> 
-      <h2>Ref</h2> 
+</code></pre>
+      </div> 
+      <h2 id="ref">Ref</h2> 
       <p>The &lt;ref&gt; element executes the child elements of a &lt;define&gt; element with the same name. The mandatory attribute 'name' selects the &lt;define&gt; by its attribute 'name'.</p> 
-      <h2>If</h2> 
+      <h2 id="if">If</h2> 
       <p>The &lt;if&gt; element executes its child elements only if the evaluated expression from its attribute 'test' is a non empty string and not the string constant 'false'.</p> 
       <p>The mandatory attribute 'test' is evaluated as an expression.</p> 
-      <pre><code class="language-xml">  &amp;lt;if test="elementname='text:a'&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;if test="elementname='text:a'&amp;gt;
   &amp;lt;code&amp;gt;
     // interface for links
     public String getLink();
     public void setLink( String newLink );
   &amp;lt;/code&amp;gt;
   &amp;lt;/if&amp;gt;
-</code></pre> 
-      <h2>Else</h2> 
+</code></pre>
+      </div> 
+      <h2 id="else">Else</h2> 
       <p>The &lt;else&gt; element is always ignored, except if it is a child element inside an &lt;if&gt; element and the test attribute was evaluated to 'false' or an empty string.</p> 
-      <pre><code class="language-xml">  &amp;lt;if test="elementbasename=''"&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;if test="elementbasename=''"&amp;gt;
   &amp;lt;code&amp;gt;
   class %{elementname} extends DefaultElement
   &amp;lt;/code&amp;gt;
@@ -146,23 +157,28 @@
   &amp;lt;/code&amp;gt;
   &amp;lt;/else&amp;gt;
   &amp;lt;/if&amp;gt;
-</code></pre> 
-      <h2>Set</h2> 
+</code></pre>
+      </div> 
+      <h2 id="set">Set</h2> 
       <p>The &lt;set&gt; element changes all variables with the names of the given attributes to their values. The values are scanned for expressions before assignement.</p> 
-      <pre><code class="language-xml">  &amp;lt;set elementname="Hyperlink"/&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;set elementname="Hyperlink"/&amp;gt;
   &amp;lt;set elementclassname="Odf%{elementname}Element"/&amp;gt;
   &amp;lt;code&amp;gt;
   class %{elementclassname} extends OdfElement
   {
   }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>will output</p> 
-      <pre><code class="language-Java">      class OdfHyperlinkElement extends OdfElement
+      <div class="codehilite">
+        <pre><code class="language-Java">      class OdfHyperlinkElement extends OdfElement
       {
       }
-</code></pre> 
-      <h2>Foreach</h2> 
+</code></pre>
+      </div> 
+      <h2 id="foreach">Foreach</h2> 
       <p>The &lt;foreach&gt; element executes its child elements once for all objects of the given type from the relaxng schema.</p> 
       <p>The mandatory attribute 'type' must have one of the following values</p> 
       <p><strong>'element'</strong></p> 
@@ -189,9 +205,9 @@
         <li>'namespaceprefix' is the prefix of the current namespace</li> 
         <li>'namespaceuri' is the uri of the current namespace</li> 
       </ul> 
-      <h2>Select</h2> 
+      <h2 id="select">Select</h2> 
       <p>The &lt;select&gt; element works the same as the &lt;foreach&gt; element but instead of iterating all objects of the given type it selects only one object by its qname with the mandatory attribute 'name'. Can only be used for types 'element', 'attribute' and 'namespace'.</p> 
-      <h2>File</h2> 
+      <h2 id="file">File</h2> 
       <p>The &lt;file&gt; element opens a new text file for writing. The following attributes are supported</p> 
       <p><strong>Path</strong></p> 
       <p>The mandatory attribute 'path' specifies the path of the new file.</p> 
@@ -199,21 +215,26 @@
       <p>The mandatory attribute 'name' specifies the name of the new file.</p> 
       <p><strong>Extension</strong></p> 
       <p>The mandatory attribute 'extension' specifies the extension of the new file.</p> 
-      <h2>Expressions</h2> 
+      <h2 id="expressions">Expressions</h2> 
       <p>Expressions can be part of characters inside &lt;code&gt; elements and inside some attributes. If embedded inside other text they are distinguished by putting them inside %{...} constructs. Expressions can contain variable names, contant strings, operators and functions</p> 
-      <h2>Variables</h2> 
+      <h2 id="variables">Variables</h2> 
       <p>Variables must start with a us-ascii character ('a-z' or 'A-Z) or one of the following characters '_' '.' and contain more of the same characters and also digits.</p> 
       <p>The following example</p> 
-      <pre><code class="language-xml">  &amp;lt;set testvar="World"/&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;set testvar="World"/&amp;gt;
   &amp;lt;code&amp;gt;Hello %{testvar}!&amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">    Hello World!
-</code></pre> 
-      <h2>Constant strings</h2> 
+      <div class="codehilite">
+        <pre><code class="language-shell">    Hello World!
+</code></pre>
+      </div> 
+      <h2 id="constant-strings">Constant strings</h2> 
       <p>Constand strings must be delimeted by either ' or " like c++ or java strings.</p> 
       <p>The following example</p> 
-      <pre><code class="language-xml">  &amp;lt;set testvar="yes"/&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;set testvar="yes"/&amp;gt;
   &amp;lt;if test="testvar='yes'"&amp;gt;
   &amp;lt;code&amp;gt;
   Yes!
@@ -224,152 +245,207 @@
   &amp;lt;/code&amp;gt;
   &amp;lt;/else&amp;gt;
   &amp;lt;/if&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      Yes!
-</code></pre> 
-      <h2>Operators</h2> 
+      <div class="codehilite">
+        <pre><code class="language-shell">      Yes!
+</code></pre>
+      </div> 
+      <h2 id="operators">Operators</h2> 
       <p>The following operators are supported (given from lowest to highes priority)</p> 
       <p><strong>not</strong></p> 
       <p>The not operator returns 'true' of the following string expression is not empty and not 'false' or 'false' otherwise.</p> 
       <p>The following example</p> 
-      <pre><code class="language-xml">  &amp;lt;set testvar="yes"/&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;set testvar="yes"/&amp;gt;
   &amp;lt;code&amp;gt;
   %{ testvar } or %{ not testvar }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      yes or false
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">      yes or false
+</code></pre>
+      </div> 
       <p><strong>+</strong></p> 
       <p>The + operator concatenates two string expressions.</p> 
       <p>The following example</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ 'Hello' + ' ' + "World" + "!" }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      Hello World!
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">      Hello World!
+</code></pre>
+      </div> 
       <p><strong>or</strong></p> 
       <p>The or operator returns 'true' if the previous string expression is not empty and not 'false' or the next string expression is not empty and not 'false'.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ 'true' or 'false' }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      true
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">      true
+</code></pre>
+      </div> 
       <p><strong>and</strong></p> 
       <p>The or operator returns 'true' if the previous string expression is not empty and not 'false' and the next string expression is not empty and not 'false'.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ 'true' and 'false' }
   %{ 'true' and 'true' }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      false
+      <div class="codehilite">
+        <pre><code class="language-shell">      false
       true
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>Equals</strong></p> 
       <p>The '=' operator returns 'true' if the previous string expression is equal to the next string expression or 'false' otherwise.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ 'true' = 'false' }
   %{ 'hello' = 'hello' }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      false
+      <div class="codehilite">
+        <pre><code class="language-shell">      false
       true
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>Unequals</strong></p> 
       <p>The '!=' operator returns 'false' if the previous string expression is equal to the next string expression or 'true' otherwise.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ 'true' != 'false' }
   %{ 'hello' != 'hello' }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      true
+      <div class="codehilite">
+        <pre><code class="language-shell">      true
       false
-</code></pre> 
-      <h2>Functions</h2> 
+</code></pre>
+      </div> 
+      <h2 id="functions">Functions</h2> 
       <p>Functions start with a name followed by a pair of brackets with a list of coma seperated parameters inside. The following functions are supported</p> 
       <p><strong>toupper</strong></p> 
       <p>The function toupper returns the given string as an upercase version</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ toupper('true') }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      TRUE
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">      TRUE
+</code></pre>
+      </div> 
       <p><strong>tolower</strong></p> 
       <p>The function tolower returns the given string as a lowercase version.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ toupper('TRUE') }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      true
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">      true
+</code></pre>
+      </div> 
       <p><strong>prefix</strong></p> 
       <p>The function 'prefix' returns the namespace prefix from a qualified name.</p> 
       <p><strong>local_name</strong></p> 
       <p>The function 'local_name' returns the local name from a qualified name.</p> 
-      <pre><code class="language-xml">  &amp;lt;set qname='text:section'/&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;set qname='text:section'/&amp;gt;
   &amp;lt;code&amp;gt;
   %{ prefix(qname) }
   %{ local_name(qname) }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      text
+      <div class="codehilite">
+        <pre><code class="language-shell">      text
       section
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>identifier</strong></p> 
       <p>The function 'identifier' converts the given string into a valid java/c++ identifier. If the given string is a qualified name, it first removes the prefix. Then all '-' Characters will be removed and all characters following '-' will be converted to upercase. If the result begins with a non valid character, a '_' will be inserted as the first character.</p> 
-      <pre><code class="language-xml">  &amp;lt;set qname='text:section'/&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;set qname='text:section'/&amp;gt;
   &amp;lt;code&amp;gt;
   %{ identifier('text:anchor-position') }
   %{ identifier('300') }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      AnchorPosition
+      <div class="codehilite">
+        <pre><code class="language-shell">      AnchorPosition
       _300
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>endswith</strong></p> 
       <p>The function 'endswith' returns true if the first parameter ends with the second.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ endswith('foobar','bar') }
   %{ endswith('foobar','foo') }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      true
+      <div class="codehilite">
+        <pre><code class="language-shell">      true
       false
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>startswith</strong></p> 
       <p>The function 'startswith' returns true if the first parameter starts with the second.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ startswith('foobar','bar') }
   %{ startswith('foobar','foo') }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      false
+      <div class="codehilite">
+        <pre><code class="language-shell">      false
       true
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>replace</strong></p> 
       <p>The function 'replace' replaces all occurrences of the first parameter with the second parameter inside the third parameter.</p> 
-      <pre><code class="language-xml">  &amp;lt;code&amp;gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">  &amp;lt;code&amp;gt;
   %{ replace('USA','World','Hello USA!') }
   &amp;lt;/code&amp;gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>outputs</p> 
-      <pre><code class="language-shell">      Hello World!
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">      Hello World!
+</code></pre>
+      </div> 
     </div>
     <html>
       <head></head>

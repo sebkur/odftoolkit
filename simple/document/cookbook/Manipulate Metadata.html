@@ -67,11 +67,13 @@
          First you load an ODF text document(for example),then get the meta file DOM and then use the meta DOM to create an instance of the Meta. Use Meta you can access all the supported elements. 
       </div> 
       <br>
-      <pre class="code" id="code0">
+      <div class="codehilite">
+        <pre class="code" id="code0">
 	<span class="javaclass">TextDocument</span> doc = (<span class="javaclass">TextDocument</span>) <span class="javaclass">TextDocument</span>.loadDocument("testtable.odt");<br>
 	<span class="javaclass">OdfFileDom</span> metadom = doc.getMetaDom();<br>
 	<span class="javaclass">Meta</span> metadata = <span class="modifier">new</span> <span class="javaclass">Meta</span>(metadom);<br>
-</pre> 
+</pre>
+      </div> 
       <br>
       <br>
       <strong><a href="#Access metadata">Access metadata</a></strong> 
@@ -79,20 +81,24 @@
          After creating the Meta instance,you can use it to manipulate the metadata: for example, you can set a value for the &lt;meta:generator&gt; like this: 
       </div> 
       <br>
-      <pre class="code" id="code1">
+      <div class="codehilite">
+        <pre class="code" id="code1">
 	metadata.setGenerator("<span class="javaclass">OpenOffice</span>.org/3.0$Win32 <span class="javaclass">OpenOffice</span>.org_project/300m15$<span class="javaclass">Build</span>-9379");<br>
-</pre> 
+</pre>
+      </div> 
       <br>
       <div class="bodytext">
          The &lt;meta:keyword&gt; may contain many keywords, you can set the whole list of keywords and add one keyword as you want. the api currently do not provide the direct method for deleting one keyword ,you can get the keyword list first,and then delete the keyword,finally set the list to the element. 
       </div> 
       <br>
-      <pre class="code" id="code2">
+      <div class="codehilite">
+        <pre class="code" id="code2">
        metadata.addKeyword("java");<br>
       <span class="javaclass">List</span>&lt;<span class="javaclass">String</span>&gt; keywords=metadata.getKeywords();<br>
       keywords.remove("java");<br>
       metadata.setKeywords(keywords);<br>
-</pre> 
+</pre>
+      </div> 
       <br>
       <br>
       <strong><a href="#Access the user defined element">Access the user defined element</a></strong> 
@@ -100,7 +106,8 @@
          To manipulate the user defined data,you should get the list of their names,and then use the names to update the data or its datatype or delete the whole user defined data. you can use the setUserDefinedData(String name, String type, String value) method to update data,if the name not exists in the document,the method will add the new user defined data. 
       </div> 
       <br>
-      <pre class="code" id="code3">
+      <div class="codehilite">
+        <pre class="code" id="code3">
       <span class="javaclass">List</span>&lt;<span class="javaclass">String</span>&gt; names=metadata.getUserDefinedDataNames();<br>
       <span class="control">for</span> (<span class="javaclass">String</span> name : names) {<br>
 	  metadata.removeUserDefinedDataByName(name);<br>
@@ -117,7 +124,8 @@
       <span class="javaclass">String</span> dataType=metadata.getUserDefinedDataType(key);<br>
 <span class="comments">      //get the data value</span>
       <span class="javaclass">String</span> dataValue=metadata.getUserDefinedDataValue(key);    <br>
-</pre> 
+</pre>
+      </div> 
       <br>
       <br>
       <strong><a href="#Access the document statistics">Access the document statistics</a></strong> 
@@ -125,7 +133,8 @@
          if you want to access the document statistics,you should get a DocumentStatistic instance, if the return is null,it means that this ODF document doesn't have any document statistic information,you should create a document statistics object. 
       </div> 
       <br>
-      <pre class="code" id="code4">
+      <div class="codehilite">
+        <pre class="code" id="code4">
 	<span class="javaclass">DocumentStatistic</span> stat = metadata.getDocumentStatistic();<br>
 	<span class="control">if</span>(stat==<span class="basic">null</span>) {<br>
 	    stat=<span class="modifier">new</span> <span class="javaclass">DocumentStatistic</span>(metadata.getOfficeMetaElement().newMetaDocumentStatisticElement());<br>
@@ -133,7 +142,8 @@
 	<br>
 	stat.setCellCount(3);<br>
 	<span class="javaclass">Integer</span> cellCount=stat.getCellCount();<br>
-</pre> 
+</pre>
+      </div> 
       <br>
       <br> 
       <div class="navigation"> 

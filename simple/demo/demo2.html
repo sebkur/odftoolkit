@@ -65,12 +65,15 @@
       <p>To generate this sample, the Presentation and Text package in Simple API will be used. The related operations contains: load the existing presentation document, append one presentation to the end of another one, delete slide in the presentation, add new slide in the presentation, get certain slide in the presentation, add new notes to the slide, create a new text document, add new paragraph in the text document, etc.</p> 
       <p>Seven functions exist in the resource: main(), Getpresentation(), ProcSlide(), titleofExtractnotes(), ExtractNotes(), FillExtractnotes() and saveDocument(). Each of them will be explained briefly in the following paragraphs.</p> 
       <p>First three variables should be used to hold the two presentation document and the text document.</p> 
-      <pre><code>PresentationDocument presentationdoc;
+      <div class="codehilite">
+        <pre><code>PresentationDocument presentationdoc;
 PresentationDocument presentationdoc2;
 TextDocument Extractednotes;
-</code></pre> 
+</code></pre>
+      </div> 
       <p>In function Getpresentation(), the two presentation documents are loaded so that they can be operated by Simple API, and the text document is created to save the extracted notes. The codes are shown below:</p> 
-      <pre><code>public void Getpresentation() {
+      <div class="codehilite">
+        <pre><code>public void Getpresentation() {
 	try {
 		presentationdoc=PresentationDocument.loadDocument("Pres1.odp");
 		presentationdoc2=PresentationDocument.loadDocument("Pres2.odp");
@@ -86,9 +89,11 @@ TextDocument Extractednotes;
 		System.err.println(e.getMessage());
 	}
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p>In function ProcSlide(), five main operations are used to process the document: delete extra slide (deleteSlideByIndex, deleteSlideByName), change slide name (setSlideName), combine these two presentations together (appendPresentation), add a new cover for the new combined document (newSlide), add title and notes for the new slide. Here the function getSlideCount() is used to get the slide number of the specified presentation document, getSlideByName()and getSlideByIndex() are used to get the specified slide, getNotesPage() and setTextContent() are used to add notes for the added slide. In order to add text to the title frame, a DrawTextBoxElement should be used to get the editable component. The codes are shown below:</p> 
-      <pre><code>Slide slide;
+      <div class="codehilite">
+        <pre><code>Slide slide;
 Notes notes;
 int count=presentationdoc.getSlideCount();
 presentationdoc.deleteSlideByIndex(count-1);
@@ -103,26 +108,32 @@ notes=slide.getNotesPage();
 notes.addText("This is the cover of the new presentation document");
 DrawTextBoxElement textbox=(DrawTextBoxElement)slide.getOdfElement().getFirstChild().getFirstChild();
 textbox.newTextPElement().setTextContent("Combined Presentation");
-</code></pre> 
+</code></pre>
+      </div> 
       <p>In function titleofExtractnotes(), the title of the text document which is used to save the notes of each slide is added. And in function ExtractNotes(), the notes of each slide will be extracted (getTextContent), the function FillExtractnotes() will be called if the notes exists. Here function getSlideByIndex() is used to obtain the corresponding slide, getSlideName() is used to obtain the name of the specified slide in order to identify the notes. The codes are shown below:</p> 
-      <pre><code>slide=presentationdoc.getSlideByIndex(i);
+      <div class="codehilite">
+        <pre><code>slide=presentationdoc.getSlideByIndex(i);
 String slidename=slide.getSlideName();
 notes=slide.getNotesPage();
 if(!notes.getOdfElement().getTextContent().isEmpty()){
 	String notestring=notes.getOdfElement().getTextContent().toString().trim();
 	FillExtractnotes(notestring,slidename);
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p>In function FillExtractnotes, the notes will be added to the text document. Here the slide name is used as the identity and is followed by the corresponding notes, function newParagraph() is used to add a new paragraph in the text document. The codes are shown below:</p> 
-      <pre><code>OdfTextParagraph para =Extractednotes.newParagraph();
+      <div class="codehilite">
+        <pre><code>OdfTextParagraph para =Extractednotes.newParagraph();
 para.setProperty(OdfParagraphProperties.MarginTop, "0.25cm");
 para.setTextContent("Notes of "+slidename+":");
 para=Extractednotes.newParagraph();
 para.setProperty(OdfParagraphProperties.TextAlign,"justify");
 para.setTextContent("  "+notestext);
-</code></pre> 
+</code></pre>
+      </div> 
       <p>In function saveDocument(), the new combined presentation document and the text document which contains the notes will be saved. The codes are shown below:</p> 
-      <pre><code>public void saveDocument(){
+      <div class="codehilite">
+        <pre><code>public void saveDocument(){
 	try{
 		presentationdoc.save("Presentationsample.odp");
 		presentationdoc.close();
@@ -133,7 +144,8 @@ para.setTextContent("  "+notestext);
 		System.err.println(e.getMessage());
 	}
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>Download</strong></p> 
       <p>Powered by Simple API version <a target="_new" href="../downloads.html">0.3.5</a>. You can download the code of this sample from <a href="PresentationCombination.zip">here</a>.</p> 
     </div>

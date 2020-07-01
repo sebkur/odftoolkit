@@ -46,11 +46,11 @@
       </ul> 
     </div>
     <div id="contenta">
-      <h1>ODF Validator</h1> 
-      <h2>Overview</h2> 
+      <h1 id="odf-validator">ODF Validator</h1> 
+      <h2 id="overview">Overview</h2> 
       <p><strong>ODF Validator</strong> is a tool that validates OpenDocument files and checks them for certain conformance criteria.</p> 
       <p><strong>ODF Validator</strong> is available as Java library for command line use or as web application archive (WAR). An instance of the WAR is <a href="https://odfvalidator.org">hosted online</a>. This page describes the command line tool, the user front-end of the WAR should be self-explaining.</p> 
-      <h2>How to start</h2> 
+      <h2 id="how-to-start">How to start</h2> 
       <p>To use the '''ODF Validator''', the following steps are required:</p> 
       <ul> 
         <li> <p>Get the source code.</p> </li> 
@@ -63,25 +63,32 @@
         <li> <p>OR for command line usage and help, call the '''ODF Validator''' with</p> <p>java -jar "./target/odfvalidator-&lt;VERSION&gt;-jar-with-dependencies.jar" &lt;odffile&gt;</p> </li> 
         <li> <p>You may call the ODF Validator via</p> </li> 
       </ul> 
-      <pre><code class="language-shell">    java
+      <div class="codehilite">
+        <pre><code class="language-shell">    java
     -Djavax.xml.validation.SchemaFactory:&amp;lt;http://relaxng.org/ns/structure/1.0&amp;gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
     -Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl
     -jar "&amp;lt;PATH&amp;gt;/odfvalidator-&amp;lt;VERSION&amp;gt;-jar-with-dependencies.jar"  &amp;lt;odffile&amp;gt;
-</code></pre> 
-      <h2>Usage</h2> 
-      <h3>Usage Summary</h3> 
+</code></pre>
+      </div> 
+      <h2 id="usage">Usage</h2> 
+      <h3 id="usage-summary">Usage Summary</h3> 
       <p>In a command-line environment, <strong>ODF Validator</strong> is invoked by the following command:</p> 
-      <pre><code class="language-shell">     java -jar "&lt;path&gt;/odfvalidator-VERSION-jar-with-dependencies.jar"
-</code></pre> 
+      <div class="codehilite">
+        <pre><code class="language-shell">     java -jar "&lt;path&gt;/odfvalidator-VERSION-jar-with-dependencies.jar"
+</code></pre>
+      </div> 
       <p>For instance, with the following parameters:</p> 
-      <pre><code class="language-shell">    java
+      <div class="codehilite">
+        <pre><code class="language-shell">    java
       -Djavax.xml.validation.SchemaFactory:&amp;lt;http://relaxng.org/ns/structure/1.0&amp;gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
       -Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl
       -jar "&lt;path&gt;/odfvalidator-&lt;VERSION&gt;-jar-with-dependencies.jar"
-</code></pre> 
+</code></pre>
+      </div> 
       <p>These command lines are abbreviated <em>odfvalidator</em> from now on.</p> 
       <p>The <strong>ODF Validator</strong> may be called with the following options:</p> 
-      <pre><code class="language-shell">    odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
+      <div class="codehilite">
+        <pre><code class="language-shell">    odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
                   [-o outputfile] [-1.0|-1.1|-1.2] &lt;odffiles&gt;
     odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
                   [-o outputfile] -S &lt;schemafile&gt; &amp;lt;odffiles&gt;
@@ -89,7 +96,8 @@
     odfvalidator -g &lt;odffiles&gt;
     odfvalidator -h
     odfvalidator -V
-</code></pre> 
+</code></pre>
+      </div> 
       <p>If no parameters are specified, the files <strong>&lt;odffiles&gt;</strong> are validated using the schema that belongs to the ODF version of the file. For ODF 1.0 files the ODF 1.0 schema is used, for ODF 1.1 files the ODF 1.1 schema is used, and so on. The version of an ODF file is detected for each file separately.</p> 
       <p>The options have the following meaning:</p> 
       <p><strong>-1.0</strong>: Use the ODF 1.0 schemas regardless of the version specified by the validated document.</p> 
@@ -109,11 +117,13 @@
       <p><strong>-C</strong>: Validate using configuration file <strong>&lt;configfile&gt;</strong>.</p> 
       <p><strong>-S</strong>: Use the specified <strong>&lt;schemafile&gt;</strong> for validation.</p> 
       <p><strong>-V</strong>: Print version information.</p> 
-      <h3>Validation using default schemas</h3> 
+      <h3 id="validation-using-default-schemas">Validation using default schemas</h3> 
       <p>The ODF 1.0, ODF 1.1, ODF 1.2 schemas as well as the MathML 1.01 DTD and the MathML 2.0 schema are included in the <strong>ODFValidator.jar</strong> file. If the ODFValidator is called without the <strong>-S</strong> or <strong>-C</strong> options, these schemas are used for validation.</p> 
-      <pre><code class="language-shell">    odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
+      <div class="codehilite">
+        <pre><code class="language-shell">    odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &lt;expclude pattern&gt;]
                 [-o outputfile] [-1.0|-1.1|-1.2] &lt;odffiles&gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>&lt;odffiles&gt;</strong> is the list of files and directories that should be validated. If a directory is specified, all files that have an OpenDocument extension (like <strong>odt</strong>, <strong>ods</strong> or <strong>ott</strong>) are validated. If <strong>-r</strong> is specified additionally, all directories are processed recursively.</p> 
       <p>By default, the <strong>ODF Validator</strong> detects the version of the files that shall be validated and chooses the corresponding schema. The command line options <strong>-1.0</strong>', <strong>-1.1</strong> and <strong>-1.2</strong> can be used to specify that the schemas of a particular ODF version should be used for all files, regardless of the version they specify themselves.</p> 
       <p>The command line option <strong>-d</strong> specifies that the MathML 1.01 DTD should be used for the validation of the <strong>content.xml</strong> of formula documents. Default is to use the MathML 2.0 schema.</p> 
@@ -122,14 +132,16 @@
       <p>If <strong>-w</strong> is specified additionally, not only validation errors are reported, but also warnings.</p> 
       <p>If <strong>-v</strong> is specified additionally, not only validation errors and warnings are reported, but also the generator stored in the manifest, MIME types, the files that are processed, etc.</p> 
       <p>If the <strong>-o</strong> option is present, all messages go into the specified file. Otherwise, they are printed to standard out.</p> 
-      <h3>Validation using a non-default schema</h3> 
+      <h3 id="validation-using-a-non-default-schema">Validation using a non-default schema</h3> 
       <p>To specify the schema that is used for <strong>meta-xml</strong>, <strong>content.xml</strong>, <strong>styles.xml</strong> and <strong>settings.xml</strong> on the command line, <strong>ODF Validator</strong> has to be called with the following parameters:</p> 
-      <pre><code class="language-shell">    odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &amp;lt;expclude pattern&amp;gt;]
+      <div class="codehilite">
+        <pre><code class="language-shell">    odfvalidator [-r] [-c|-e|-s] [-d] [-v|-w] [-x &amp;lt;expclude pattern&amp;gt;]
     [-o outputfile] -S &lt;schemafile&gt; &lt;odffiles&gt;
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>&lt;schemafile&gt;</strong> is the schema that shall be used.</p> 
       <p>All other command line option are as described in <em>Validation using default schemas</em>.</p> 
-      <h3>Validation using a configuration file</h3> 
+      <h3 id="validation-using-a-configuration-file">Validation using a configuration file</h3> 
       <p>The schemas and the files that should be validated can be specified in a configuration file. A configuration file is a Java XML properties file as described in the <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html">Java API documentation</a>. The following properties are supported:</p> 
       <ul> 
         <li><strong>strict-schema</strong>: Specifies the strict schema to be used.</li> 
@@ -141,7 +153,8 @@
         <li><strong>exclude</strong>: Specifies files and directories that shall be excluded as a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum">regular expression</a>. See description of <strong>-x</strong> option.</li> 
       </ul> 
       <p>A sample configuration file looks like this:</p> 
-      <pre><code class="language-xml">      &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+      <div class="codehilite">
+        <pre><code class="language-xml">      &lt;?xml version="1.0" encoding="UTF-8"?&gt;
       &lt;!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"&gt;
       &lt;properties&gt;
       &lt;entry key="strict-schema"&gt;/home/odf11-cd2/msv/OpenDocument-strict-schema-v1.1-cd2.rng&lt;/entry&gt;
@@ -150,8 +163,9 @@
       &lt;entry key="path1"&gt;/home/testdocs&lt;/entry&gt;
       &lt;entry key="path2"&gt;/home/temp&lt;/entry&gt;
       &lt;/properties&gt;
-</code></pre> 
-      <h2>What is checked</h2> 
+</code></pre>
+      </div> 
+      <h2 id="what-is-checked">What is checked</h2> 
       <p>The following items are checked:</p> 
       <ul> 
         <li>OpenDocument v1.2 documents 
@@ -182,14 +196,16 @@
         <li>The value of <em>draw:points</em> attributes is truncated to 2048 characters. For the logging level <strong>all</strong>, an information is displayed if this happens. <strong>Note:</strong> The truncation of this attribute value avoids a stack overflow in MSV while validating the attribute value against a regular expression.</li> 
         <li>A namespace "<a href="http://openoffice.org/2004/database">http://openoffice.org/2004/database</a>" within a <em>content.xml</em> file is changed to "urn:oasis:names:tc:opendocument:xmlns:database:1.0", and a namespace "<a href="http://openoffice.org/2004/office">http://openoffice.org/2004/office</a>" within a <em>content.xml</em> file is changed to "urn:oasis:names:tc:opendocument:xmlns:office:1.0". For the logging level <strong>all</strong>, an information is displayed if this happens. <strong>Note:</strong> These namespaces were used in OpenOffice.org 2.x database documents, because database documents are included in OpenDocument since version 1.2 only. Changing them enables the validation of OpenOffice.org 2.x database documents.</li> 
       </ul> 
-      <h2>Where are the ODF schemas</h2> 
+      <h2 id="where-are-the-odf-schemas">Where are the ODF schemas</h2> 
       <p>The OpenDocument schemas are available on the <a href="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS OpenDocument Technical Committee</a> page. The ODF 1.0 and 1.1 schemas can be downloaded directly from that page]. A zip file containing the most recent ODF 1.2 schemas is available in the document section.</p> 
       <p>The MathML DTD that is included in the ODF Validator us the one that is included in the <strong>/share/dtd/math/1_01/</strong> folder of each OpenOffice.org/Oracle Open Office installation.</p> 
-      <h2>Requirements</h2> 
+      <h2 id="requirements">Requirements</h2> 
       <p><strong>ODF Validator</strong> requires J2RE 1.5 or J2RE 1.6. For J2RE 1.6, the following options have to be included into the <strong>java</strong> command line:</p> 
-      <pre><code class="language-shell">    -Djavax.xml.validation.SchemaFactory:&lt;http://relaxng.org/ns/structure/1.0&gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
+      <div class="codehilite">
+        <pre><code class="language-shell">    -Djavax.xml.validation.SchemaFactory:&lt;http://relaxng.org/ns/structure/1.0&gt;=org.iso_relax.verifier.jaxp.validation.RELAXNGSchemaFactoryImpl
     -Dorg.iso_relax.verifier.VerifierFactoryLoader=com.sun.msv.verifier.jarv.FactoryLoaderImpl
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>ODF Validator</strong> further requires the following packages:</p> 
       <ul> 
         <li><a href="https://github.com/xmlark/msv">MSV</a>. <strong>msv.jar</strong>, <strong>isorelax.jar</strong>, <strong>relaxngDatatype.jar</strong> and <strong>xsdlib.jar</strong> included in the MSV distribution must be added to the project's libraries and must be in the classpath or a folder called <strong>lib</strong> that is next to the <strong>odfvalidator.jar</strong> at runtime.</li> 
@@ -201,7 +217,7 @@
       <p>The references to all other jar files must be updated manually before building <strong>ODF Validator</strong>.</p> 
       <p><strong>Note:</strong> ODFDOM requires <a href="http://xml.apache.org/dist/xerces-j/">Apache Xerces</a>. The jar file <strong>xercesImpl.jar</strong> also must exist in a folder <strong>lib</strong> next to <strong>odvalidator.jar</strong> file, or it must be in the classpath. The <strong>ODF Validator</strong> NetBeans projects includes a reference to <strong>xersesImpl.jar</strong> in the runtime classpath which has to be adapted after checking out the project.</p> 
       <p><strong>Note:</strong> ODFDOM requires at least Xerces 2.8.0. Please note that MSV distribution contains an xercesImpl.jar which is older.</p> 
-      <h2>Source Code</h2> 
+      <h2 id="source-code">Source Code</h2> 
       <p>The <strong>ODF Validator</strong> source code is located <a href="https://github.com/tdf/odftoolkit/tree/master/validator">here</a>. <strong>ODF Validator</strong> uses Mercurial for source control. Please check the help for instruction how to use Mercurial.</p> 
     </div>
     <html>

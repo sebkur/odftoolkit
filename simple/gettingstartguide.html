@@ -46,16 +46,17 @@
       </ul> 
     </div>
     <div id="contenta">
-      <h1>Getting Start Guide</h1> 
+      <h1 id="getting-start-guide">Getting Start Guide</h1> 
       <p>This start guide shows how to use the Simple ODF API to create a text document with image, paragraph, list and table in OpenDocument format (ODF). In about 40 lines of code, you will be able to produce an OpenDocument Format text document named HelloWorld.odt that looks like this:</p> 
       <p><img src="helloworld.png" alt="demo file"></p> 
-      <h2>Prerequisites</h2> 
+      <h2 id="prerequisites">Prerequisites</h2> 
       <p>Simple ODF is written in Java, so you will need to have Java 1.6 or above installed on your system. Make sure you download the SDK (software development kit), not just the runtime version of Java.</p> 
       <p>In this tutorial, you can build and run the application from the command line or IDE, such as Eclipse or Netbeans. Anyway, all required jars, are stored within the "lib" directory of the demo bundle and needed to be added to the classpath. A JAR with all dependencies had been included as download within <a href="helloworld.zip">the resource file</a> of this demo.</p> 
       <p>NOTE: The latest version of this all-inclusive-JAR can be received after building the Simple ODF project. This will be JAR within the 'target' directory embracing all required JARs.</p> 
-      <h2>Code</h2> 
+      <h2 id="code">Code</h2> 
       <p>We write all of the code needed to create the document in the HelloWorld class. For simplicity, the code is wrapped in main method directly, package declaration is omitted and hard code is also included in this program.</p> 
-      <pre><code class="language-Java">    import java.net.URI;
+      <div class="codehilite">
+        <pre><code class="language-Java">    import java.net.URI;
     import org.odftoolkit.simple.TextDocument;
     import org.odftoolkit.simple.table.Cell;
     import org.odftoolkit.simple.table.Table;
@@ -90,9 +91,11 @@
             }
         }
     }
-</code></pre> 
+</code></pre>
+      </div> 
       <p>The TextDocument class has these convenient methods:</p> 
-      <pre><code class="language-Java">// Creates a new text document that contains an empty paragraph.
+      <div class="codehilite">
+        <pre><code class="language-Java">// Creates a new text document that contains an empty paragraph.
 TextDocument.newTextDocument);
 // Puts the image at the given location at the end of the document.
 TextDocument.newImage(URI location)
@@ -104,15 +107,16 @@ TextDocument.addList()
 TextDocument.addTable(int columnCount, int rowCount);
 // Saves the document at the given path.
 TextDocument.save(String path)
-</code></pre> 
-      <h2>Building and Running</h2> 
+</code></pre>
+      </div> 
+      <h2 id="building-and-running">Building and Running</h2> 
       <p>If you use an IDE, you can just run this class as a Java Application. If you use command line, you may compile the code and run it with the following commands:</p> 
       <ul> 
         <li>Java: <strong>javac -cp lib/simple-odf-0.9.0-jar-with-dependencies.jar HelloWorld.java</strong></li> 
         <li>LINUX using ':' as classpath separator: <strong>java -cp .:lib/simple-odf-0.8.2-incubating-jar-with-dependencies.jar HelloWorld</strong></li> 
         <li>WINDOWS using ';' as classpath separator: <strong>java -cp .;lib/simple-odf-0.8.2-incubating-jar-with-dependencies.jar HelloWorld</strong></li> 
       </ul> 
-      <h2>Getting the Files</h2> 
+      <h2 id="getting-the-files">Getting the Files</h2> 
       <p>You can download the code and resources of this demo from <a href="helloworld.zip">here</a>.</p> 
     </div>
     <html>

@@ -54,7 +54,8 @@
       <p><img src="image/demo10.png" alt="alt text"></p> 
       <p><strong>Code Introduction</strong></p> 
       <p>There code of this demo is very clear. Firstly, we open the data source and create a text document. Secondly, we create paragraph for each line. Thirdly, we set different style for different content. Then we do spell and security check with the help of Navigation API. Comments are given if suspicious words are found. Finally, the new created document is saved.</p> 
-      <pre><code>        BufferedReader reader = new BufferedReader(new InputStreamReader(this.class.getResourceAsStream("text.txt")));
+      <div class="codehilite">
+        <pre><code>        BufferedReader reader = new BufferedReader(new InputStreamReader(this.class.getResourceAsStream("text.txt")));
 		String in = reader.readLine();
 		TextDocument doc = TextDocument.newTextDocument();
 		int lineCount = 0;
@@ -115,7 +116,8 @@
 							"SecurityChecker");
 		}
 		doc.save("format_text.odt");
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>Download</strong></p> 
       <p>Powered by the Simple Java API for ODF version <a href="../downloads.html">0.6.5</a>. You can download the code of this demo from <a href="demo10.zip">here</a>.</p> 
     </div>

@@ -46,7 +46,7 @@
       </ul> 
     </div>
     <div id="contenta">
-      <h1>Simple Java API for ODF</h1> 
+      <h1 id="simple-java-api-for-odf">Simple Java API for ODF</h1> 
       <p>##What is the Simple Java API for ODF?</p> 
       <p>The Simple Java API for ODF is an easy-to-use, high-level Java API for creating, modifying and extracting data from ODF 1.2 documents. It is written in pure Java and does not require that you install any document editor on your system. The Simple Java API for ODF is a high level abstraction of the lower-level ODFDOM API.</p> 
       <p>##New Release 0.6.6</p> 
@@ -96,7 +96,8 @@
             /.hgrc on Unix. Enhance the default configuration, using GIT diff and enable [http://mercurial.selenic.com/wiki/Win32TextExtension default plugin] avoid different line breaks in the source.
           </hg>
         </hg></p> 
-      <pre><code>[ui]
+      <div class="codehilite">
+        <pre><code>[ui]
 username = your Name &lt;yourLoginName@odftoolkit.org&gt;
 ;merge = your-merge-program (or internal:merge)
 
@@ -121,15 +122,20 @@ hgext.purge=
 # before adding the file to the source repository
 # See http://mercurial.selenic.com/wiki/EolExtension
 only-consistent = False
-</code></pre>  
+</code></pre>
+      </div>  
       <p>Now, get the source code from the Simple project [http://www.selenic.com/mercurial/wiki/ Mercurial] repository. Please see below for a short introduction to using Mercurial on odftoolkit.org. There's also a more general <a href="{{project help page
 SourceControl}}">help</a> on how to use source control systems on odftoolkit.org. The command <br></p>
-      <pre>
-hg clone https://hg.odftoolkit.org/hg/simple~code-base</pre>will download the repository into a new directory.
+      <div class="codehilite">
+        <pre>
+hg clone https://hg.odftoolkit.org/hg/simple~code-base</pre>
+      </div>will download the repository into a new directory.
       <p></p> 
       <p>Please note that by this you'll get the latest changeset. If you for example want stable release 0.2, you may want to use</p> 
-      <pre><code>hg clone https://odftoolkit.org/hg/simple~code-base -r v0.2
-</code></pre> 
+      <div class="codehilite">
+        <pre><code>hg clone https://odftoolkit.org/hg/simple~code-base -r v0.2
+</code></pre>
+      </div> 
       <p>Developers however always work on the latest changeset.</p> 
       <p>####How to build and run the unit tests</p> 
       <p>After the source code is checked out, now get and install [http://maven.apache.org/ Apache Maven]. On command line test your installation with "mvn -v".</p> 

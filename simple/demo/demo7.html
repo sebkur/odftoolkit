@@ -59,7 +59,8 @@
       <p>No need text content search, no need target replace. It's faster than the content replace way. Beside, the variable content is highlighted automatically by Symphony or Open Office when the document is opend. The following is a generated letter sample.</p> 
       <p><img src="image/generated-offer-letter.png" alt="image3"></p> 
       <p>As using fields, the new offer letter is easily updated without inconsistent, even though after generated. You can do it in Symphony or Open Office. Code Introduction There are two methods in the class, <code>createFieldTemplate()</code> is used to create template document from sample, and <code>generateOfferLetterDocument()</code> is used to generated new document using template and data file.</p> 
-      <pre><code>public static void main(String[] args) {
+      <div class="codehilite">
+        <pre><code>public static void main(String[] args) {
 	try {
 		// create offer letter template with sample offer letter.
 		createFieldTemplate();
@@ -69,9 +70,11 @@
 		e.printStackTrace();
 	}
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p>Below is the source code of method <code>createFieldTemplate()</code>. The basic process is find the variable content and replace it with a field. We use <code>FixedDateField</code>, <code>UserVariableField</code>, <code>ConditionField</code> and <code>HiddenTextField</code> in this method. Simple ODF API provides more types of fields. For more information, please reference the <a href="../document/javadoc/index.html">Javadoc</a> or <a href="../document/cookbook/index.html">CookBook</a>.</p> 
-      <pre><code>public static void createFieldTemplate() throws Exception {
+      <div class="codehilite">
+        <pre><code>public static void createFieldTemplate() throws Exception {
 	TextDocument sampleDocument = TextDocument.loadDocument("Tom's Offer.odt");
 	// replace offer date with FixedDateField
 	TextNavigation search = new TextNavigation("2011-01-20", sampleDocument);
@@ -140,9 +143,11 @@
 	}
 	sampleDocument.save("OfferTemplate.odt");
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p>Method <code>generateOfferLetterDocument()</code> is easier. Just load the template document and data docuemnt and fill new value to all of the variables. <code>getVariableFieldByName()</code> is a method of <code>VariableContainer</code> used to iterate variable field by name.</p> 
-      <pre><code>public static void generateOfferLetterDocument() throws Exception {
+      <div class="codehilite">
+        <pre><code>public static void generateOfferLetterDocument() throws Exception {
 	TextDocument templateDocument = TextDocument.loadDocument("OfferTemplate.odt");
 	SpreadsheetDocument dataDocument = SpreadsheetDocument.loadDocument("Candidates.ods");
 	Table table = dataDocument.getTableByName("Sheet1");
@@ -168,7 +173,8 @@
 		templateDocument.save(name+"'s offer letter.odt");
 	}
 }
-</code></pre> 
+</code></pre>
+      </div> 
       <p><strong>Download</strong></p> 
       <p>Powered by the Simple Java API for ODF version <a href="../downloads.html">0.5</a>. You can download the code of this demo from <a href="demo7.zip">here</a>.</p> 
     </div>
